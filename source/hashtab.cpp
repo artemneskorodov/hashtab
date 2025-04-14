@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <nmmintrin.h>
 
 #include "hashtab.h"
 #include "ht_storage.h"
@@ -12,7 +13,6 @@
 
 static void create_crc_table(hashtab_t *ctx);
 static size_t hash_func(hashtab_t *ctx, const char *key);
-static void create_crc_table(hashtab_t *ctx);
 
 ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]) {
     _RETURN_IF_ERROR(parse_flags(ctx, argc, argv));
@@ -74,18 +74,21 @@ ht_error_t hashtab_run_tests(hashtab_t *ctx) {
     }
     fclose(test);
 
-    char *position = ctx->data;
     size_t words_num = test_size / (KeyWordSize + 1);
 
-    for(size_t i = 0; i < words_num; i++, position += KeyWordSize + 1) {
-        data_t *result = NULL;
-        _RETURN_IF_ERROR(hashtab_search(ctx, position, &result));
-        if(strcmp(result->key, position) != 0) {
-            color_printf(GREEN_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
-                         "[FAIL] ");
-            color_printf(DEFAULT_TEXT, NORMAL_TEXT, DEFAULT_BACKGROUND,
-                         "%s\n", position);
-            return HASHTAB_FOUND_WRONG;
+    for(size_t test_iter = 0; test_iter < 100; test_iter++) {
+        char *position = ctx->data;
+
+        for(size_t i = 0; i < words_num; i++, position += KeyWordSize + 1) {
+            data_t *result = NULL;
+            _RETURN_IF_ERROR(hashtab_search(ctx, position, &result));
+            if(strcmp(result->key, position) != 0) {
+                color_printf(GREEN_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
+                             "[FAIL] ");
+                color_printf(DEFAULT_TEXT, NORMAL_TEXT, DEFAULT_BACKGROUND,
+                             "%s\n", position);
+                return HASHTAB_FOUND_WRONG;
+            }
         }
     }
     return HASHTAB_SUCCESS;
@@ -119,22 +122,28 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
     return HASHTAB_SUCCESS;
 }
 
+// size_t hash_func(hashtab_t *ctx, const char *key) {
+//     uint32_t crc = 0xFFFFFFFF;
+//     for(size_t i = 0; i < KeyWordSize; i++) {
+//         crc = ctx->crc_table[(crc ^ *key++) & 0xFF] ^ (crc >> 8);
+//     }
+//     return (crc ^ 0xFFFFFFFF) % BucketsNum;
+// }
 
-/*https://ru.wikibooks.org/wiki/Реализации_алгоритмов/Циклический_избыточный_код*/
 size_t hash_func(hashtab_t *ctx, const char *key) {
-    uint32_t crc = 0xFFFFFFFFUL;
-    for(size_t i = 0; i < KeyWordSize; i++) {
-        crc = ctx->crc_table[(crc ^ *key++) & 0xFF] ^ (crc >> 8);
+    uint64_t crc = 0xFFFFFFFF;
+    uint64_t *key_uint = (uint64_t *)key;
+    for(size_t i = 0; i < KeyWordSize / sizeof(uint64_t); i++) {
+        crc = _mm_crc32_u64(crc, key_uint[i]);
     }
-    fprintf(stderr, "%u\n", crc);
-    return (size_t)(crc ^ 0xFFFFFFFFUL) % BucketsNum;
+    return (crc ^ 0xFFFFFFFF) % BucketsNum;
 }
 
 void create_crc_table(hashtab_t *ctx) {
     for(uint32_t i = 0; i < 256; i++) {
         uint32_t crc = i;
         for(uint32_t j = 0; j < 8; j++) {
-            crc = crc & 1 ? (crc >> 1) ^ 0xEDB88320UL : crc >> 1;
+            crc = crc & 1 ? (crc >> 1) ^ 0x82F63B78 : crc >> 1;
         }
         ctx->crc_table[i] = crc;
     }

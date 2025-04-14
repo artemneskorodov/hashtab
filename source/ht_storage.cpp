@@ -5,6 +5,7 @@
 #include "ht_storage.h"
 #include "ht_dump.h"
 #include "colors.h"
+#include "custom_assert.h"
 
 enum cont_ctor_type_t {
     CONT_CTOR_DEFAULT = 1,
@@ -46,12 +47,17 @@ ht_error_t ht_storage_free_list(hashtab_t *ctx, list_t *list) {
 
 ht_error_t ht_storage_dtor(hashtab_t *ctx) {
     free(ctx->buckets);
+    for(size_t i = 0; i < ctx->used_containers; i++) {
+        free(ctx->containers[i]);
+        ctx->containers[i] = NULL;
+    }
     ctx->buckets = NULL;
     ctx->free_lists = NULL;
     return HASHTAB_SUCCESS;
 }
 
 ht_error_t ht_container_add(hashtab_t *ctx, cont_ctor_type_t ctor_type) {
+    _C_ASSERT(ListContainerSize >= BucketsNum, return HASHTAB_INVALID_CONTAINER_SIZE);
     size_t index = ctx->used_containers;
     if(index >= ListContainersNum) {
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
@@ -86,7 +92,12 @@ ht_error_t ht_container_add(hashtab_t *ctx, cont_ctor_type_t ctor_type) {
             for(size_t i = BucketsNum; i + 1 < ListContainerSize; i++) {
                 lists[i].next = &lists[i] + 1;
             }
-            ctx->free_lists = lists + BucketsNum;
+            if(ListContainerSize == BucketsNum) {
+                ctx->free_lists = NULL;
+            }
+            else {
+                ctx->free_lists = lists + BucketsNum;
+            }
             break;
         }
         default: {

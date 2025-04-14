@@ -3,7 +3,7 @@
 
 #include "hashtab.h"
 
-// #define _NO_DUMP
+#define _NO_DUMP
 
 #ifdef _NO_DUMP
 

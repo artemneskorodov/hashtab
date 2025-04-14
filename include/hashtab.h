@@ -11,12 +11,13 @@ enum ht_error_t {
     HASHTAB_READING_FILE_ERROR = 3,
     HASHTAB_FOUND_WRONG = 4,
     HASHTAB_MEMORY_ERROR = 5,
+    HASHTAB_INVALID_CONTAINER_SIZE = 6,
 };
 
 static const size_t KeyWordSize = 32;
-static const size_t BucketsNum = 1024;
-static const size_t ListContainerSize = 1024;
-static const size_t ListContainersNum = 1024;
+static const size_t BucketsNum = 62000;
+static const size_t ListContainerSize = 62000;
+static const size_t ListContainersNum = 20;
 
 struct data_t {
     int value;
