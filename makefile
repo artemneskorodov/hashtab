@@ -1,12 +1,13 @@
 FLAGS:=										\
 -I include									\
+-g 											\
 -msse4.2 									\
 -mavx2										\
 -no-pie 									\
 -D _DEBUG									\
 -ggdb3										\
 -std=c++17									\
--O2											\
+-O1											\
 -Wall										\
 -Wextra										\
 -Weffc++									\

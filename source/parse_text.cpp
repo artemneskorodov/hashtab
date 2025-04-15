@@ -21,14 +21,14 @@ ht_error_t parse_text(hashtab_t *ctx) {
 
     size_t input_size = file_size(input);
 
-    char *buffer = (char *)calloc(input_size + 1 + BufferWordsNum * KeyWordSize, sizeof(char));
+    char *buffer = (char *)calloc(input_size + BufferWordsNum * KeyWordSize, sizeof(char));
     if(buffer == NULL) {
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
                      "Error while allocating memory for buffer\n");
         fclose(input);
         return HASHTAB_MEMORY_ERROR;
     }
-    char *words_buffer = buffer + input_size + 1;
+    char *words_buffer = buffer + input_size;
     size_t words_buffer_pos = 0;
 
     if(fread(buffer, sizeof(char), input_size, input) != input_size) {
@@ -49,22 +49,27 @@ ht_error_t parse_text(hashtab_t *ctx) {
         return HASHTAB_OPENING_FILE_ERROR;
     }
 
-    for(size_t pos = 0; pos < input_size; ) {
+    size_t pos = 0;
+    while(!isalpha(buffer[pos])) {
+        pos++;
+    }
+
+    while(pos < input_size) {
         size_t end = pos;
-        while(isalpha(buffer[end])) {
+        while(isalpha(buffer[end]) && pos != input_size) {
             end++;
         }
         for(size_t i = 0; i < end - pos; i++) {
             words_buffer[words_buffer_pos + i] = buffer[pos + i];
         }
-        words_buffer_pos += KeyWordSize + 1;
-        if(words_buffer_pos == BufferWordsNum * (KeyWordSize + 1)) {
-            fwrite(words_buffer, sizeof(char) * (KeyWordSize + 1), BufferWordsNum, output);
-            memset(words_buffer, 0, sizeof(char) * (KeyWordSize + 1) * BufferWordsNum);
+        words_buffer_pos += KeyWordSize;
+        if(words_buffer_pos == BufferWordsNum * (KeyWordSize)) {
+            fwrite(words_buffer, sizeof(char) * (KeyWordSize), BufferWordsNum, output);
+            memset(words_buffer, 0, sizeof(char) * (KeyWordSize) * BufferWordsNum);
             words_buffer_pos = 0;
         }
         pos = end;
-        while(!isalpha(buffer[pos])) {
+        while(!isalpha(buffer[pos]) && pos != input_size) {
             pos++;
         }
     }

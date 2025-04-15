@@ -15,8 +15,8 @@ enum ht_error_t {
 };
 
 static const size_t KeyWordSize = 32;
-static const size_t BucketsNum = 62000;
-static const size_t ListContainerSize = 62000;
+static const size_t BucketsNum = 1979;
+static const size_t ListContainerSize = 2048;
 static const size_t ListContainersNum = 20;
 
 struct data_t {
@@ -31,6 +31,8 @@ struct list_t {
 };
 
 struct bucket_t {
+    //TODO add elements counter
+    // size_t elements;
     list_t *head;
 };
 
@@ -49,6 +51,7 @@ struct hashtab_t {
     FILE *dump_file;
     bool parse_flag;
     uint32_t crc_table[256];
+    size_t counter;
 };
 
 ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]);
