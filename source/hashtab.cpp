@@ -114,7 +114,7 @@ ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data) {
 
 ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result) {
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
-    return list_search(ctx, &ctx->buckets[bucket_index], key, result);
+    return list_search(&ctx->buckets[bucket_index], key, result);
 }
 
 ht_error_t hashtab_remove(hashtab_t *ctx, const char *key) {

@@ -7,7 +7,7 @@ FLAGS:=										\
 -D _DEBUG									\
 -ggdb3										\
 -std=c++17									\
--O1											\
+-O2											\
 -Wall										\
 -Wextra										\
 -Weffc++									\
@@ -75,11 +75,17 @@ OUTPUT:=hashtab
 SRCDIR:=source
 SOURCE:=$(wildcard ${SRCDIR}/*.cpp)
 OBJECTS:=$(addsuffix .o,$(addprefix ${BINDIR}/,$(basename $(notdir ${SOURCE}))))
+ASM_OBJ:=${BINDIR}/cmp_key.o
+ASM_SRC:=${SRCDIR}/cmp_key.asm
 
 all: ${OUTPUT}
 
-${OUTPUT}:${OBJECTS}
-	g++ ${FLAGS} ${OBJECTS} -o ${BINDIR}/${OUTPUT}
+${OUTPUT}:${OBJECTS} ${ASM_OBJ}
+	g++ ${FLAGS} ${ASM_OBJ} ${OBJECTS} -o ${BINDIR}/${OUTPUT}
+${ASM_OBJ}: ${ASM_SRC}
+	nasm -felf64 ${ASM_SRC} -o ${ASM_OBJ}
+${ASM_SRC}:
+
 ${OBJECTS}: ${SOURCE} ${BINDIR}
 	$(foreach SRC,${SOURCE},$(shell g++ -c ${SRC} ${FLAGS} -o $(addsuffix .o,$(addprefix ${BINDIR}/,$(basename $(notdir ${SRC}))))))
 clean:

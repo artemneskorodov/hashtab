@@ -31,9 +31,11 @@ struct list_t {
 };
 
 struct bucket_t {
+    // This element must be first as it is used in asm inline
+    list_t *head;
     //TODO add elements counter
     // size_t elements;
-    list_t *head;
+
 };
 
 struct hashtab_t {
