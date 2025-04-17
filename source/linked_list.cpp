@@ -1,15 +1,23 @@
+/*============================================================================*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <immintrin.h>
+
+/*============================================================================*/
 
 #include "hashtab.h"
 #include "linked_list.h"
 #include "ht_storage.h"
 #include "ht_dump.h"
 
+/*============================================================================*/
+
 #define _OPTIMIZE_STRCMP
 #define _OPTIMIZE_SEARCH
+
+/*============================================================================*/
 
 #if defined(_OPTIMIZE_STRCMP)
     extern "C" bool cmp_key(__m256i key1_ymm, const char *key2);
@@ -28,15 +36,20 @@ ht_error_t list_insert(hashtab_t  *ctx,
     list_t *current = bucket->head->next;
     while(current != bucket->head) {
         if(strcmp(key, current->data.key) == 0) {
+            current->data.value++;
             return HASHTAB_SUCCESS;
         }
         current = current->next;
     }
 
+    bucket->elements++;
+
     list_t *new_element = NULL;
     _RETURN_IF_ERROR(ht_storage_get_list(ctx, &new_element));
 
-    new_element->data.key = key;
+    new_element->data.key   = key;
+    new_element->data.value = 1;
+
     if(data != NULL) {
         new_element->data.value = data->value;
     }
@@ -45,7 +58,7 @@ ht_error_t list_insert(hashtab_t  *ctx,
     new_element->prev = bucket->head;
 
     bucket->head->next->prev = new_element;
-    bucket->head->next = new_element;
+    bucket->head->next       = new_element;
 
     _HT_DUMP(ctx, "Dump after list allocation");
 
@@ -68,7 +81,7 @@ ht_error_t list_insert(hashtab_t  *ctx,
         list_t *head = bucket->head->next;
         /*--------------------------------------------------------------------*/
         /* We don't change YMM registers in this function and we only change  */
-        /* YMM1 and YMM2 in cmp_key, so we can avoid saving value of YMM0,    */
+        /* YMM1 and RAX in cmp_key, so we can avoid saving value of YMM0,     */
         /* which has written key in it to memory. This asm inline forces      */
         /* saving key string in YMM0 register.                                */
         asm("vmovdqu %[key], %%ymm0\n"
@@ -79,25 +92,26 @@ ht_error_t list_insert(hashtab_t  *ctx,
         /* Running through list elements.                                     */
         while(head != bucket->head) {
             /*----------------------------------------------------------------*/
-            /* Variable in register to write the result of comparison.        */
-            bool cmp_res = false;
+            /* This asm goto inline calls cmp_keys, without saving YMM0 to    */
+            /* memory as we know that YMM0 is not changed by this functions.  */
+            /* Last function instruction sets ZF flag to 1 if strings are     */
+            /* equal, so we use JNZ instruction to skip writing the result.   */
+            asm goto ("mov  %[key], %%rdi   \n"
+                      "call cmp_key         \n"
+                      "jnz %l[skip_cmp_true]\n"
+                      :
+                      : [key] "r"  (head->data.key)
+                      : "%rdi", "%ymm1", "%rax", "cc"
+                      : skip_cmp_true);
             /*----------------------------------------------------------------*/
-            /* This part calls cmp_key without moving YMM0 value from memory  */
-            /* and saving it, as we know that cmp_key does not change YMM0.   */
-            /* The result of cmp_key is written to AL, which is C variable    */
-            /* 'cmp_res' that is forced to AL register by output part of this */
-            /* asm inline.                                                    */
-            asm("mov  %[key], %%rdi   \n"
-                "call cmp_key         \n"
-                : "=a" (cmp_res)
-                : [key] "r"  (head->data.key)
-                : "%rdi", "%ymm1", "%ymm3");
+            /* Writing the result and going out from loop. This part is       */
+            /* skipped by previous asm goto if strings are not equal.         */
+            *result = &head->data;
+            break;
             /*----------------------------------------------------------------*/
-            /* Checking if the list element with keyword was found.           */
-            if(cmp_res) {
-                *result = &head->data;
-                break;
-            }
+            /* This is C label which is used to jump to skip writing the      */
+            /* result. It is used by previous asm inline in JNZ command.      */
+            skip_cmp_true:
             /*----------------------------------------------------------------*/
             /* Moving current head to next element in list.                   */
             head = head->next;
@@ -110,8 +124,7 @@ ht_error_t list_insert(hashtab_t  *ctx,
 #else /* defined(_OPTIMIZE_SEARCH)                                            */
 /*============================================================================*/
 
-    ht_error_t list_search(hashtab_t    *ctx,
-                           bucket_t     *bucket,
+    ht_error_t list_search(bucket_t     *bucket,
                            const char   *key,
                            data_t      **result) {
         /*--------------------------------------------------------------------*/
@@ -130,14 +143,17 @@ ht_error_t list_insert(hashtab_t  *ctx,
             /* Variable to store result of keys comparison.                   */
             bool cmp_result = false;
             /*----------------------------------------------------------------*/
-            /* Calling assembler written cmp_key function if its optimization */
-            /* is enabled.                                                    */
             #if defined(_OPTIMIZE_STRCMP)
-                cmp_result = cmp_key(search_key, head->data.key);
-            /*----------------------------------------------------------------*/
-            /* Calling default cmp_key function overwise.                     */
+                /*------------------------------------------------------------*/
+                /* Calling assembler written cmp_key function if its          */
+                /* optimization is enabled.                                   */
+                cmp_result = !cmp_key(search_key, head->data.key);
+                /*------------------------------------------------------------*/
             #else
+                /*------------------------------------------------------------*/
+                /* Calling default cmp_key function overwise.                 */
                 cmp_result = cmp_key(key, head->data.key);
+                /*------------------------------------------------------------*/
             #endif
             /*----------------------------------------------------------------*/
             /* Checking if list element with key word was found.              */

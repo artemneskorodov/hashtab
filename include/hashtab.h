@@ -14,6 +14,12 @@ enum ht_error_t {
     HASHTAB_INVALID_CONTAINER_SIZE = 6,
 };
 
+enum run_mode_t {
+    HASHTAB_MODE_RUN_TEST = 1,
+    HASHTAB_MODE_TEST_LOAD = 2,
+    HASHTAB_MODE_PARSE_TEXT = 3,
+};
+
 static const size_t KeyWordSize = 32;
 static const size_t BucketsNum = 1979;
 static const size_t ListContainerSize = 2048;
@@ -31,10 +37,8 @@ struct list_t {
 };
 
 struct bucket_t {
-    // This element must be first as it is used in asm inline
     list_t *head;
-    //TODO add elements counter
-    // size_t elements;
+    size_t elements;
 
 };
 
@@ -51,7 +55,7 @@ struct hashtab_t {
 
     char *data;
     FILE *dump_file;
-    bool parse_flag;
+    run_mode_t run_mode;
     uint32_t crc_table[256];
     size_t counter;
 };
@@ -63,6 +67,7 @@ ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data);
 ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result);
 ht_error_t hashtab_remove(hashtab_t *ctx, const char *key);
 ht_error_t hashtab_dtor(hashtab_t *ctx);
+ht_error_t hashtab_test_load(hashtab_t *ctx);
 
 #define _RETURN_IF_ERROR(...) {             \
     ht_error_t _error_code = (__VA_ARGS__); \

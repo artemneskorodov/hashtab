@@ -1,7 +1,12 @@
+/*============================================================================*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <nmmintrin.h>
+#include <math.h>
+
+/*============================================================================*/
 
 #include "hashtab.h"
 #include "ht_storage.h"
@@ -11,34 +16,54 @@
 #include "colors.h"
 #include "parse_flags.h"
 
+/*============================================================================*/
+
 #define _OPTIMIZE_HASH
+#define _CHECK_RESULT
+
+/*============================================================================*/
+
+static const size_t TestsNumber = 100;
+
+/*============================================================================*/
 
 #if defined(_OPTIMIZE_HASH)
+    /*------------------------------------------------------------------------*/
     static size_t hash_func(const char *key);
-
+    /*------------------------------------------------------------------------*/
     #define CALL_HASH_FUNC(_ctx, _key) hash_func(_key)
     #define CALL_CREATE_CRC_TABLE(_ctx)
+    /*------------------------------------------------------------------------*/
 #else
+    /*------------------------------------------------------------------------*/
     static void create_crc_table(hashtab_t *ctx);
     static size_t hash_func(hashtab_t *ctx, const char *key);
-
+    /*------------------------------------------------------------------------*/
     #define CALL_HASH_FUNC(_ctx, _key) hash_func((_ctx), (_key))
     #define CALL_CREATE_CRC_TABLE(_ctx) create_crc_table(_ctx)
+    /*------------------------------------------------------------------------*/
 #endif
 
+/*============================================================================*/
+
 ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]) {
+    /*------------------------------------------------------------------------*/
     _RETURN_IF_ERROR(parse_flags(ctx, argc, argv));
-    if(ctx->parse_flag) {
+    if(ctx->run_mode == HASHTAB_MODE_PARSE_TEXT) {
         return HASHTAB_SUCCESS;
     }
+    /*------------------------------------------------------------------------*/
     _HT_DUMP_CTOR(ctx, "dump.log");
-
     CALL_CREATE_CRC_TABLE(ctx);
     _RETURN_IF_ERROR(ht_storage_ctor(ctx));
+    /*------------------------------------------------------------------------*/
     return HASHTAB_SUCCESS;
 }
 
+/*============================================================================*/
+
 ht_error_t hashtab_read_data(hashtab_t *ctx) {
+    /*------------------------------------------------------------------------*/
     FILE *data = fopen(ctx->data_file, "rb");
     if(data == NULL) {
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
@@ -46,29 +71,42 @@ ht_error_t hashtab_read_data(hashtab_t *ctx) {
                      ctx->data_file);
         return HASHTAB_OPENING_FILE_ERROR;
     }
-
     size_t data_size = file_size(data);
+    size_t words_num = data_size / KeyWordSize;
+    /*------------------------------------------------------------------------*/
     ctx->data = (char *)calloc(data_size, sizeof(char));
-
+    if(ctx->data == NULL) {
+        fclose(data);
+        color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
+                     "Error while allocating memory for data.\n");
+        return HASHTAB_MEMORY_ERROR;
+    }
+    /*------------------------------------------------------------------------*/
     if(fread(ctx->data, sizeof(char), data_size, data) != data_size) {
+        fclose(data);
+        free(ctx->data);
+        ctx->data = NULL;
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
                      "Error while reading file '%s'\n",
                      ctx->data_file);
         return HASHTAB_READING_FILE_ERROR;
     }
     fclose(data);
-
-
+    /*------------------------------------------------------------------------*/
     char *position = ctx->data;
-    size_t words_num = data_size / KeyWordSize;
     for(size_t i = 0; i < words_num; i++, position += KeyWordSize) {
         _RETURN_IF_ERROR(hashtab_insert(ctx, position, NULL));
     }
+    /*------------------------------------------------------------------------*/
     fprintf(stderr, "words = %lu\n", ctx->counter);
+    /*------------------------------------------------------------------------*/
     return HASHTAB_SUCCESS;
 }
 
+/*============================================================================*/
+
 ht_error_t hashtab_run_tests(hashtab_t *ctx) {
+    /*------------------------------------------------------------------------*/
     FILE *test = fopen(ctx->test_file, "rb");
     if(test == NULL) {
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
@@ -76,25 +114,26 @@ ht_error_t hashtab_run_tests(hashtab_t *ctx) {
                      ctx->test_file);
         return HASHTAB_OPENING_FILE_ERROR;
     }
-
     size_t test_size = file_size(test);
-
+    size_t words_num = test_size / KeyWordSize;
+    /*------------------------------------------------------------------------*/
     if(fread(ctx->data, sizeof(char), test_size, test) != test_size) {
+        fclose(test);
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
                      "Error while reading file '%s'\n",
                      ctx->test_file);
         return HASHTAB_READING_FILE_ERROR;
     }
     fclose(test);
-
-    size_t words_num = test_size / KeyWordSize;
-
-    for(size_t test_iter = 0; test_iter < 100; test_iter++) {
+    /*------------------------------------------------------------------------*/
+    for(size_t test_num = 0; test_num < TestsNumber; test_num++) {
+        /*--------------------------------------------------------------------*/
         char *position = ctx->data;
-
         for(size_t i = 0; i < words_num; i++, position += KeyWordSize) {
             data_t *result = NULL;
             _RETURN_IF_ERROR(hashtab_search(ctx, position, &result));
+            /*----------------------------------------------------------------*/
+            #if defined(_CHECK_RESULT)
             if(strcmp(result->key, position) != 0) {
                 color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
                              "[FAIL] ");
@@ -102,55 +141,128 @@ ht_error_t hashtab_run_tests(hashtab_t *ctx) {
                              "%s\n", position);
                 return HASHTAB_FOUND_WRONG;
             }
+            #endif
+            /*----------------------------------------------------------------*/
         }
+        /*--------------------------------------------------------------------*/
     }
+    /*------------------------------------------------------------------------*/
     return HASHTAB_SUCCESS;
 }
 
+/*============================================================================*/
+
 ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data) {
+    /*------------------------------------------------------------------------*/
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
     return list_insert(ctx, &ctx->buckets[bucket_index], key, data);
+    /*------------------------------------------------------------------------*/
 }
+
+/*============================================================================*/
 
 ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result) {
+    /*------------------------------------------------------------------------*/
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
     return list_search(&ctx->buckets[bucket_index], key, result);
+    /*------------------------------------------------------------------------*/
 }
+
+/*============================================================================*/
 
 ht_error_t hashtab_remove(hashtab_t *ctx, const char *key) {
+    /*------------------------------------------------------------------------*/
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
     return list_remove(ctx, &ctx->buckets[bucket_index], key);
+    /*------------------------------------------------------------------------*/
 }
 
+/*============================================================================*/
+
+ht_error_t hashtab_test_load(hashtab_t *ctx) {
+    _RETURN_IF_ERROR(hashtab_read_data(ctx));
+    double avarage = (double)ctx->counter / (double)BucketsNum;
+    double standard_deviation_sq = 0;
+
+    FILE *output = fopen(ctx->output_file, "w");
+    if(output == NULL) {
+        color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
+                     "Error while opening file '%s'.\n",
+                     ctx->output_file);
+        return HASHTAB_OPENING_FILE_ERROR;
+    }
+
+    for(size_t i = 0; i < BucketsNum; i++) {
+        fprintf(output, "%lu\n", ctx->buckets[i].elements);
+        double current = (double)ctx->buckets[i].elements;
+        standard_deviation_sq += (current - avarage) * (current - avarage);
+    }
+
+    fclose(output);
+
+    double dispersion = sqrt(standard_deviation_sq / (double)BucketsNum);
+
+    color_printf(YELLOW_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
+                 "Load Factor = ");
+    color_printf(WHITE_TEXT, NORMAL_TEXT, DEFAULT_BACKGROUND,
+                 "%f ± %f\n", avarage, dispersion);
+
+    return HASHTAB_SUCCESS;
+}
+
+/*============================================================================*/
+
 ht_error_t hashtab_dtor(hashtab_t *ctx) {
+    /*------------------------------------------------------------------------*/
     _HT_DUMP_DTOR(ctx);
     _RETURN_IF_ERROR(ht_storage_dtor(ctx));
+    /*------------------------------------------------------------------------*/
     free(ctx->data);
     if(memset(ctx, 0, sizeof(*ctx)) != ctx) {
         return HASHTAB_MEMORY_ERROR;
     }
+    /*------------------------------------------------------------------------*/
     return HASHTAB_SUCCESS;
 }
 
+/*============================================================================*/
+
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 #if defined(_OPTIMIZE_HASH)
+/*============================================================================*/
+
     size_t hash_func(const char *key) {
-        uint64_t crc = 0xFFFFFFFF;
+        /*--------------------------------------------------------------------*/
         const uint64_t *key_uint = (const uint64_t *)key;
+        uint64_t crc = 0xFFFFFFFF;
+        /*--------------------------------------------------------------------*/
         for(size_t i = 0; i < KeyWordSize / sizeof(uint64_t); i++) {
             crc = _mm_crc32_u64(crc, key_uint[i]);
         }
-        return (crc ^ 0xFFFFFFFF) % BucketsNum;
-    }
-#else
-    size_t hash_func(hashtab_t *ctx, const char *key) {
-        uint32_t crc = 0xFFFFFFFF;
-        for(size_t i = 0; i < KeyWordSize; i++) {
-            crc = ctx->crc_table[(crc ^ *key++) & 0xFF] ^ (crc >> 8);
-        }
+        /*--------------------------------------------------------------------*/
         return (crc ^ 0xFFFFFFFF) % BucketsNum;
     }
 
+/*============================================================================*/
+#else /* defined(_OPTIMIZE_HASH)                                              */
+/*============================================================================*/
+
+    size_t hash_func(hashtab_t *ctx, const char *key) {
+        /*--------------------------------------------------------------------*/
+        uint32_t crc = 0xFFFFFFFF;
+        /*--------------------------------------------------------------------*/
+        for(size_t i = 0; i < KeyWordSize; i++) {
+            crc = ctx->crc_table[(crc ^ (uint32_t)*key) & 0xFF] ^ (crc >> 8);
+            key++;
+        }
+        /*--------------------------------------------------------------------*/
+        return (crc ^ 0xFFFFFFFF) % BucketsNum;
+    }
+
+    /*========================================================================*/
+
     void create_crc_table(hashtab_t *ctx) {
+        /*--------------------------------------------------------------------*/
         for(uint32_t i = 0; i < 256; i++) {
             uint32_t crc = i;
             for(uint32_t j = 0; j < 8; j++) {
@@ -158,7 +270,10 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
             }
             ctx->crc_table[i] = crc;
         }
+        /*--------------------------------------------------------------------*/
     }
-#endif
 
+/*============================================================================*/
+#endif /* defined(_OPTIMIZE_HASH)                                             */
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 
