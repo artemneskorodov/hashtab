@@ -80,14 +80,14 @@ bin/hashtab --load 'path_to_your_data' 'path_to_output'
 Запускаем программу через профилировщик Valgrind.
 
 **Qcachegrind** предоставляет возможность просмотреть граф вызовов. Для понимания стоит приложить его:
-<div style="text-align: center">
-    <img src="benchmark/images/hashtab_search_call_graph.png" width="800">
+<div align="center">
+    <img src="benchmark/images/hashtab_search_call_graph.png" width="600">
     <p><i><b>Рисунок 1</b> Граф вызовов функции hashtab_search(hashtab_t *, const char *, data_t **) </i></p>
 </div>
 
 Результат профилирования представленный в графическом окне **Qcachegrind**:
-<div style="text-align: center">
-    <img src="benchmark/images/profile_default.png" width="800">
+<div align="center">
+    <img src="benchmark/images/profile_default.png" width="600">
     <p><i><b>Рисунок 2</b> Профиль программы без оптимизаций </i></p>
 </div>
 
@@ -129,8 +129,8 @@ cmp_key:
 
 #### 5.3.3 Результат оптимизации
 Профилируем программу с данной оптимизацией
-<div style="text-align: center">
-    <img src="benchmark/images/profile_cmp.png" width="800">
+<div align="center">
+    <img src="benchmark/images/profile_cmp.png" width="600">
     <p><i><b>Рисунок 3</b> Профиль программы с оптимизацией сравнения строк </i></p>
 </div>
 
@@ -180,8 +180,8 @@ size_t hash_func(const char *key) {
 #### 5.4.3 Результат оптимизации
 
 Результат работы профилировщика представлен на рисунке:
-<div style="text-align: center">
-    <img src="benchmark/images/profile_cmp_hash.png" width="800">
+<div align="center">
+    <img src="benchmark/images/profile_cmp_hash.png" width="600">
     <p><i><b>Рисунок 4</b> Профиль программы с оптимизациями сравнения строк и подсчёта хэша </i></p>
 </div>
 
@@ -199,14 +199,14 @@ $$   k = \frac{T_{cmp}}{T_{cmp,hash}} \approx 2.01                  $$
 В коде на C тяжело заметить возможности для оптимизации поиска по связному списку. Однако внутренний цикл выполняется очень много раз (при нашем среднем load factor равном 15).
 
 Рассмотрим эту функцию с помощью представления кода как графа в дизассемблере **IDA**
-<div style="text-align: center">
-    <img src="benchmark/images/list_search_disasm_full.png" width="800">
+<div align="center">
+    <img src="benchmark/images/list_search_disasm_full.png" width="600">
     <p><i><b>Рисунок 5</b> Дизассемблированная функция поиска по списку </i></p>
 </div>
 
 На следующем рисунке выделена основная часть внутреннего цикла. Поток по циклу выделен <span style="color:#6200FF">фиолетовым</span> цветом. На рисунке также отмечены пути выхода из цикла: невыполнения условия в `while` и `break;` при нахождении нужного элемента.
-<div style="text-align: center">
-    <img src="benchmark/images/list_search_disasm_loop.png" width="800">
+<div align="center">
+    <img src="benchmark/images/list_search_disasm_loop.png" width="600">
     <p><i><b>Рисунок 6</b> Дизассемблер основной части внутреннего цикла функции поиска по списку </i></p>
 </div>
 
@@ -309,8 +309,8 @@ ht_error_t list_search(bucket_t     *bucket,
 
 #### 5.5.3 Результаты оптимизации
 Вывод профилировщика:
-<div style="text-align: center">
-    <img src="benchmark/images/profile_cmp_hash_search.png" width="800">
+<div align="center">
+    <img src="benchmark/images/profile_cmp_hash_search.png" width="600">
     <p><i><b>Рисунок 7</b> Профиль программы с оптимизациями сравнения строк, подсчёта хэша и поиска </i></p>
 </div>
 
@@ -344,7 +344,7 @@ $$   \lambda = \frac{k}{n} \approx 0.35                             $$
 Гистограмма распределения данных для этого теста с хэшем __*crc32*__ по бакетам:
 
 <div align="center">
-    <img src="benchmark/images/chart.png" width="500">
+    <img src="benchmark/images/chart.png" width="600">
     <p><i><b>Рисунок 8</b> Гистограмма распределения элементов по бакетам </i></p>
 </div>
 
