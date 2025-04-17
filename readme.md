@@ -344,7 +344,7 @@ $$   \lambda = \frac{k}{n} \approx 0.35                             $$
 Гистограмма распределения данных для этого теста с хэшем __*crc32*__ по бакетам:
 
 <div align="center">
-    <img src="benchmark/images/chart.png" width="800">
+    <img src="benchmark/images/chart.png" width="500">
     <p><i><b>Рисунок 8</b> Гистограмма распределения элементов по бакетам </i></p>
 </div>
 
