@@ -1,4 +1,11 @@
 /*============================================================================*/
+/**
+* @file     linked_list.cpp
+* @author   Artem Neskorodov
+* @date     2024-04-18
+* @brief    File with linked_list access implementation.
+*/
+/*============================================================================*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,20 +20,79 @@
 #include "ht_dump.h"
 
 /*============================================================================*/
+/**
+* @brief                Enables optimization of strcmp().
 
+* @note                 Optimization uses comparison of YMM register. It can be
+                        used if your processor supports SSE 4.2. See function
+                        cmp_key_optimized() for more info.
+*/
 #define _OPTIMIZE_STRCMP
 #define _OPTIMIZE_SEARCH
 
 /*============================================================================*/
 
 #if defined(_OPTIMIZE_STRCMP)
-    extern "C" bool cmp_key(__m256i key1_ymm, const char *key2);
+    /*------------------------------------------------------------------------*/
+    /**
+    * @brief                Optimized function to compare strings.
+
+    * @param key1_ymm       First string moved to YMM0 register.
+    * @param key2           Pointer to second string moved to RDI register.
+
+    * @result               ZF flag is set if string are equal.
+    * @result               AL is set to zeros if strings are equal.
+
+    * @note                 This function is written in assembly.
+    */
+    extern "C" bool cmp_key_optimized(__m256i key1_ymm, const char *key2);
+    /*------------------------------------------------------------------------*/
+    /**
+    * @brief                Macro to call keys comparison if strcmp
+                            optimization is enabled.
+
+    * @param _string_key1   Pointer to first string. It is not used.
+    * @param _ymm_key1      __m256i variable with stored string in it.
+    * @param _string_key2   Pointer to second string.
+
+    * @note                 It won't use parameter _string_key1
+    */
+    #define CMP_KEY(_string_key1, _ymm_key1, _string_key2)                     \
+        !cmp_key_optimized((_ymm_key1), (_string_key2))
+    /*------------------------------------------------------------------------*/
 #else
-    static bool cmp_key(const char *key1, const char *key2);
+    /*------------------------------------------------------------------------*/
+    static bool cmp_key_default(const char *key1, const char *key2);
+    /*------------------------------------------------------------------------*/
+    /**
+    * @brief                Macro to call keys comparison if strcmp
+                            optimization is disabled.
+
+    * @param _string_key1   Pointer to first string. It is not used.
+    * @param _ymm_key1      __m256i variable with stored string in it.
+    * @param _string_key2   Pointer to second string.
+
+    * @note                 It won't use parameter _ymm_key1
+    */
+    #define CMP_KEY(_string_key1, _ymm_key1, _string_key2)                     \
+        cmp_key_default((_string_key1), (_string_key2))
+    /*------------------------------------------------------------------------*/
 #endif
 
 /*============================================================================*/
+/**
+* @brief                Inserting element in linked list.
 
+* @param ctx            Pointer to hashtab context.
+* @param bucket         Pointer to bucket, which has particular linked list.
+* @param key            Pointer to 32 bytes array of chars.
+* @param data           Pointer to structure with data. It may be NULL.
+
+* @result               ht_error_t - overall error code enum.
+
+* @warning              It is not expected to call this function not from
+                        hashtab functions.
+*/
 ht_error_t list_insert(hashtab_t  *ctx,
                        bucket_t   *bucket,
                        const char *key,
@@ -72,7 +138,25 @@ ht_error_t list_insert(hashtab_t  *ctx,
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 #if defined(_OPTIMIZE_SEARCH)
 /*============================================================================*/
+    /**
+    * @brief                Optimized variant of list_search(). It uses asm
+                            inlines to avoid saving YMM registers in memory.
 
+    * @param ctx            Pointer to hashtab context.
+    * @param key            Pointer to 32 bytes array of chars - key to find.
+    * @param result         Place to write a result of search.
+
+    * @result               ht_error_t - overall error code enum.
+
+    * @warning              It is expected to call this function only from
+                            hashtab functions. Always check disassembler of this
+                            function as it forces value to YMM0 register and we
+                            cannot be sure that compiler wouldn't use it.
+                            Don't call other functions from here. This code was
+                            not expected to be ever changed, so read comments,
+                            documentation and readme before changing it very
+                            carefully.
+    */
     ht_error_t list_search(bucket_t     *bucket,
                            const char   *key,
                            data_t      **result) {
@@ -123,7 +207,19 @@ ht_error_t list_insert(hashtab_t  *ctx,
 /*============================================================================*/
 #else /* defined(_OPTIMIZE_SEARCH)                                            */
 /*============================================================================*/
+    /**
+    * @brief                Unoptimized variant of list_search(). This function
+                            is safe.
 
+    * @param ctx            Pointer to hashtab context.
+    * @param key            Pointer to 32 bytes array of chars - key to find.
+    * @param result         Place to write a result of search.
+
+    * @result               ht_error_t - overall error code enum.
+
+    * @warning              It is expected to call this function only from
+                            hashtab functions.
+    */
     ht_error_t list_search(bucket_t     *bucket,
                            const char   *key,
                            data_t      **result) {
@@ -140,21 +236,8 @@ ht_error_t list_insert(hashtab_t  *ctx,
         /* Running through list elements.                                     */
         while(head != bucket->head) {
             /*----------------------------------------------------------------*/
-            /* Variable to store result of keys comparison.                   */
-            bool cmp_result = false;
-            /*----------------------------------------------------------------*/
-            #if defined(_OPTIMIZE_STRCMP)
-                /*------------------------------------------------------------*/
-                /* Calling assembler written cmp_key function if its          */
-                /* optimization is enabled.                                   */
-                cmp_result = !cmp_key(search_key, head->data.key);
-                /*------------------------------------------------------------*/
-            #else
-                /*------------------------------------------------------------*/
-                /* Calling default cmp_key function overwise.                 */
-                cmp_result = cmp_key(key, head->data.key);
-                /*------------------------------------------------------------*/
-            #endif
+            /* Result of keys comparison.                                     */
+            bool cmp_result = CMP_KEY(key, search_key, head->data.key);
             /*----------------------------------------------------------------*/
             /* Checking if list element with key word was found.              */
             if(cmp_result) {
@@ -176,9 +259,19 @@ ht_error_t list_insert(hashtab_t  *ctx,
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 #if not(defined(_OPTIMIZE_STRCMP))
 /*============================================================================*/
+    /**
+    * @brief                Default variant of keys comparison without.
 
-    bool __attribute__ ((noinline)) cmp_key(const char *key1,
-                                            const char *key2) {
+    * @param key1           Pointer to first key.
+    * @param key2           Pointer to second key.
+
+    * @result               TRUE if strings are equal.
+
+    * @remark               It will be better to turn on optimization with
+                            _OPTIMIZE_STRCMP if your processor supports SSE 4.2
+    */
+    bool cmp_key_default(const char *key1,
+                         const char *key2) {
         return (strcmp(key1, key2) == 0);
     }
 
@@ -187,7 +280,19 @@ ht_error_t list_insert(hashtab_t  *ctx,
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 
 /*============================================================================*/
-//TODO check this function works
+/**
+* @brief                Unoptimized variant of list_search(). This function
+                        is safe.
+
+* @param ctx            Pointer to hashtab context.
+* @param bucket         Pointer to bucket with element to remove.
+* @param key            Keyword of element to remove.
+
+* @result               ht_error_t - overall error code enum.
+
+* @warning              It is expected to call this function only from
+                        hashtab functions.
+*/
 ht_error_t list_remove(hashtab_t *ctx, bucket_t *bucket, const char *key) {
     /*------------------------------------------------------------------------*/
     /* Current list elements.                                                 */

@@ -1,0 +1,5 @@
+<map id="bucket_t" name="bucket_t">
+<area shape="rect" id="node1" title="Hashtable bucket structure." alt="" coords="5,187,83,213"/>
+<area shape="rect" id="node2" href="$structlist__t.html" title="List element structure." alt="" coords="17,96,71,123"/>
+<area shape="rect" id="node3" href="$structdata__t.html" title="Structure of data stored in hashtab." alt="" coords="13,5,75,32"/>
+</map>

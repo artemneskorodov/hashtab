@@ -1,28 +1,72 @@
+/*============================================================================*/
+/**
+* @file     parse_flags.cpp
+* @author   Artem Neskorodov
+* @date     2024-04-18
+* @brief    Parsing user input flags.
+*/
+/*============================================================================*/
+
 #include <stdio.h>
 #include <string.h>
+
+/*============================================================================*/
 
 #include "hashtab.h"
 #include "parse_flags.h"
 #include "colors.h"
 
+/*============================================================================*/
+
+typedef ht_error_t (*flag_handler_t)(hashtab_t *, int *, int, const char *[]);
+
+/*============================================================================*/
+/**
+* @brief                Supported flag information structure.
+*/
 struct flag_t {
-    const char *long_name;
-    ht_error_t (*handler)(hashtab_t *, int *, int, const char *[]);
+    const char         *long_name;                  ///< Name of flag.
+    flag_handler_t      handler                     ///< Function to handle.
 };
 
-static ht_error_t handler_test(hashtab_t *ctx, int *current, int argc, const char *argv[]);
-static ht_error_t handler_parse(hashtab_t *ctx, int *current, int argc, const char *argv[]);
-static ht_error_t handler_load(hashtab_t *ctx, int *current, int argc, const char *argv[]);
+
+/*============================================================================*/
+
+static ht_error_t handler_test (hashtab_t      *ctx,
+                                int            *current,
+                                int             argc,
+                                const char     *argv[]);
+
+static ht_error_t handler_parse(hashtab_t      *ctx,
+                                int            *current,
+                                int             argc,
+                                const char     *argv[]);
+
+static ht_error_t handler_load (hashtab_t      *ctx,
+                                int            *current,
+                                int             argc,
+                                const char     *argv[]);
+
+/*============================================================================*/
 
 static const flag_t SupportedFlags[] = {
     {.long_name = "--load", .handler = handler_load},
     {.long_name = "--test", .handler = handler_test},
     {.long_name = "--parse", .handler = handler_parse},
 };
-
 static const size_t SupportedFlagsSize = sizeof(SupportedFlags) /
                                          sizeof(SupportedFlags[0]);
 
+/*============================================================================*/
+/**
+* @brief                Parsing flags from console input.
+
+* @param ctx            Pointer to hashtab context.
+* @param argc           Number of flags from console.
+* @param argv           Flags from console.
+
+* @result               ht_error_t - overall error code enum.
+*/
 ht_error_t parse_flags(hashtab_t *ctx, int argc, const char *argv[]) {
     int current = 1;
     while(current < argc) {
@@ -44,6 +88,17 @@ ht_error_t parse_flags(hashtab_t *ctx, int argc, const char *argv[]) {
     return HASHTAB_SUCCESS;
 }
 
+/*============================================================================*/
+/**
+* @brief                Handling '--test' flag.
+
+* @param ctx            Pointer to hashtab context.
+* @param current        Pointer to index of current flag.
+* @param argc           Number of flags from console.
+* @param argv           Flags from console.
+
+* @result               ht_error_t - overall error code enum.
+*/
 ht_error_t handler_test(hashtab_t *ctx, int *current, int argc, const char *argv[]) {
     if(*current + 1 >= argc) {
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
@@ -60,6 +115,17 @@ ht_error_t handler_test(hashtab_t *ctx, int *current, int argc, const char *argv
     return HASHTAB_SUCCESS;
 }
 
+/*============================================================================*/
+/**
+* @brief                Handling '--parse' flag.
+
+* @param ctx            Pointer to hashtab context.
+* @param current        Pointer to index of current flag.
+* @param argc           Number of flags from console.
+* @param argv           Flags from console.
+
+* @result               ht_error_t - overall error code enum.
+*/
 ht_error_t handler_parse(hashtab_t *ctx, int *current, int argc, const char *argv[]) {
     if(*current + 1 >= argc) {
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
@@ -76,6 +142,17 @@ ht_error_t handler_parse(hashtab_t *ctx, int *current, int argc, const char *arg
     return HASHTAB_SUCCESS;
 }
 
+/*============================================================================*/
+/**
+* @brief                Handling '--load' flag.
+
+* @param ctx            Pointer to hashtab context.
+* @param current        Pointer to index of current flag.
+* @param argc           Number of flags from console.
+* @param argv           Flags from console.
+
+* @result               ht_error_t - overall error code enum.
+*/
 ht_error_t handler_load(hashtab_t *ctx, int *current, int argc, const char *argv[]) {
     if(*current + 1 >= argc) {
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
@@ -91,3 +168,5 @@ ht_error_t handler_load(hashtab_t *ctx, int *current, int argc, const char *argv
     (*current) += 2;
     return HASHTAB_SUCCESS;
 }
+
+/*============================================================================*/

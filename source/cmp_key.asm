@@ -1,5 +1,5 @@
 ;===============================================================================
-global cmp_key
+global cmp_key_optimized
 ;===============================================================================
 
 ;-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -7,17 +7,20 @@ section .text
 ;-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 ;===============================================================================
-; Function to compare keys which are smaller than 32 bytes.
-; Expects:      YMM0  - 1sf string
-;               [RDI] - 2nd string
-; Returns:      ZF    - set if strings are equal, unset overwise
-;               AL    - set to zero if strings are equal, not zero overwise
-; Destroys:     YMM1 RAX
-; Note:         AL setting to zeros if strings are equal is side effect of this
-;               function. It can be used as a return value of boolean function
-;               but with reversing of the result.
+; Description: Function to compare keys which are smaller than 32 bytes.
+;
+; Expects:     YMM0  - 1sf string
+;              [RDI] - 2nd string
+;
+; Returns:     ZF    - set if strings are equal, unset overwise
+;              AL    - set to zero if strings are equal, not zero overwise
+; Destroys:    YMM1 RAX
+;
+; Note:        AL setting to zeros if strings are equal is side effect of this
+;              function. It can be used as a return value of boolean function
+;              but with reversing of the result.
 ;-------------------------------------------------------------------------------
-cmp_key:
+cmp_key_optimized:
     ;---------------------------------------------------------------------------
     ; Loading second key to YMM1.
     vmovdqu ymm1, [rdi]

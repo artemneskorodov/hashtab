@@ -1,9 +1,27 @@
+/*============================================================================*/
+/**
+* @file     main.cpp
+* @author   Artem Neskorodov
+* @date     2024-04-18
+* @brief    File with main function.
+*/
+/*============================================================================*/
+
 #include <stdlib.h>
+
+/*============================================================================*/
 
 #include "hashtab.h"
 #include "parse_text.h"
 #include "colors.h"
 
+/*============================================================================*/
+/**
+* @brief                Writing result of call in console. Calling
+                        hashtab_dtor() and exiting from main if error occurred.
+
+* @warning              Use this define only in main.
+*/
 #define _EXIT_IF_ERROR(...) {                                                  \
     ht_error_t _error_code = (__VA_ARGS__);                                    \
     if(_error_code != HASHTAB_SUCCESS) {                                       \
@@ -30,6 +48,15 @@
                  #__VA_ARGS__);                                                \
 }
 
+/*============================================================================*/
+/**
+* @brief                Main
+
+* @result               exit code
+
+* @note                 Check \link https://github.com/artemneskorodov/hashtab
+                        readme \endlink for more information on flags.
+*/
 int main(int argc, const char *argv[]) {
     hashtab_t _ctx = {};
     _EXIT_IF_ERROR(hashtab_ctor(&_ctx, argc, argv));
@@ -58,3 +85,5 @@ int main(int argc, const char *argv[]) {
     hashtab_dtor(&_ctx);
     return EXIT_SUCCESS;
 }
+
+/*============================================================================*/

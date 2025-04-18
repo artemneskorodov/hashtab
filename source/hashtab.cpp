@@ -1,4 +1,11 @@
 /*============================================================================*/
+/**
+* @file     hashtab.cpp
+* @author   Artem Neskorodov
+* @date     2024-04-18
+* @brief    File with hashtab access implementation.
+*/
+/*============================================================================*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,35 +24,56 @@
 #include "parse_flags.h"
 
 /*============================================================================*/
-
+/**
+* @brief                Enables optimization of hash function with x86
+                        intrinsic. It is fully safe to use this optimization if
+                        your processor supports SSE 4.2
+*/
 #define _OPTIMIZE_HASH
+
+/*----------------------------------------------------------------------------*/
+/**
+* @brief                Enables checking the result of hashtab_search() while
+                        testing with hashtab_run_tests(). Function calls default
+                        libc's strcmp() after every search.
+*/
 #define _CHECK_RESULT
 
 /*============================================================================*/
-
+/**
+* @brief                Number of iterations to run while testing.
+*/
 static const size_t TestsNumber = 100;
 
 /*============================================================================*/
 
 #if defined(_OPTIMIZE_HASH)
     /*------------------------------------------------------------------------*/
-    static size_t hash_func(const char *key);
+    static size_t hash_func_optimized(const char *key);
     /*------------------------------------------------------------------------*/
-    #define CALL_HASH_FUNC(_ctx, _key) hash_func(_key)
+    #define CALL_HASH_FUNC(_ctx, _key) hash_func_optimized(_key)
     #define CALL_CREATE_CRC_TABLE(_ctx)
     /*------------------------------------------------------------------------*/
 #else
     /*------------------------------------------------------------------------*/
     static void create_crc_table(hashtab_t *ctx);
-    static size_t hash_func(hashtab_t *ctx, const char *key);
+    static size_t hash_func_default(hashtab_t *ctx, const char *key);
     /*------------------------------------------------------------------------*/
-    #define CALL_HASH_FUNC(_ctx, _key) hash_func((_ctx), (_key))
+    #define CALL_HASH_FUNC(_ctx, _key)  hash_func_default((_ctx), (_key))
     #define CALL_CREATE_CRC_TABLE(_ctx) create_crc_table(_ctx)
     /*------------------------------------------------------------------------*/
 #endif
 
 /*============================================================================*/
+/**
+* @brief                Constructor of hashtab context.
 
+* @param ctx            Pointer to hashtab context.
+* @param argc           Number of arguments from console.
+* @param argv           Arguments from console.
+
+* @result               ht_error_t - overall error code enum.
+*/
 ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]) {
     /*------------------------------------------------------------------------*/
     _RETURN_IF_ERROR(parse_flags(ctx, argc, argv));
@@ -61,7 +89,20 @@ ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]) {
 }
 
 /*============================================================================*/
+/**
+* @brief                Reading data from file and inserting it in a hashtab.
 
+* @param ctx            Pointer to hashtab context.
+
+* @result               ht_error_t - overall error code enum.
+
+* @note                 Database file format is described in hashtab.h
+
+* @warning              It is expected to call this function only after
+                        hashtab_ctor() and only in case when ctx->data_file is
+                        set. Don't call this function if
+                        ctx->run_mode != HASHTAB_MODE_RUN_TEST
+*/
 ht_error_t hashtab_read_data(hashtab_t *ctx) {
     /*------------------------------------------------------------------------*/
     FILE *data = fopen(ctx->data_file, "rb");
@@ -104,7 +145,20 @@ ht_error_t hashtab_read_data(hashtab_t *ctx) {
 }
 
 /*============================================================================*/
+/**
+* @brief                Reading data from test file and running tests.
 
+* @param ctx            Pointer to hashtab context.
+
+* @result               ht_error_t - overall error code enum.
+
+* @note                 Test file format is same as database file format.
+
+* @warning              It is expected to call this function only after
+                        hashtab_ctor() and reading database from file.
+                        ctx->test_file must be set by user. Don't call this
+                        function if ctx->run_mode != HASHTAB_MODE_RUN_TEST
+*/
 ht_error_t hashtab_run_tests(hashtab_t *ctx) {
     /*------------------------------------------------------------------------*/
     FILE *test = fopen(ctx->test_file, "rb");
@@ -151,7 +205,18 @@ ht_error_t hashtab_run_tests(hashtab_t *ctx) {
 }
 
 /*============================================================================*/
+/**
+* @brief                Inserting element to hashtab.
 
+* @param ctx            Pointer to hashtab context.
+* @param key            Pointer to 32 bytes array of chars.
+* @param data           Pointer to structure with data value. May be NULL.
+
+* @result               ht_error_t - overall error code enum.
+
+* @warning              It is expected to call this function only after
+                        hashtab_ctor().
+*/
 ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data) {
     /*------------------------------------------------------------------------*/
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
@@ -160,7 +225,18 @@ ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data) {
 }
 
 /*============================================================================*/
+/**
+* @brief                Searching element in hashtab
 
+* @param ctx            Pointer to hashtab context.
+* @param key            Pointer to 32 bytes array of chars.
+* @param result         Pointer to data_t structure to write a result.
+
+* @result               ht_error_t - overall error code enum.
+
+* @warning              It is expected to call this function only after
+                        hashtab_ctor().
+*/
 ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result) {
     /*------------------------------------------------------------------------*/
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
@@ -169,7 +245,19 @@ ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result) {
 }
 
 /*============================================================================*/
+/**
+* @brief                Inserting element to hashtab.
 
+* @param ctx            Pointer to hashtab context.
+* @param key            Pointer to 32 bytes array of chars.
+
+* @result               ht_error_t - overall error code enum.
+
+* @warning              It is expected to call this function only after
+                        hashtab_ctor().
+
+* @todo                 Carefully check this function with unit tests.
+*/
 ht_error_t hashtab_remove(hashtab_t *ctx, const char *key) {
     /*------------------------------------------------------------------------*/
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
@@ -178,7 +266,19 @@ ht_error_t hashtab_remove(hashtab_t *ctx, const char *key) {
 }
 
 /*============================================================================*/
+/**
+* @brief                Testing load factor.
 
+* @param ctx            Pointer to hashtab context.
+
+* @result               ht_error_t - overall error code enum.
+
+* @note                 Test file format is same as database file format.
+
+* @warning              It is expected to call this function only after
+                        hashtab_ctor(). Don't call it if
+                        ctx->run_mode != HASHTAB_MODE_TEST_LOAD.
+*/
 ht_error_t hashtab_test_load(hashtab_t *ctx) {
     _RETURN_IF_ERROR(hashtab_read_data(ctx));
     double avarage = (double)ctx->counter / (double)BucketsNum;
@@ -211,7 +311,15 @@ ht_error_t hashtab_test_load(hashtab_t *ctx) {
 }
 
 /*============================================================================*/
+/**
+* @brief                Destructor of hashtab context.
 
+* @param ctx            Pointer to hashtab context.
+
+* @result               ht_error_t - overall error code enum.
+
+* @todo                 Check that context was constructed first.
+*/
 ht_error_t hashtab_dtor(hashtab_t *ctx) {
     /*------------------------------------------------------------------------*/
     _HT_DUMP_DTOR(ctx);
@@ -230,8 +338,14 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 #if defined(_OPTIMIZE_HASH)
 /*============================================================================*/
+    /**
+    * @brief                CRC32 function with x86 intrinsics optimization.
 
-    size_t hash_func(const char *key) {
+    * @param key            Pointer to 32 bytes array of chars.
+
+    * @result               Index in buckets array.
+    */
+    size_t hash_func_optimized(const char *key) {
         /*--------------------------------------------------------------------*/
         const uint64_t *key_uint = (const uint64_t *)key;
         uint64_t crc = 0xFFFFFFFF;
@@ -246,8 +360,19 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
 /*============================================================================*/
 #else /* defined(_OPTIMIZE_HASH)                                              */
 /*============================================================================*/
+    /**
+    * @brief                CRC32 hash function
 
-    size_t hash_func(hashtab_t *ctx, const char *key) {
+    * @param ctx            Pointer to hashtab context.
+    * @param key            Pointer to 32 bytes array of chars.
+
+    * @result               Index in buckets array.
+
+    * @warning              It is expected to call this function only
+                            hashtab_ctor(). Don't call it if
+                            ctx->run_mode != HASHTAB_MODE_TEST_LOAD.
+    */
+    size_t hash_func_default(hashtab_t *ctx, const char *key) {
         /*--------------------------------------------------------------------*/
         uint32_t crc = 0xFFFFFFFF;
         /*--------------------------------------------------------------------*/
@@ -260,7 +385,11 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
     }
 
     /*========================================================================*/
+    /**
+    * @brief                Creating table for CRC32 hash.
 
+    * @param ctx            Pointer to hashtab context.
+    */
     void create_crc_table(hashtab_t *ctx) {
         /*--------------------------------------------------------------------*/
         for(uint32_t i = 0; i < 256; i++) {

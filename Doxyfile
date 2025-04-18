@@ -1,0 +1,18 @@
+OUTPUT_DIRECTORY       = docs
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+HTML_OUTPUT            = html
+PROJECT_NAME           = "Hashtab"
+PROJECT_NUMBER         = 1.0.0
+INPUT                  = source include
+HTML_EXTRA_STYLESHEET  = /root/dev/doxygen-awesome-css/doxygen-awesome.css
+EXTRACT_STATIC         = YES
+EXTRACT_ALL            = YES
+REFERENCED_BY_RELATION = NO
+REFERENCES_RELATION    = NO
+ENABLE_PREPROCESSING   = NO
+MACRO_EXPANSION        = NO
+ENABLED_SECTIONS       = *
+EXTENSION_MAPPING += "asm=C"
+FILE_PATTERNS = *.cpp *.h *.asm
+OPTIMIZE_OUTPUT_FOR_C = YES
