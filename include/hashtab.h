@@ -1,5 +1,7 @@
+/*============================================================================*/
 #ifndef HASHTAB_H
 #define HASHTAB_H
+/*============================================================================*/
 /**
 * @mainpage         Hashtab
 
@@ -102,7 +104,7 @@ static const size_t ListContsNum        = 20;
 */
 struct data_t {
     int                 value;                      ///< Some values.
-    const char         *key;                        ///< Key of element.
+    const char         *key;                        ///< Keyword of element.
 };
 
 /*============================================================================*/
@@ -129,18 +131,30 @@ struct bucket_t {
 * @brief                Hashtab context structure.
 */
 struct hashtab_t {
-    bucket_t           *buckets;                    ///< Array of buckets.
-    const char         *data_file;                  ///< Name of database file.
-    const char         *test_file;                  ///< Name of test file.
-    const char         *output_file;                ///< Name of output file.
-    list_t             *free_lists;                 ///< Free linked list.
-    list_t             *containers[ListContsNum];   ///< Storage containers.
-    size_t              used_containers;            ///< Number of used conts.
-    char               *data;                       ///< Buffer for database.
-    FILE               *dump_file;                  ///< File to write dump.
-    run_mode_t          run_mode;                   ///< Enum with run mode.
-    uint32_t            crc_table[256];             ///< Table for CRC32.
-    size_t              counter;                    ///< Number of elements.
+    bucket_t           *buckets;
+    ///< Pointer to the array of buckets. Allocated by ht_storage_ctor().
+    const char         *data_file;
+    ///< Name of database file.
+    const char         *test_file;
+    ///< Name of test file.
+    const char         *output_file;
+    ///< Name of output file.
+    list_t             *free_lists;
+    ///< Linked list with free list nodes. Used in ht_storage.h.
+    list_t             *containers[ListContsNum];
+    ///< Array of pointers to containers with stored or free list nodes.
+    size_t              used_containers;
+    ///< Number of used containers in ht_storage.h.
+    char               *data;
+    ///< Buffer where to store database. Allocated by hashtab_read_data().
+    FILE               *dump_file;
+    ///< File to write dump. Used in ht_dump.h.
+    run_mode_t          run_mode;
+    ///< Enum with run mode. It is set after parse_flags().
+    uint32_t            crc_table[256];
+    ///< Table for CRC32.
+    size_t              counter;
+    ///< Number of elements stored in hashtab.
 };
 
 /*============================================================================*/
@@ -179,3 +193,4 @@ ht_error_t hashtab_test_load   (hashtab_t      *ctx);
 
 /*============================================================================*/
 #endif
+/*============================================================================*/

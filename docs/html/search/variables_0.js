@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['_5f_5fpad0_5f_5f_0',['__pad0__',['../cmp__key_8asm.html#a5e4c82a9aaf40c36fe4ed3d0768daa93',1,'cmp_key.asm']]],
-  ['_5f_5fpad1_5f_5f_1',['__pad1__',['../cmp__key_8asm.html#a178296c39e2b7be7e38a4010c280f945',1,'cmp_key.asm']]],
-  ['_5f_5fpad2_5f_5f_2',['__pad2__',['../cmp__key_8asm.html#aad8428b1b11cea980eaf25848080bd98',1,'cmp_key.asm']]],
-  ['_5f_5fpad3_5f_5f_3',['__pad3__',['../cmp__key_8asm.html#aea0949e62664850c712fc8be5e140e97',1,'cmp_key.asm']]],
-  ['_5f_5fpad4_5f_5f_4',['__pad4__',['../cmp__key_8asm.html#ac05dacc19794c74f9243db03f8f4380b',1,'cmp_key.asm']]],
-  ['_5f_5fpad5_5f_5f_5',['__pad5__',['../cmp__key_8asm.html#a98de7781ddae5b145ffc98a733e0fc03',1,'cmp_key.asm']]]
+  ['black_5fbackground_0',['black_background',['../colors_8cpp.html#a1b1687a0a12c2233f42a4b05c04015cc',1,'colors.cpp']]],
+  ['blue_5fbackground_1',['blue_background',['../colors_8cpp.html#ad4efa493e7c63f34edbf352783e9daf0',1,'colors.cpp']]],
+  ['blue_5ftext_2',['blue_text',['../colors_8cpp.html#afcf4e684c90b47d3142a731cec501c69',1,'colors.cpp']]],
+  ['bold_3',['bold',['../colors_8cpp.html#a5e4b1b31d40e922511b70e1911b92a74',1,'colors.cpp']]],
+  ['buckets_4',['buckets',['../structhashtab__t.html#a9c1c581a038a906f5494778c170f4bf1',1,'hashtab_t']]],
+  ['bucketsnum_5',['BucketsNum',['../hashtab_8h.html#a0a3c7593471dc7f79bfbde5a27b16e29',1,'hashtab.h']]],
+  ['bufferwordsnum_6',['BufferWordsNum',['../parse__text_8cpp.html#a29243b6d4626f719b656e3feab2f2780',1,'parse_text.cpp']]]
 ];

@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['al_0',['AL',['../cmp__key_8asm.html#aef1524829a356d0ebfd1aebb32a0211e',1,'cmp_key.asm']]],
-  ['al_1',['al',['../cmp__key_8asm.html#a4999eebfa30f74ea6546ef2705408e80',1,'cmp_key.asm']]]
+  ['color_5fcode_5fstart_0',['color_code_start',['../colors_8cpp.html#aa5881a56793ccc0ba0c5bdf3490bc2c4',1,'colors.cpp']]],
+  ['containers_1',['containers',['../structhashtab__t.html#aabdb50c1efbc3fe3373ccf43c5341bf5',1,'hashtab_t']]],
+  ['counter_2',['counter',['../structhashtab__t.html#a59f509caf4251d43151910a1ce8a75ee',1,'hashtab_t']]],
+  ['crc_5ftable_3',['crc_table',['../structhashtab__t.html#afb1171e85fabb6b3f5b0886dcdb43a75',1,'hashtab_t']]],
+  ['cyan_5fbackground_4',['cyan_background',['../colors_8cpp.html#a9bcc3116ac3aa578570d2814ecb34bf9',1,'colors.cpp']]],
+  ['cyan_5ftext_5',['cyan_text',['../colors_8cpp.html#ab42135c900e46f2c0527f1262035c63e',1,'colors.cpp']]]
 ];

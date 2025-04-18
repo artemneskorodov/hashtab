@@ -1,27 +1,4 @@
 var searchData=
 [
-  ['cmp_5fkey_2easm_0',['cmp_key.asm',['../cmp__key_8asm.html',1,'']]],
-  ['cmp_5fkey_5fdefault_1',['cmp_key_default',['../linked__list_8cpp.html#a9e00a851a21abae578ad42b66ce4229b',1,'linked_list.cpp']]],
-  ['cmp_5fkey_5foptimized_2',['cmp_key_optimized',['../linked__list_8cpp.html#ac1ae7213bab4090df2eab04de6e9c5e0',1,'linked_list.cpp']]],
-  ['color_5fcode_3',['color_code',['../colors_8cpp.html#a6962c2f95116cb3c312007fa9edcbbc2',1,'colors.cpp']]],
-  ['color_5fcode_5fstart_4',['color_code_start',['../colors_8cpp.html#aa5881a56793ccc0ba0c5bdf3490bc2c4',1,'colors.cpp']]],
-  ['color_5fprintf_5',['color_printf',['../colors_8h.html#aed78b39b5d461317deedade1655570af',1,'color_printf(color_t color, boldness_t is_bold, background_t background, const char *format,...):&#160;colors.cpp'],['../colors_8cpp.html#aed78b39b5d461317deedade1655570af',1,'color_printf(color_t color, boldness_t is_bold, background_t background, const char *format,...):&#160;colors.cpp']]],
-  ['color_5ft_6',['color_t',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1',1,'colors.h']]],
-  ['color_5fvprintf_7',['color_vprintf',['../colors_8h.html#a9a4672b6f47eb780e007c435d067361e',1,'color_vprintf(color_t color, boldness_t is_bold, background_t background, const char *format, va_list args):&#160;colors.cpp'],['../colors_8cpp.html#a9a4672b6f47eb780e007c435d067361e',1,'color_vprintf(color_t color, boldness_t is_bold, background_t background, const char *format, va_list args):&#160;colors.cpp']]],
-  ['colors_2ecpp_8',['colors.cpp',['../colors_8cpp.html',1,'']]],
-  ['colors_2eh_9',['colors.h',['../colors_8h.html',1,'']]],
-  ['comparing_10',['Comparing',['../cmp__key_8asm.html#a8cd2f87b2e35acd9d9f307ec99b3dba9',1,'cmp_key.asm']]],
-  ['cont_5fctor_5fdefault_11',['CONT_CTOR_DEFAULT',['../ht__storage_8cpp.html#a691982e0ebad166575086bc05491250da8f6e03fbe00c6b2ed27235357e80de41',1,'ht_storage.cpp']]],
-  ['cont_5fctor_5ffirst_12',['CONT_CTOR_FIRST',['../ht__storage_8cpp.html#a691982e0ebad166575086bc05491250da928fd6676e8c3d7d63f7a920777d5d5a',1,'ht_storage.cpp']]],
-  ['cont_5fctor_5ftype_5ft_13',['cont_ctor_type_t',['../ht__storage_8cpp.html#a691982e0ebad166575086bc05491250d',1,'ht_storage.cpp']]],
-  ['containers_14',['containers',['../structhashtab__t.html#aabdb50c1efbc3fe3373ccf43c5341bf5',1,'hashtab_t']]],
-  ['counter_15',['counter',['../structhashtab__t.html#a59f509caf4251d43151910a1ce8a75ee',1,'hashtab_t']]],
-  ['crc_5ftable_16',['crc_table',['../structhashtab__t.html#afb1171e85fabb6b3f5b0886dcdb43a75',1,'hashtab_t']]],
-  ['create_5fcrc_5ftable_17',['create_crc_table',['../hashtab_8cpp.html#a849e47c79393d8d801e73bea1d3284b6',1,'hashtab.cpp']]],
-  ['custom_5fassert_2ecpp_18',['custom_assert.cpp',['../custom__assert_8cpp.html',1,'']]],
-  ['custom_5fassert_2eh_19',['custom_assert.h',['../custom__assert_8h.html',1,'']]],
-  ['cyan_5fbackground_20',['CYAN_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228a97688110a50efb79fc11e7b825196bde',1,'colors.h']]],
-  ['cyan_5fbackground_21',['cyan_background',['../colors_8cpp.html#a9bcc3116ac3aa578570d2814ecb34bf9',1,'colors.cpp']]],
-  ['cyan_5ftext_22',['cyan_text',['../colors_8cpp.html#ab42135c900e46f2c0527f1262035c63e',1,'colors.cpp']]],
-  ['cyan_5ftext_23',['CYAN_TEXT',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1aea75513a427c8d9a862173c2515205d7',1,'colors.h']]]
+  ['elements_0',['elements',['../structbucket__t.html#a45e22c397c4e711720b0537b735fdde6',1,'bucket_t']]]
 ];

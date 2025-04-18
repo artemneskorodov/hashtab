@@ -80,11 +80,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a606bec1cf2dd0e866f8970434d4830e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#a606bec1cf2dd0e866f8970434d4830e8">list_insert</a> (<a class="el" href="structhashtab__t.html">hashtab_t</a> *ctx, <a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> *data)</td></tr>
 <tr class="memdesc:a606bec1cf2dd0e866f8970434d4830e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserting element in linked list.  <a href="linked__list_8h.html#a606bec1cf2dd0e866f8970434d4830e8">More...</a><br /></td></tr>
 <tr class="separator:a606bec1cf2dd0e866f8970434d4830e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd5559f6af6654ac84f77f1c121dc0b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#abd5559f6af6654ac84f77f1c121dc0b0">list_search</a> (<a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> **<a class="el" href="cmp__key_8asm.html#afc465b4135d9c710841488b09abeac5e">result</a>)</td></tr>
-<tr class="memdesc:abd5559f6af6654ac84f77f1c121dc0b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimized variant of <a class="el" href="linked__list_8cpp.html#abd5559f6af6654ac84f77f1c121dc0b0" title="Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory.">list_search()</a>. It uses asm inlines to avoid saving YMM registers in memory.  <a href="linked__list_8h.html#abd5559f6af6654ac84f77f1c121dc0b0">More...</a><br /></td></tr>
-<tr class="separator:abd5559f6af6654ac84f77f1c121dc0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a097c47bfd351fb31d3386c798d66a83c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#a097c47bfd351fb31d3386c798d66a83c">list_search_optimized</a> (<a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> **result)</td></tr>
+<tr class="memdesc:a097c47bfd351fb31d3386c798d66a83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory.  <a href="linked__list_8h.html#a097c47bfd351fb31d3386c798d66a83c">More...</a><br /></td></tr>
+<tr class="separator:a097c47bfd351fb31d3386c798d66a83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbc5aebe3a9e6caa78e47c9bb4fff993"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#afbc5aebe3a9e6caa78e47c9bb4fff993">list_search_default</a> (<a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> **result)</td></tr>
+<tr class="memdesc:afbc5aebe3a9e6caa78e47c9bb4fff993"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unoptimized variant of list_search(). This function is safe.  <a href="linked__list_8h.html#afbc5aebe3a9e6caa78e47c9bb4fff993">More...</a><br /></td></tr>
+<tr class="separator:afbc5aebe3a9e6caa78e47c9bb4fff993"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a330bfb20ea34cd56a50e1557455042c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#a330bfb20ea34cd56a50e1557455042c7">list_remove</a> (<a class="el" href="structhashtab__t.html">hashtab_t</a> *ctx, <a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key)</td></tr>
-<tr class="memdesc:a330bfb20ea34cd56a50e1557455042c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unoptimized variant of <a class="el" href="linked__list_8cpp.html#abd5559f6af6654ac84f77f1c121dc0b0" title="Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory.">list_search()</a>. This function is safe.  <a href="linked__list_8h.html#a330bfb20ea34cd56a50e1557455042c7">More...</a><br /></td></tr>
+<tr class="memdesc:a330bfb20ea34cd56a50e1557455042c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes element with this key from list.  <a href="linked__list_8h.html#a330bfb20ea34cd56a50e1557455042c7">More...</a><br /></td></tr>
 <tr class="separator:a330bfb20ea34cd56a50e1557455042c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -173,7 +176,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Unoptimized variant of <a class="el" href="linked__list_8cpp.html#abd5559f6af6654ac84f77f1c121dc0b0" title="Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory.">list_search()</a>. This function is safe. </p>
+<p>Removes element with this key from list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>Pointer to hashtab context. </td></tr>
@@ -183,18 +186,19 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>It is expected to call this function only from hashtab functions. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>It is expected to call this function only from hashtab functions.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Check this function with unit tests. </dd></dl>
 
 </div>
 </div>
-<a id="abd5559f6af6654ac84f77f1c121dc0b0" name="abd5559f6af6654ac84f77f1c121dc0b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd5559f6af6654ac84f77f1c121dc0b0">&#9670;&nbsp;</a></span>list_search()</h2>
+<a id="afbc5aebe3a9e6caa78e47c9bb4fff993" name="afbc5aebe3a9e6caa78e47c9bb4fff993"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbc5aebe3a9e6caa78e47c9bb4fff993">&#9670;&nbsp;</a></span>list_search_default()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a> list_search </td>
+          <td class="memname"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a> list_search_default </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structbucket__t.html">bucket_t</a> *&#160;</td>
           <td class="paramname"><em>bucket</em>, </td>
@@ -219,18 +223,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Optimized variant of <a class="el" href="linked__list_8cpp.html#abd5559f6af6654ac84f77f1c121dc0b0" title="Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory.">list_search()</a>. It uses asm inlines to avoid saving YMM registers in memory. </p>
-<p >Unoptimized variant of <a class="el" href="linked__list_8cpp.html#abd5559f6af6654ac84f77f1c121dc0b0" title="Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory.">list_search()</a>. This function is safe.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ctx</td><td>Pointer to hashtab context. </td></tr>
-    <tr><td class="paramname">key</td><td>Pointer to 32 bytes array of chars - key to find. </td></tr>
-    <tr><td class="paramname">result</td><td>Place to write a result of search.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>It is expected to call this function only from hashtab functions. Always check disassembler of this function as it forces value to YMM0 register and we cannot be sure that compiler wouldn't use it. Don't call other functions from here. This code was not expected to be ever changed, so read comments, documentation and readme before changing it very carefully.</dd></dl>
+<p>Unoptimized variant of list_search(). This function is safe. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>Pointer to hashtab context. </td></tr>
@@ -241,6 +234,52 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>It is expected to call this function only from hashtab functions. </dd></dl>
+
+</div>
+</div>
+<a id="a097c47bfd351fb31d3386c798d66a83c" name="a097c47bfd351fb31d3386c798d66a83c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a097c47bfd351fb31d3386c798d66a83c">&#9670;&nbsp;</a></span>list_search_optimized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a> list_search_optimized </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structbucket__t.html">bucket_t</a> *&#160;</td>
+          <td class="paramname"><em>bucket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdata__t.html">data_t</a> **&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>Pointer to hashtab context. </td></tr>
+    <tr><td class="paramname">key</td><td>Pointer to 32 bytes array of chars - key to find. </td></tr>
+    <tr><td class="paramname">result</td><td>Place to write a result of search.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>It is expected to call this function only from hashtab functions. Always check disassembler of this function as it forces value to YMM0 register and we cannot be sure that compiler wouldn't use it. Don't call other functions from here. This code was not expected to be ever changed, so read comments, documentation and readme before changing it very carefully. </dd></dl>
 
 </div>
 </div>

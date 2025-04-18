@@ -40,10 +40,10 @@
     * @param key1_ymm       First string moved to YMM0 register.
     * @param key2           Pointer to second string moved to RDI register.
 
-    * @result               ZF flag is set if string are equal.
+    * @result               ZF flag is set if strings are equal.
     * @result               AL is set to zeros if strings are equal.
 
-    * @note                 This function is written in assembly.
+    * @note                 This function is implemented in cmp_key.asm.
     */
     extern "C" bool cmp_key_optimized(__m256i key1_ymm, const char *key2);
     /*------------------------------------------------------------------------*/
@@ -157,9 +157,9 @@ ht_error_t list_insert(hashtab_t  *ctx,
                             documentation and readme before changing it very
                             carefully.
     */
-    ht_error_t list_search(bucket_t     *bucket,
-                           const char   *key,
-                           data_t      **result) {
+    ht_error_t list_search_optimized(bucket_t     *bucket,
+                                     const char   *key,
+                                     data_t      **result) {
         /*--------------------------------------------------------------------*/
         /* Current position in list.                                          */
         list_t *head = bucket->head->next;
@@ -220,9 +220,9 @@ ht_error_t list_insert(hashtab_t  *ctx,
     * @warning              It is expected to call this function only from
                             hashtab functions.
     */
-    ht_error_t list_search(bucket_t     *bucket,
-                           const char   *key,
-                           data_t      **result) {
+    ht_error_t list_search_default(bucket_t     *bucket,
+                                   const char   *key,
+                                   data_t      **result) {
         /*--------------------------------------------------------------------*/
         /* Current position in list.                                          */
         list_t *head = bucket->head->next;
@@ -260,7 +260,7 @@ ht_error_t list_insert(hashtab_t  *ctx,
 #if not(defined(_OPTIMIZE_STRCMP))
 /*============================================================================*/
     /**
-    * @brief                Default variant of keys comparison without.
+    * @brief                Default variant of keys comparison.
 
     * @param key1           Pointer to first key.
     * @param key2           Pointer to second key.
@@ -281,8 +281,7 @@ ht_error_t list_insert(hashtab_t  *ctx,
 
 /*============================================================================*/
 /**
-* @brief                Unoptimized variant of list_search(). This function
-                        is safe.
+* @brief                Removes element with this key from list.
 
 * @param ctx            Pointer to hashtab context.
 * @param bucket         Pointer to bucket with element to remove.
@@ -292,6 +291,8 @@ ht_error_t list_insert(hashtab_t  *ctx,
 
 * @warning              It is expected to call this function only from
                         hashtab functions.
+
+* @todo                 Check this function with unit tests.
 */
 ht_error_t list_remove(hashtab_t *ctx, bucket_t *bucket, const char *key) {
     /*------------------------------------------------------------------------*/

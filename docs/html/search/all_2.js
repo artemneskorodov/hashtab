@@ -1,18 +1,12 @@
 var searchData=
 [
-  ['background_5fcode_0',['background_code',['../colors_8cpp.html#a9a394c56fc0dbb0084e133edac695ce2',1,'colors.cpp']]],
-  ['background_5ft_1',['background_t',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228',1,'colors.h']]],
-  ['black_5fbackground_2',['BLACK_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228a60bc8f8e0465f7083ef660e815df1d84',1,'colors.h']]],
-  ['black_5fbackground_3',['black_background',['../colors_8cpp.html#a1b1687a0a12c2233f42a4b05c04015cc',1,'colors.cpp']]],
-  ['blue_5fbackground_4',['blue_background',['../colors_8cpp.html#ad4efa493e7c63f34edbf352783e9daf0',1,'colors.cpp']]],
-  ['blue_5fbackground_5',['BLUE_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228a01a70b810fd43b4062430a8828d104fe',1,'colors.h']]],
-  ['blue_5ftext_6',['blue_text',['../colors_8cpp.html#afcf4e684c90b47d3142a731cec501c69',1,'colors.cpp']]],
-  ['blue_5ftext_7',['BLUE_TEXT',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1a95222761861aa7bc24cad4993a174fb2',1,'colors.h']]],
-  ['bold_8',['bold',['../colors_8cpp.html#a5e4b1b31d40e922511b70e1911b92a74',1,'colors.cpp']]],
-  ['bold_5ftext_9',['BOLD_TEXT',['../colors_8h.html#a2a977fe5a3773d8702db87651118fcfca069b537d8bb4784736f683663a0f2b77',1,'colors.h']]],
-  ['boldness_5ft_10',['boldness_t',['../colors_8h.html#a2a977fe5a3773d8702db87651118fcfc',1,'colors.h']]],
-  ['bucket_5ft_11',['bucket_t',['../structbucket__t.html',1,'']]],
-  ['buckets_12',['buckets',['../structhashtab__t.html#a9c1c581a038a906f5494778c170f4bf1',1,'hashtab_t']]],
-  ['bucketsnum_13',['BucketsNum',['../hashtab_8h.html#a0a3c7593471dc7f79bfbde5a27b16e29',1,'hashtab.h']]],
-  ['bufferwordsnum_14',['BufferWordsNum',['../parse__text_8cpp.html#a29243b6d4626f719b656e3feab2f2780',1,'parse_text.cpp']]]
+  ['data_0',['data',['../structlist__t.html#ae737f3b36df3a1800ac7da7ed0e6c38e',1,'list_t::data()'],['../structhashtab__t.html#ae0b9d7ad6efd9c57d5fb9590268e328b',1,'hashtab_t::data()']]],
+  ['data_5ffile_1',['data_file',['../structhashtab__t.html#aaf13f0fec93336f13ec4bad5e0b43a9b',1,'hashtab_t']]],
+  ['data_5ft_2',['data_t',['../structdata__t.html',1,'']]],
+  ['default_5fbackground_3',['DEFAULT_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228aeb4fcd4071fb6fd4e9716d3134d93565',1,'colors.h']]],
+  ['default_5ftext_4',['DEFAULT_TEXT',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1a0677b703d499d9898a4f8389166ec0c8',1,'colors.h']]],
+  ['deprecated_20list_5',['Deprecated List',['../deprecated.html',1,'']]],
+  ['dump_5ffile_6',['dump_file',['../structhashtab__t.html#adb9d56aea66de5c291245ac5d4130483',1,'hashtab_t']]],
+  ['dumpdisabled_7',['DumpDisabled',['../group__DumpDisabled.html',1,'']]],
+  ['dumpenabled_8',['DumpEnabled',['../group__DumpEnabled.html',1,'']]]
 ];

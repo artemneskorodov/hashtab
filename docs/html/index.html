@@ -97,9 +97,9 @@ Usage</h1>
 <div class="line">    <a class="code hl_function" href="hashtab_8cpp.html#a5e1b180ac31d74f0418a48738c604f5a">hashtab_insert</a>(&amp;hashtab, key2, NULL);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Searching element in hashtab</span></div>
-<div class="line">    <a class="code hl_struct" href="structdata__t.html">data_t</a> *<a class="code hl_variable" href="cmp__key_8asm.html#afc465b4135d9c710841488b09abeac5e">result</a> = NULL;</div>
-<div class="line">    <a class="code hl_function" href="hashtab_8cpp.html#adbb8397bab7ec2cc1b792ad4df23de01">hashtab_search</a>(&amp;hashtab, <span class="stringliteral">&quot;First keyword&quot;</span>, &amp;<a class="code hl_variable" href="cmp__key_8asm.html#afc465b4135d9c710841488b09abeac5e">result</a>);</div>
-<div class="line">    printf(<span class="stringliteral">&quot;%d&quot;</span>, <a class="code hl_variable" href="cmp__key_8asm.html#afc465b4135d9c710841488b09abeac5e">result</a>-&gt;value);</div>
+<div class="line">    <a class="code hl_struct" href="structdata__t.html">data_t</a> *result = NULL;</div>
+<div class="line">    <a class="code hl_function" href="hashtab_8cpp.html#adbb8397bab7ec2cc1b792ad4df23de01">hashtab_search</a>(&amp;hashtab, <span class="stringliteral">&quot;First keyword&quot;</span>, &amp;result);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;%d&quot;</span>, result-&gt;<a class="code hl_variable" href="structdata__t.html#a179ce2d5047ba2b81e25b9f49ad22a4b">value</a>);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Removing element from hashtab</span></div>
 <div class="line">    <a class="code hl_function" href="hashtab_8cpp.html#af06ff2aa40a4c9e5f344b7a4352391a2">hashtab_remove</a>(&amp;hashtab, <span class="stringliteral">&quot;Second keyword&quot;</span>);</div>
@@ -108,15 +108,14 @@ Usage</h1>
 <div class="line">    <a class="code hl_function" href="hashtab_8cpp.html#a178ef387751516bd8f2e71749d38d86d">hashtab_dtor</a>(&amp;hashtab);</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="acmp__key_8asm_html_afc465b4135d9c710841488b09abeac5e"><div class="ttname"><a href="cmp__key_8asm.html#afc465b4135d9c710841488b09abeac5e">result</a></div><div class="ttdeci">but with reversing of the result</div><div class="ttdef"><b>Definition:</b> cmp_key.asm:22</div></div>
 <div class="ttc" id="ahashtab_8cpp_html_a178ef387751516bd8f2e71749d38d86d"><div class="ttname"><a href="hashtab_8cpp.html#a178ef387751516bd8f2e71749d38d86d">hashtab_dtor</a></div><div class="ttdeci">ht_error_t hashtab_dtor(hashtab_t *ctx)</div><div class="ttdoc">Destructor of hashtab context.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:323</div></div>
 <div class="ttc" id="ahashtab_8cpp_html_a5e1b180ac31d74f0418a48738c604f5a"><div class="ttname"><a href="hashtab_8cpp.html#a5e1b180ac31d74f0418a48738c604f5a">hashtab_insert</a></div><div class="ttdeci">ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data)</div><div class="ttdoc">Inserting element to hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:220</div></div>
 <div class="ttc" id="ahashtab_8cpp_html_adbb8397bab7ec2cc1b792ad4df23de01"><div class="ttname"><a href="hashtab_8cpp.html#adbb8397bab7ec2cc1b792ad4df23de01">hashtab_search</a></div><div class="ttdeci">ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result)</div><div class="ttdoc">Searching element in hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:240</div></div>
 <div class="ttc" id="ahashtab_8cpp_html_ae681576b4628b4417f2af68bd568d5ad"><div class="ttname"><a href="hashtab_8cpp.html#ae681576b4628b4417f2af68bd568d5ad">hashtab_ctor</a></div><div class="ttdeci">ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[])</div><div class="ttdoc">Constructor of hashtab context.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:77</div></div>
 <div class="ttc" id="ahashtab_8cpp_html_af06ff2aa40a4c9e5f344b7a4352391a2"><div class="ttname"><a href="hashtab_8cpp.html#af06ff2aa40a4c9e5f344b7a4352391a2">hashtab_remove</a></div><div class="ttdeci">ht_error_t hashtab_remove(hashtab_t *ctx, const char *key)</div><div class="ttdoc">Inserting element to hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:261</div></div>
-<div class="ttc" id="astructdata__t_html"><div class="ttname"><a href="structdata__t.html">data_t</a></div><div class="ttdoc">Structure of data stored in hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.h:104</div></div>
-<div class="ttc" id="astructdata__t_html_a179ce2d5047ba2b81e25b9f49ad22a4b"><div class="ttname"><a href="structdata__t.html#a179ce2d5047ba2b81e25b9f49ad22a4b">data_t::value</a></div><div class="ttdeci">int value</div><div class="ttdoc">Some values.</div><div class="ttdef"><b>Definition:</b> hashtab.h:105</div></div>
-<div class="ttc" id="astructhashtab__t_html"><div class="ttname"><a href="structhashtab__t.html">hashtab_t</a></div><div class="ttdoc">Hashtab context structure.</div><div class="ttdef"><b>Definition:</b> hashtab.h:132</div></div>
+<div class="ttc" id="astructdata__t_html"><div class="ttname"><a href="structdata__t.html">data_t</a></div><div class="ttdoc">Structure of data stored in hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.h:105</div></div>
+<div class="ttc" id="astructdata__t_html_a179ce2d5047ba2b81e25b9f49ad22a4b"><div class="ttname"><a href="structdata__t.html#a179ce2d5047ba2b81e25b9f49ad22a4b">data_t::value</a></div><div class="ttdeci">int value</div><div class="ttdoc">Some values.</div><div class="ttdef"><b>Definition:</b> hashtab.h:106</div></div>
+<div class="ttc" id="astructhashtab__t_html"><div class="ttname"><a href="structhashtab__t.html">hashtab_t</a></div><div class="ttdoc">Hashtab context structure.</div><div class="ttdef"><b>Definition:</b> hashtab.h:133</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="Database"></a>
 format</h1>
 <ul>

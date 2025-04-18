@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['prev_0',['prev',['../structlist__t.html#aaa96cf871c6d9b36279530fc3865d71b',1,'list_t']]],
-  ['purple_5fbackground_1',['purple_background',['../colors_8cpp.html#a58ab4237537b13366af0d36ad028af3f',1,'colors.cpp']]]
+  ['test_5ffile_0',['test_file',['../structhashtab__t.html#aae2cd3aa1ab2ef312116c1b0d29ef40d',1,'hashtab_t']]],
+  ['testsnumber_1',['TestsNumber',['../hashtab_8cpp.html#a13943fe62f6b461d8608d10d0acc5ef9',1,'hashtab.cpp']]]
 ];

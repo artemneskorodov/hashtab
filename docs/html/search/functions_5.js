@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['list_5finsert_0',['list_insert',['../linked__list_8cpp.html#a606bec1cf2dd0e866f8970434d4830e8',1,'list_insert(hashtab_t *ctx, bucket_t *bucket, const char *key, data_t *data):&#160;linked_list.cpp'],['../linked__list_8h.html#a606bec1cf2dd0e866f8970434d4830e8',1,'list_insert(hashtab_t *ctx, bucket_t *bucket, const char *key, data_t *data):&#160;linked_list.cpp']]],
-  ['list_5fremove_1',['list_remove',['../linked__list_8cpp.html#a330bfb20ea34cd56a50e1557455042c7',1,'list_remove(hashtab_t *ctx, bucket_t *bucket, const char *key):&#160;linked_list.cpp'],['../linked__list_8h.html#a330bfb20ea34cd56a50e1557455042c7',1,'list_remove(hashtab_t *ctx, bucket_t *bucket, const char *key):&#160;linked_list.cpp']]],
-  ['list_5fsearch_2',['list_search',['../linked__list_8cpp.html#abd5559f6af6654ac84f77f1c121dc0b0',1,'list_search(bucket_t *bucket, const char *key, data_t **result):&#160;linked_list.cpp'],['../linked__list_8h.html#abd5559f6af6654ac84f77f1c121dc0b0',1,'list_search(bucket_t *bucket, const char *key, data_t **result):&#160;linked_list.cpp']]]
+  ['parse_5fflags_0',['parse_flags',['../parse__flags_8cpp.html#a8df245e91258d1d1c97a6545a69670c5',1,'parse_flags(hashtab_t *ctx, int argc, const char *argv[]):&#160;parse_flags.cpp'],['../parse__flags_8h.html#a8df245e91258d1d1c97a6545a69670c5',1,'parse_flags(hashtab_t *ctx, int argc, const char *argv[]):&#160;parse_flags.cpp']]],
+  ['parse_5ftext_1',['parse_text',['../parse__text_8cpp.html#aae4afd823d897e0b1148154fb413ea2d',1,'parse_text(hashtab_t *ctx):&#160;parse_text.cpp'],['../parse__text_8h.html#aae4afd823d897e0b1148154fb413ea2d',1,'parse_text(hashtab_t *ctx):&#160;parse_text.cpp']]],
+  ['patriot_2',['patriot',['../colors_8cpp.html#a4b792cab859ea7a993f2e3ef5cead236',1,'patriot():&#160;colors.cpp'],['../colors_8h.html#ac5cec49db0e05447d098f0a4eced15d8',1,'patriot(void):&#160;colors.cpp']]],
+  ['print_5fassert_5ferror_3',['print_assert_error',['../custom__assert_8cpp.html#acaf2b4a524148be4a0d17d0a169ecce4',1,'print_assert_error(const char *expression, int line_number, const char *filename):&#160;custom_assert.cpp'],['../custom__assert_8h.html#ad5b3bf2b0746ceec58e1f20a5057cc83',1,'print_assert_error(const char *string, int line_number, const char *filename):&#160;custom_assert.cpp']]],
+  ['print_5fcolor_5fcode_4',['print_color_code',['../colors_8cpp.html#ae8c9c03abb7be0f53b6089c8f5706407',1,'colors.cpp']]],
+  ['print_5fcolor_5fline_5',['print_color_line',['../colors_8cpp.html#a1472a83faccb08e3d64dd1c45ecdd168',1,'colors.cpp']]]
 ];

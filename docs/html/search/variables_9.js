@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['if_0',['if',['../cmp__key_8asm.html#ab25fb06a97c3a04ae688ea1fcbb5ca7f',1,'cmp_key.asm']]]
+  ['magenta_5ftext_0',['magenta_text',['../colors_8cpp.html#af4458deb620264c02b23ab553d065573',1,'colors.cpp']]]
 ];

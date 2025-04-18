@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['used_5fcontainers_0',['used_containers',['../structhashtab__t.html#ab159d8135729c7d49c874ee8745a9e19',1,'hashtab_t']]]
+  ['yellow_5fbackground_0',['yellow_background',['../colors_8cpp.html#afe9e51faf9718578f234f2f53b96f51f',1,'colors.cpp']]],
+  ['yellow_5ftext_1',['yellow_text',['../colors_8cpp.html#a1bffc843bc1a718fb2f62f0e0e7fcdb2',1,'colors.cpp']]]
 ];
