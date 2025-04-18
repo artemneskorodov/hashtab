@@ -6,6 +6,5 @@ var searchData=
   ['bold_3',['bold',['../colors_8cpp.html#a5e4b1b31d40e922511b70e1911b92a74',1,'colors.cpp']]],
   ['buckets_4',['buckets',['../structhashtab__t.html#a9c1c581a038a906f5494778c170f4bf1',1,'hashtab_t']]],
   ['bucketsnum_5',['BucketsNum',['../hashtab_8h.html#a0a3c7593471dc7f79bfbde5a27b16e29',1,'hashtab.h']]],
-  ['bufferwordsnum_6',['BufferWordsNum',['../parse__text_8cpp.html#a29243b6d4626f719b656e3feab2f2780',1,'parse_text.cpp']]],
-  ['bytes_7',['bytes',['../cmp__key_8asm.html#a5d70f6224931e3928452c3f83e95262f',1,'cmp_key.asm']]]
+  ['bufferwordsnum_6',['BufferWordsNum',['../parse__text_8cpp.html#a29243b6d4626f719b656e3feab2f2780',1,'parse_text.cpp']]]
 ];

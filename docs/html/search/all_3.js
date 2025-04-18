@@ -22,6 +22,6 @@ var searchData=
   ['custom_5fassert_2eh_19',['custom_assert.h',['../custom__assert_8h.html',1,'']]],
   ['cyan_5fbackground_20',['CYAN_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228a97688110a50efb79fc11e7b825196bde',1,'colors.h']]],
   ['cyan_5fbackground_21',['cyan_background',['../colors_8cpp.html#a9bcc3116ac3aa578570d2814ecb34bf9',1,'colors.cpp']]],
-  ['cyan_5ftext_22',['CYAN_TEXT',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1aea75513a427c8d9a862173c2515205d7',1,'colors.h']]],
-  ['cyan_5ftext_23',['cyan_text',['../colors_8cpp.html#ab42135c900e46f2c0527f1262035c63e',1,'colors.cpp']]]
+  ['cyan_5ftext_22',['cyan_text',['../colors_8cpp.html#ab42135c900e46f2c0527f1262035c63e',1,'colors.cpp']]],
+  ['cyan_5ftext_23',['CYAN_TEXT',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1aea75513a427c8d9a862173c2515205d7',1,'colors.h']]]
 ];

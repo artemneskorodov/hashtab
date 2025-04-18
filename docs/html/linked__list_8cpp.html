@@ -79,6 +79,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac1ae7213bab4090df2eab04de6e9c5e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8cpp.html#ac1ae7213bab4090df2eab04de6e9c5e0">cmp_key_optimized</a> (__m256i key1_ymm, const char *key2)</td></tr>
+<tr class="memdesc:ac1ae7213bab4090df2eab04de6e9c5e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimized function to compare strings.  <a href="linked__list_8cpp.html#ac1ae7213bab4090df2eab04de6e9c5e0">More...</a><br /></td></tr>
 <tr class="separator:ac1ae7213bab4090df2eab04de6e9c5e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e00a851a21abae578ad42b66ce4229b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8cpp.html#a9e00a851a21abae578ad42b66ce4229b">cmp_key_default</a> (const char *key1, const char *key2)</td></tr>
 <tr class="memdesc:a9e00a851a21abae578ad42b66ce4229b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default variant of keys comparison without.  <a href="linked__list_8cpp.html#a9e00a851a21abae578ad42b66ce4229b">More...</a><br /></td></tr>
@@ -170,6 +171,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Optimized function to compare strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key1_ymm</td><td>First string moved to YMM0 register. </td></tr>
+    <tr><td class="paramname">key2</td><td>Pointer to second string moved to RDI register.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ZF flag is set if string are equal. </dd>
+<dd>
+AL is set to zeros if strings are equal.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function is written in assembly. </dd></dl>
 
 </div>
 </div>
