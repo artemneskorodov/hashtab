@@ -1,3 +1,5 @@
+#ifndef HASHTAB_H
+#define HASHTAB_H
 /**
 * @mainpage         Hashtab
 
@@ -52,9 +54,6 @@ int main(int argc, const char *argv[]) {
 * @section          Links
 - [Репозиторий GitHub](https://github.com/artemneskorodov/hashtab)
 */
-#ifndef HASHTAB_H
-#define HASHTAB_H
-/*============================================================================*/
 /*============================================================================*/
 /**
 * @file     hashtab.h
