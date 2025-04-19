@@ -33,20 +33,6 @@
 
 #if defined(_OPTIMIZE_SEARCH)
 /*----------------------------------------------------------------------------*/
-    /**
-    * @brief                Macro to call list search function
-
-    * @param _bucket        bucket_t * - Pointer to bucket that stores linked
-                            list with value to search.
-
-    * @param _key           const char * - Pointer to keyword, that must be
-                            32 bytes long.
-    * @param _result        data_t ** - Result of search is written to this
-                            pointer.
-
-    * @note                 Calls list_search_optimized() if optimization is
-                            enabled and list_search_default() if not.
-    */
     #define LIST_SEARCH(_bucket, _key, _result)                                \
         list_search_optimized((_bucket), (_key), (_result));
 /*----------------------------------------------------------------------------*/

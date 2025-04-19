@@ -137,6 +137,10 @@ ht_error_t list_insert(hashtab_t  *ctx,
 
     * @result               ht_error_t - overall error code enum.
 
+    * @note                 Use macro LIST_SEARCH(_bucket, _key, _result) to
+                            call this functions as it allows to turn off
+                            optimization.
+
     * @warning              It is expected to call this function only from
                             hashtab functions. Always check disassembler of this
                             function as it forces value to YMM0 register and we
@@ -205,6 +209,10 @@ ht_error_t list_insert(hashtab_t  *ctx,
     * @param result         Place to write a result of search.
 
     * @result               ht_error_t - overall error code enum.
+
+    * @note                 Use macro LIST_SEARCH(_bucket, _key, _result) to
+                            call this functions as it allows to turn on
+                            optimization.
 
     * @warning              It is expected to call this function only from
                             hashtab functions.

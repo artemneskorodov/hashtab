@@ -24,6 +24,8 @@
 * @result               ht_error_t - overall error code enum.
 
 * @deprecated           This code cannot be helpful when hashtab size is big.
+                        Use macro _HT_DUMP_CTOR(_ctx, _filename) to call this
+                        function.
 */
 ht_error_t hashtab_dump_ctor(hashtab_t *ctx, const char *filename) {
     ctx->dump_file = fopen(filename, "w");
@@ -42,6 +44,8 @@ ht_error_t hashtab_dump_ctor(hashtab_t *ctx, const char *filename) {
 * @note                 Use macro _HT_DUMP() to pass parameters.
 
 * @deprecated           This code cannot be helpful when hashtab size is big.
+                        Use macro _HT_DUMP(_ctx, _label) to call this
+                        function.
 */
 ht_error_t hashtab_dump(hashtab_t  *ctx,
                         const char *label,
@@ -111,6 +115,8 @@ ht_error_t hashtab_dump(hashtab_t  *ctx,
 * @result               ht_error_t - overall error code enum.
 
 * @deprecated           This code cannot be helpful when hashtab size is big.
+                        Use macro _HT_DUMP_DTOR(_ctx) to call this
+                        function.
 */
 ht_error_t hashtab_dump_dtor(hashtab_t *ctx) {
     fclose(ctx->dump_file);
