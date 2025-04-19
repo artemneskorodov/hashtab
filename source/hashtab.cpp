@@ -16,12 +16,10 @@
 /*============================================================================*/
 
 #include "hashtab.h"
-#include "ht_storage.h"
-#include "utils.h"
+#include "ht_utils.h"
 #include "linked_list.h"
-#include "ht_dump.h"
 #include "colors.h"
-#include "parse_flags.h"
+#include "custom_assert.h"
 
 /*============================================================================*/
 /**
@@ -75,6 +73,8 @@ static const size_t TestsNumber = 100;
 * @result               ht_error_t - overall error code enum.
 */
 ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]) {
+    _C_ASSERT(ctx != NULL,       return HASHTAB_CTX_NULL_PTR);
+    _C_ASSERT(!ctx->constructed, return HASHTAB_DOUBLE_CTOR );
     /*------------------------------------------------------------------------*/
     _RETURN_IF_ERROR(parse_flags(ctx, argc, argv));
     if(ctx->run_mode == HASHTAB_MODE_PARSE_TEXT) {
@@ -84,6 +84,7 @@ ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]) {
     _HT_DUMP_CTOR(ctx, "dump.log");
     CALL_CREATE_CRC_TABLE(ctx);
     _RETURN_IF_ERROR(ht_storage_ctor(ctx));
+    ctx->constructed = true;
     /*------------------------------------------------------------------------*/
     return HASHTAB_SUCCESS;
 }
@@ -104,6 +105,9 @@ ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]) {
                         ctx->run_mode != HASHTAB_MODE_RUN_TEST
 */
 ht_error_t hashtab_read_data(hashtab_t *ctx) {
+    _C_ASSERT(ctx            != NULL, return HASHTAB_CTX_NULL_PTR        );
+    _C_ASSERT(ctx->constructed,       return HASHTAB_NOT_CONSTRUCTED     );
+    _C_ASSERT(ctx->data_file != NULL, return HASHTAB_UNEXPECTED_CTX_STATE);
     /*------------------------------------------------------------------------*/
     FILE *data = fopen(ctx->data_file, "rb");
     if(data == NULL) {
@@ -160,6 +164,14 @@ ht_error_t hashtab_read_data(hashtab_t *ctx) {
                         function if ctx->run_mode != HASHTAB_MODE_RUN_TEST
 */
 ht_error_t hashtab_run_tests(hashtab_t *ctx) {
+    _C_ASSERT(ctx            != NULL,
+              return HASHTAB_CTX_NULL_PTR);
+    _C_ASSERT(ctx->constructed,
+              return HASHTAB_NOT_CONSTRUCTED);
+    _C_ASSERT(ctx->run_mode  == HASHTAB_MODE_RUN_TEST,
+              return HASHTAB_UNEXPECTED_CTX_STATE);
+    _C_ASSERT(ctx->test_file != NULL,
+              return HASHTAB_UNEXPECTED_CTX_STATE);
     /*------------------------------------------------------------------------*/
     FILE *test = fopen(ctx->test_file, "rb");
     if(test == NULL) {
@@ -218,6 +230,9 @@ ht_error_t hashtab_run_tests(hashtab_t *ctx) {
                         hashtab_ctor().
 */
 ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data) {
+    _C_ASSERT(ctx != NULL,      return HASHTAB_CTX_NULL_PTR   );
+    _C_ASSERT(key != NULL,      return HASHTAB_KEY_NULL_PTR   );
+    _C_ASSERT(ctx->constructed, return HASHTAB_NOT_CONSTRUCTED);
     /*------------------------------------------------------------------------*/
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
     return list_insert(ctx, &ctx->buckets[bucket_index], key, data);
@@ -238,6 +253,10 @@ ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data) {
                         hashtab_ctor().
 */
 ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result) {
+    _C_ASSERT(ctx    != NULL,   return HASHTAB_CTX_NULL_PTR   );
+    _C_ASSERT(key    != NULL,   return HASHTAB_KEY_NULL_PTR   );
+    _C_ASSERT(result != NULL,   return HASHTAB_RES_NULL_PTR   );
+    _C_ASSERT(ctx->constructed, return HASHTAB_NOT_CONSTRUCTED);
     /*------------------------------------------------------------------------*/
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
     return LIST_SEARCH(&ctx->buckets[bucket_index], key, result);
@@ -259,6 +278,9 @@ ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result) {
 * @todo                 Carefully check this function with unit tests.
 */
 ht_error_t hashtab_remove(hashtab_t *ctx, const char *key) {
+    _C_ASSERT(ctx    != NULL,   return HASHTAB_CTX_NULL_PTR   );
+    _C_ASSERT(key    != NULL,   return HASHTAB_KEY_NULL_PTR   );
+    _C_ASSERT(ctx->constructed, return HASHTAB_NOT_CONSTRUCTED);
     /*------------------------------------------------------------------------*/
     size_t bucket_index = CALL_HASH_FUNC(ctx, key);
     return list_remove(ctx, &ctx->buckets[bucket_index], key);
@@ -280,10 +302,19 @@ ht_error_t hashtab_remove(hashtab_t *ctx, const char *key) {
                         ctx->run_mode != HASHTAB_MODE_TEST_LOAD.
 */
 ht_error_t hashtab_test_load(hashtab_t *ctx) {
+    _C_ASSERT(ctx              != NULL,
+              return HASHTAB_CTX_NULL_PTR);
+    _C_ASSERT(ctx->run_mode    == HASHTAB_MODE_TEST_LOAD,
+              return HASHTAB_UNEXPECTED_CTX_STATE);
+    _C_ASSERT(ctx->output_file != NULL,
+              return HASHTAB_UNEXPECTED_CTX_STATE);
+    _C_ASSERT(ctx->constructed,
+              return HASHTAB_NOT_CONSTRUCTED);
+    /*------------------------------------------------------------------------*/
     _RETURN_IF_ERROR(hashtab_read_data(ctx));
     double avarage = (double)ctx->counter / (double)BucketsNum;
     double standard_deviation_sq = 0;
-
+    /*------------------------------------------------------------------------*/
     FILE *output = fopen(ctx->output_file, "w");
     if(output == NULL) {
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
@@ -291,22 +322,20 @@ ht_error_t hashtab_test_load(hashtab_t *ctx) {
                      ctx->output_file);
         return HASHTAB_OPENING_FILE_ERROR;
     }
-
+    /*------------------------------------------------------------------------*/
     for(size_t i = 0; i < BucketsNum; i++) {
         fprintf(output, "%lu\n", ctx->buckets[i].elements);
         double current = (double)ctx->buckets[i].elements;
         standard_deviation_sq += (current - avarage) * (current - avarage);
     }
-
     fclose(output);
-
+    /*------------------------------------------------------------------------*/
     double dispersion = sqrt(standard_deviation_sq / (double)BucketsNum);
-
     color_printf(YELLOW_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
                  "Load Factor = ");
     color_printf(WHITE_TEXT, NORMAL_TEXT, DEFAULT_BACKGROUND,
                  "%f ± %f\n", avarage, dispersion);
-
+    /*------------------------------------------------------------------------*/
     return HASHTAB_SUCCESS;
 }
 
@@ -321,6 +350,7 @@ ht_error_t hashtab_test_load(hashtab_t *ctx) {
 * @todo                 Check that context was constructed first.
 */
 ht_error_t hashtab_dtor(hashtab_t *ctx) {
+    _C_ASSERT(ctx != NULL,      return HASHTAB_CTX_NULL_PTR   );
     /*------------------------------------------------------------------------*/
     _HT_DUMP_DTOR(ctx);
     _RETURN_IF_ERROR(ht_storage_dtor(ctx));
@@ -346,6 +376,7 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
     * @result               Index in buckets array.
     */
     size_t hash_func_optimized(const char *key) {
+        _C_ASSERT(key != NULL, return HASHTAB_KEY_NULL_PTR);
         /*--------------------------------------------------------------------*/
         const uint64_t *key_uint = (const uint64_t *)key;
         uint64_t crc = 0xFFFFFFFF;
@@ -373,6 +404,8 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
                             ctx->run_mode != HASHTAB_MODE_TEST_LOAD.
     */
     size_t hash_func_default(hashtab_t *ctx, const char *key) {
+        _C_ASSERT(ctx != NULL, return HASHTAB_CTX_NULL_PTR);
+        _C_ASSERT(key != NULL, return HASHTAB_KEY_NULL_PTR);
         /*--------------------------------------------------------------------*/
         uint32_t crc = 0xFFFFFFFF;
         /*--------------------------------------------------------------------*/
@@ -391,6 +424,7 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
     * @param ctx            Pointer to hashtab context.
     */
     void create_crc_table(hashtab_t *ctx) {
+        _C_ASSERT(ctx != NULL, return HASHTAB_CTX_NULL_PTR);
         /*--------------------------------------------------------------------*/
         for(uint32_t i = 0; i < 256; i++) {
             uint32_t crc = i;

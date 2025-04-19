@@ -1,12 +1,13 @@
 /*============================================================================*/
-#ifndef HT_DUMP_H
-#define HT_DUMP_H
+#ifndef HT_UTILS_H
+#define HT_UTILS_H
 /*============================================================================*/
 /**
-* @file     ht_dump.h
+* @file     ht_utils.h
 * @author   Artem Neskorodov
 * @date     2024-04-19
-* @brief    Header file with functions to dump hashtab structure while using.
+* @brief    Functions to dump hashtab, allocate nodes and other utils, which
+            are used in hashtab.
 * @note     Use macros to access dump functions, as dump may be unhelpful when
             using it with big number of buckets.
 */
@@ -41,17 +42,35 @@
 
 /*============================================================================*/
 
-ht_error_t hashtab_dump_ctor   (hashtab_t      *ctx,
-                                const char     *filename);
+ht_error_t hashtab_dump_ctor       (hashtab_t      *ctx,
+                                    const char     *filename);
 
-ht_error_t hashtab_dump        (hashtab_t      *ctx,
-                                const char     *label,
-                                const char     *file,
-                                const char     *func,
-                                int             line);
+ht_error_t hashtab_dump            (hashtab_t      *ctx,
+                                    const char     *label,
+                                    const char     *file,
+                                    const char     *func,
+                                    int             line);
 
-ht_error_t hashtab_dump_dtor   (hashtab_t      *ctx);
+ht_error_t hashtab_dump_dtor       (hashtab_t      *ctx);
+
+ht_error_t ht_storage_ctor         (hashtab_t      *ctx);
+
+ht_error_t ht_storage_get_list     (hashtab_t      *ctx,
+                                    list_t        **list);
+
+ht_error_t ht_storage_free_list    (hashtab_t      *ctx,
+                                    list_t         *list);
+
+ht_error_t ht_storage_dtor         (hashtab_t      *ctx);
+
+size_t     file_size               (FILE           *file);
+
+ht_error_t parse_flags             (hashtab_t      *ctx,
+                                    int             argc,
+                                    const char     *argv[]);
+
+ht_error_t parse_text              (hashtab_t      *ctx);
 
 /*============================================================================*/
-
 #endif
+/*============================================================================*/

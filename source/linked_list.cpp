@@ -16,8 +16,8 @@
 
 #include "hashtab.h"
 #include "linked_list.h"
-#include "ht_storage.h"
-#include "ht_dump.h"
+#include "ht_utils.h"
+#include "custom_assert.h"
 
 /*============================================================================*/
 
@@ -37,14 +37,16 @@
     extern "C" bool cmp_key_optimized(__m256i key1_ymm, const char *key2);
     /*------------------------------------------------------------------------*/
     /**
-    * @brief                Macro to call keys comparison if strcmp
-                            optimization is enabled.
+    * @brief                Macro to call keys comparison function.
 
-    * @param _string_key1   Pointer to first string. It is not used.
-    * @param _ymm_key1      __m256i variable with stored string in it.
+    * @param _string_key1   Pointer to first string. Used when strcmp
+                            optimization is disabled.
+    * @param _ymm_key1      __m256i variable with stored string in it. Used when
+                            strcmp optimization is enabled.
     * @param _string_key2   Pointer to second string.
 
-    * @note                 It won't use parameter _string_key1
+    * @note                 Calls cmp_key_optimized() when strcmp optimization
+                            is enabled and cmp_key_default() overwise.
     */
     #define CMP_KEY(_string_key1, _ymm_key1, _string_key2)                     \
         !cmp_key_optimized((_ymm_key1), (_string_key2))
@@ -53,16 +55,6 @@
     /*------------------------------------------------------------------------*/
     static bool cmp_key_default(const char *key1, const char *key2);
     /*------------------------------------------------------------------------*/
-    /**
-    * @brief                Macro to call keys comparison if strcmp
-                            optimization is disabled.
-
-    * @param _string_key1   Pointer to first string. It is not used.
-    * @param _ymm_key1      __m256i variable with stored string in it.
-    * @param _string_key2   Pointer to second string.
-
-    * @note                 It won't use parameter _ymm_key1
-    */
     #define CMP_KEY(_string_key1, _ymm_key1, _string_key2)                     \
         cmp_key_default((_string_key1), (_string_key2))
     /*------------------------------------------------------------------------*/
@@ -86,6 +78,10 @@ ht_error_t list_insert(hashtab_t  *ctx,
                        bucket_t   *bucket,
                        const char *key,
                        data_t     *data) {
+    _C_ASSERT(ctx    != NULL,   return HASHTAB_CTX_NULL_PTR   );
+    _C_ASSERT(ctx->constructed, return HASHTAB_NOT_CONSTRUCTED);
+    _C_ASSERT(bucket != NULL,   return HASHTAB_BUCKET_NULL_PTR);
+    _C_ASSERT(key    != NULL,   return HASHTAB_KEY_NULL_PTR   );
     /*------------------------------------------------------------------------*/
     /* Checking if elements is already added to list.                         */
     list_t *current = bucket->head->next;
@@ -292,6 +288,10 @@ ht_error_t list_insert(hashtab_t  *ctx,
 * @todo                 Check this function with unit tests.
 */
 ht_error_t list_remove(hashtab_t *ctx, bucket_t *bucket, const char *key) {
+    _C_ASSERT(ctx    != NULL,   return HASHTAB_CTX_NULL_PTR   );
+    _C_ASSERT(ctx->constructed, return HASHTAB_NOT_CONSTRUCTED);
+    _C_ASSERT(bucket != NULL,   return HASHTAB_BUCKET_NULL_PTR);
+    _C_ASSERT(key    != NULL,   return HASHTAB_KEY_NULL_PTR   );
     /*------------------------------------------------------------------------*/
     /* Current list elements.                                                 */
     list_t *head = bucket->head->next;

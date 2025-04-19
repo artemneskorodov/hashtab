@@ -5,17 +5,17 @@
 /**
 * @mainpage         Hashtab
 
-* @section          Introduction
+* @section intro    Introduction
 Implementation of hashtab with 4.14 times optimization with assembly inlines,
 assembly code and intrinsics for x86-64 processors with SSE 4.2.
 
-* @section          Features
+* @section features Features
 - Can be compiled for every processor with optimization turned off.
 - Can store custom data, but only one per build. See data_t.
 
-* @section          Usage
+* @section example  Usage
 \code{.cpp}
-#include <library.h>
+#include "hashtab.h"
 
 const char key1[32] = {};
 const char key2[32] = {};
@@ -48,12 +48,12 @@ int main(int argc, const char *argv[]) {
 }
 \endcode
 
-* @section          Database format
+* @section format   Database Format
 - Every keyword in database file has to be stored in blocks of 32 bytes.
 - Every symbol of 32 bytes is treated as a part of keyword.
 - It is expected that database size is divisible by 32.
 
-* @section          Links
+* @section links    Links
 - [Репозиторий GitHub](https://github.com/artemneskorodov/hashtab)
 */
 /*============================================================================*/
@@ -78,6 +78,18 @@ enum ht_error_t {
     HASHTAB_FOUND_WRONG                 = 4,
     HASHTAB_MEMORY_ERROR                = 5,
     HASHTAB_INVALID_CONTAINER_SIZE      = 6,
+    HASHTAB_CTX_NULL_PTR                = 7,
+    HASHTAB_UNEXPECTED_CTX_STATE        = 8,
+    HASHTAB_KEY_NULL_PTR                = 9,
+    HASHTAB_RES_NULL_PTR                = 10,
+    HASHTAB_DOUBLE_CTOR                 = 11,
+    HASHTAB_BROKEN_DATA                 = 12,
+    HASHTAB_NULL_LIST_PTR               = 13,
+    HASHTAB_NULL_FILENAME               = 14,
+    HASHTAB_NOT_CONSTRUCTED             = 15,
+    HASHTAB_DOUBLE_DTOR                 = 16,
+    HASHTAB_NULL_FILE                   = 17,
+    HASHTAB_BUCKET_NULL_PTR             = 18,
 };
 
 /*============================================================================*/
@@ -155,6 +167,8 @@ struct hashtab_t {
     ///< Table for CRC32.
     size_t              counter;
     ///< Number of elements stored in hashtab.
+    bool                constructed;
+    ///< Member is set to true if hashtab context is constructed.
 };
 
 /*============================================================================*/
