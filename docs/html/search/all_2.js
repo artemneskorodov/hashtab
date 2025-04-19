@@ -1,26 +1,10 @@
 var searchData=
 [
-  ['call_5fcreate_5fcrc_5ftable_0',['CALL_CREATE_CRC_TABLE',['../hashtab_8cpp.html#a444dfb6ca2068c7666f55a2d22dc3b06',1,'hashtab.cpp']]],
-  ['call_5fhash_5ffunc_1',['CALL_HASH_FUNC',['../hashtab_8cpp.html#a34144f08a5b1884b89d1f8a08dfd1d19',1,'hashtab.cpp']]],
-  ['cmp_5fkey_2',['CMP_KEY',['../linked__list_8cpp.html#a43fac9629bd06e81143953d53228f643',1,'linked_list.cpp']]],
-  ['cmp_5fkey_5fdefault_3',['cmp_key_default',['../linked__list_8cpp.html#a4967c60be38b2b41233f2043d220a4d0',1,'linked_list.cpp']]],
-  ['color_5fcode_4',['color_code',['../colors_8cpp.html#a6962c2f95116cb3c312007fa9edcbbc2',1,'colors.cpp']]],
-  ['color_5fcode_5fstart_5',['color_code_start',['../colors_8cpp.html#aa5881a56793ccc0ba0c5bdf3490bc2c4',1,'colors.cpp']]],
-  ['color_5fprintf_6',['color_printf',['../colors_8h.html#aed78b39b5d461317deedade1655570af',1,'color_printf(color_t color, boldness_t is_bold, background_t background, const char *format,...):&#160;colors.cpp'],['../colors_8cpp.html#aed78b39b5d461317deedade1655570af',1,'color_printf(color_t color, boldness_t is_bold, background_t background, const char *format,...):&#160;colors.cpp']]],
-  ['color_5ft_7',['color_t',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1',1,'colors.h']]],
-  ['color_5fvprintf_8',['color_vprintf',['../colors_8h.html#a9a4672b6f47eb780e007c435d067361e',1,'color_vprintf(color_t color, boldness_t is_bold, background_t background, const char *format, va_list args):&#160;colors.cpp'],['../colors_8cpp.html#a9a4672b6f47eb780e007c435d067361e',1,'color_vprintf(color_t color, boldness_t is_bold, background_t background, const char *format, va_list args):&#160;colors.cpp']]],
-  ['colors_2ecpp_9',['colors.cpp',['../colors_8cpp.html',1,'']]],
-  ['colors_2eh_10',['colors.h',['../colors_8h.html',1,'']]],
-  ['cont_5fctor_5fdefault_11',['CONT_CTOR_DEFAULT',['../ht__storage_8cpp.html#a691982e0ebad166575086bc05491250da8f6e03fbe00c6b2ed27235357e80de41',1,'ht_storage.cpp']]],
-  ['cont_5fctor_5ffirst_12',['CONT_CTOR_FIRST',['../ht__storage_8cpp.html#a691982e0ebad166575086bc05491250da928fd6676e8c3d7d63f7a920777d5d5a',1,'ht_storage.cpp']]],
-  ['cont_5fctor_5ftype_5ft_13',['cont_ctor_type_t',['../ht__storage_8cpp.html#a691982e0ebad166575086bc05491250d',1,'ht_storage.cpp']]],
-  ['containers_14',['containers',['../structhashtab__t.html#aabdb50c1efbc3fe3373ccf43c5341bf5',1,'hashtab_t']]],
-  ['counter_15',['counter',['../structhashtab__t.html#a59f509caf4251d43151910a1ce8a75ee',1,'hashtab_t']]],
-  ['crc_5ftable_16',['crc_table',['../structhashtab__t.html#afb1171e85fabb6b3f5b0886dcdb43a75',1,'hashtab_t']]],
-  ['custom_5fassert_2ecpp_17',['custom_assert.cpp',['../custom__assert_8cpp.html',1,'']]],
-  ['custom_5fassert_2eh_18',['custom_assert.h',['../custom__assert_8h.html',1,'']]],
-  ['cyan_5fbackground_19',['cyan_background',['../colors_8cpp.html#a9bcc3116ac3aa578570d2814ecb34bf9',1,'colors.cpp']]],
-  ['cyan_5fbackground_20',['CYAN_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228a97688110a50efb79fc11e7b825196bde',1,'colors.h']]],
-  ['cyan_5ftext_21',['cyan_text',['../colors_8cpp.html#ab42135c900e46f2c0527f1262035c63e',1,'colors.cpp']]],
-  ['cyan_5ftext_22',['CYAN_TEXT',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1aea75513a427c8d9a862173c2515205d7',1,'colors.h']]]
+  ['data_0',['data',['../structlist__t.html#ae737f3b36df3a1800ac7da7ed0e6c38e',1,'list_t::data()'],['../structhashtab__t.html#ae0b9d7ad6efd9c57d5fb9590268e328b',1,'hashtab_t::data()']]],
+  ['data_5ffile_1',['data_file',['../structhashtab__t.html#aaf13f0fec93336f13ec4bad5e0b43a9b',1,'hashtab_t']]],
+  ['data_5ft_2',['data_t',['../structdata__t.html',1,'']]],
+  ['default_5fbackground_3',['DEFAULT_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228aeb4fcd4071fb6fd4e9716d3134d93565',1,'colors.h']]],
+  ['default_5ftext_4',['DEFAULT_TEXT',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1a0677b703d499d9898a4f8389166ec0c8',1,'colors.h']]],
+  ['deprecated_20list_5',['Deprecated List',['../deprecated.html',1,'']]],
+  ['dump_5ffile_6',['dump_file',['../structhashtab__t.html#adb9d56aea66de5c291245ac5d4130483',1,'hashtab_t']]]
 ];

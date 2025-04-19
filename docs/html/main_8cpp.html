@@ -67,139 +67,17 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">main.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>File with main function.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="hashtab_8h_source.html">hashtab.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parse__text_8h_source.html">parse_text.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="colors_8h_source.html">colors.h</a>&quot;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for main.cpp:</div>
-<div class="dyncontent">
-<div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#asource_2main_8cpp" alt=""/></div>
-<map name="asource_2main_8cpp" id="asource_2main_8cpp">
-<area shape="rect" title="File with main function." alt="" coords="93,5,223,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,76,107"/>
-<area shape="rect" href="hashtab_8h.html" title="Header file for hashtab library." alt="" coords="116,155,203,181"/>
-<area shape="rect" href="parse__text_8h.html" title=" " alt="" coords="152,80,255,107"/>
-<area shape="rect" href="colors_8h.html" title=" " alt="" coords="279,80,352,107"/>
-<area shape="rect" title=" " alt="" coords="79,229,146,256"/>
-<area shape="rect" title=" " alt="" coords="171,229,241,256"/>
-<area shape="rect" title=" " alt="" coords="278,155,353,181"/>
-</map>
-</div>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a86a68a11bb22f9e5bde00b80acd26ff3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a86a68a11bb22f9e5bde00b80acd26ff3">_EXIT_IF_ERROR</a>(...)</td></tr>
-<tr class="memdesc:a86a68a11bb22f9e5bde00b80acd26ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writing result of call in console. Calling <a class="el" href="hashtab_8cpp.html#a178ef387751516bd8f2e71749d38d86d" title="Destructor of hashtab context.">hashtab_dtor()</a> and exiting from main if error occurred.  <a href="main_8cpp.html#a86a68a11bb22f9e5bde00b80acd26ff3">More...</a><br /></td></tr>
-<tr class="separator:a86a68a11bb22f9e5bde00b80acd26ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ac0f2228420376f4db7e1274f2b41667c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c">main</a> (int argc, const char *argv[])</td></tr>
-<tr class="memdesc:ac0f2228420376f4db7e1274f2b41667c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main.  <a href="main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c">More...</a><br /></td></tr>
-<tr class="separator:ac0f2228420376f4db7e1274f2b41667c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >File with main function. </p>
 <dl class="section author"><dt>Author</dt><dd>Artem Neskorodov </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2024-04-18 </dd></dl>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a86a68a11bb22f9e5bde00b80acd26ff3" name="a86a68a11bb22f9e5bde00b80acd26ff3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86a68a11bb22f9e5bde00b80acd26ff3">&#9670;&nbsp;</a></span>_EXIT_IF_ERROR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _EXIT_IF_ERROR</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    {                                                  \</div>
-<div class="line">    ht_error_t _error_code = (__VA_ARGS__);                                    \</div>
-<div class="line">    if(_error_code != <a class="code hl_enumvalue" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acaea7294f60d6081a8937241397cf1d8eaf1">HASHTAB_SUCCESS</a>) {                                       \</div>
-<div class="line">        color_printf(<a class="code hl_enumvalue" href="colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1a8a90cd5b532b4821aecddd42c33db6e7">RED_TEXT</a>,                                                 \</div>
-<div class="line">                     <a class="code hl_enumvalue" href="colors_8h.html#a2a977fe5a3773d8702db87651118fcfca069b537d8bb4784736f683663a0f2b77">BOLD_TEXT</a>,                                                \</div>
-<div class="line">                     <a class="code hl_enumvalue" href="colors_8h.html#a6356354e1f872b1d09ec3db8cac65228aeb4fcd4071fb6fd4e9716d3134d93565">DEFAULT_BACKGROUND</a>,                                       \</div>
-<div class="line">                     <span class="stringliteral">&quot;[FAIL] &quot;</span>);                                               \</div>
-<div class="line">        color_printf(<a class="code hl_enumvalue" href="colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1ad2ece96784100b6767cb8991574bf1ed">WHITE_TEXT</a>,                                               \</div>
-<div class="line">                     <a class="code hl_enumvalue" href="colors_8h.html#a2a977fe5a3773d8702db87651118fcfca1bbb0ab41460bfa362c9324db148f083">NORMAL_TEXT</a>,                                              \</div>
-<div class="line">                     <a class="code hl_enumvalue" href="colors_8h.html#a6356354e1f872b1d09ec3db8cac65228aeb4fcd4071fb6fd4e9716d3134d93565">DEFAULT_BACKGROUND</a>,                                       \</div>
-<div class="line">                     <span class="stringliteral">&quot;in func &#39;%s&#39;\n&quot;</span>,                                         \</div>
-<div class="line">                     #__VA_ARGS__);                                            \</div>
-<div class="line">        hashtab_dtor(&amp;_ctx);                                                   \</div>
-<div class="line">        return (<span class="keywordtype">int</span>)_error_code;                                               \</div>
-<div class="line">    }                                                                          \</div>
-<div class="line">    color_printf(<a class="code hl_enumvalue" href="colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1a85d27f4f6ed3ba507df683e5b8c27acd">GREEN_TEXT</a>,                                                   \</div>
-<div class="line">                 <a class="code hl_enumvalue" href="colors_8h.html#a2a977fe5a3773d8702db87651118fcfca069b537d8bb4784736f683663a0f2b77">BOLD_TEXT</a>,                                                    \</div>
-<div class="line">                 <a class="code hl_enumvalue" href="colors_8h.html#a6356354e1f872b1d09ec3db8cac65228aeb4fcd4071fb6fd4e9716d3134d93565">DEFAULT_BACKGROUND</a>,                                           \</div>
-<div class="line">                 <span class="stringliteral">&quot;[ OK ] &quot;</span>);                                                   \</div>
-<div class="line">    color_printf(<a class="code hl_enumvalue" href="colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1ad2ece96784100b6767cb8991574bf1ed">WHITE_TEXT</a>,                                                   \</div>
-<div class="line">                 <a class="code hl_enumvalue" href="colors_8h.html#a2a977fe5a3773d8702db87651118fcfca1bbb0ab41460bfa362c9324db148f083">NORMAL_TEXT</a>,                                                  \</div>
-<div class="line">                 <a class="code hl_enumvalue" href="colors_8h.html#a6356354e1f872b1d09ec3db8cac65228aeb4fcd4071fb6fd4e9716d3134d93565">DEFAULT_BACKGROUND</a>,                                           \</div>
-<div class="line">                 <span class="stringliteral">&quot;in func &#39;%s&#39;\n&quot;</span>,                                             \</div>
-<div class="line">                 #__VA_ARGS__);                                                \</div>
-<div class="line">}</div>
-<div class="ttc" id="acolors_8h_html_a0a8ef1b5e1941b7257e545cc33405ff1a85d27f4f6ed3ba507df683e5b8c27acd"><div class="ttname"><a href="colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1a85d27f4f6ed3ba507df683e5b8c27acd">GREEN_TEXT</a></div><div class="ttdeci">@ GREEN_TEXT</div><div class="ttdef"><b>Definition:</b> colors.h:8</div></div>
-<div class="ttc" id="acolors_8h_html_a0a8ef1b5e1941b7257e545cc33405ff1a8a90cd5b532b4821aecddd42c33db6e7"><div class="ttname"><a href="colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1a8a90cd5b532b4821aecddd42c33db6e7">RED_TEXT</a></div><div class="ttdeci">@ RED_TEXT</div><div class="ttdef"><b>Definition:</b> colors.h:7</div></div>
-<div class="ttc" id="acolors_8h_html_a0a8ef1b5e1941b7257e545cc33405ff1ad2ece96784100b6767cb8991574bf1ed"><div class="ttname"><a href="colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1ad2ece96784100b6767cb8991574bf1ed">WHITE_TEXT</a></div><div class="ttdeci">@ WHITE_TEXT</div><div class="ttdef"><b>Definition:</b> colors.h:13</div></div>
-<div class="ttc" id="acolors_8h_html_a2a977fe5a3773d8702db87651118fcfca069b537d8bb4784736f683663a0f2b77"><div class="ttname"><a href="colors_8h.html#a2a977fe5a3773d8702db87651118fcfca069b537d8bb4784736f683663a0f2b77">BOLD_TEXT</a></div><div class="ttdeci">@ BOLD_TEXT</div><div class="ttdef"><b>Definition:</b> colors.h:30</div></div>
-<div class="ttc" id="acolors_8h_html_a2a977fe5a3773d8702db87651118fcfca1bbb0ab41460bfa362c9324db148f083"><div class="ttname"><a href="colors_8h.html#a2a977fe5a3773d8702db87651118fcfca1bbb0ab41460bfa362c9324db148f083">NORMAL_TEXT</a></div><div class="ttdeci">@ NORMAL_TEXT</div><div class="ttdef"><b>Definition:</b> colors.h:31</div></div>
-<div class="ttc" id="acolors_8h_html_a6356354e1f872b1d09ec3db8cac65228aeb4fcd4071fb6fd4e9716d3134d93565"><div class="ttname"><a href="colors_8h.html#a6356354e1f872b1d09ec3db8cac65228aeb4fcd4071fb6fd4e9716d3134d93565">DEFAULT_BACKGROUND</a></div><div class="ttdeci">@ DEFAULT_BACKGROUND</div><div class="ttdef"><b>Definition:</b> colors.h:26</div></div>
-<div class="ttc" id="ahashtab_8h_html_a45ecdf663904d5f5fb117bc1e0d8acaea7294f60d6081a8937241397cf1d8eaf1"><div class="ttname"><a href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acaea7294f60d6081a8937241397cf1d8eaf1">HASHTAB_SUCCESS</a></div><div class="ttdeci">@ HASHTAB_SUCCESS</div><div class="ttdef"><b>Definition:</b> hashtab.h:74</div></div>
-</div><!-- fragment -->
-<p>Writing result of call in console. Calling <a class="el" href="hashtab_8cpp.html#a178ef387751516bd8f2e71749d38d86d" title="Destructor of hashtab context.">hashtab_dtor()</a> and exiting from main if error occurred. </p>
-<dl class="section warning"><dt>Warning</dt><dd>Use this define only in main. </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="ac0f2228420376f4db7e1274f2b41667c" name="ac0f2228420376f4db7e1274f2b41667c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0f2228420376f4db7e1274f2b41667c">&#9670;&nbsp;</a></span>main()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int main </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>argv</em>[]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Main. </p>
-<dl class="section return"><dt>Returns</dt><dd>exit code</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Check <a class="el" href="">readme </a> for more information on flags. </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4

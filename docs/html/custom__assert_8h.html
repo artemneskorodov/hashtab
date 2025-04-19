@@ -68,71 +68,18 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">custom_assert.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="custom__assert_8h__dep__incl.png" border="0" usemap="#ainclude_2custom__assert_8hdep" alt=""/></div>
-<map name="ainclude_2custom__assert_8hdep" id="ainclude_2custom__assert_8hdep">
-<area shape="rect" title=" " alt="" coords="169,5,349,32"/>
-<area shape="rect" href="colors_8cpp.html" title=" " alt="" coords="5,80,140,107"/>
-<area shape="rect" href="custom__assert_8cpp.html" title=" " alt="" coords="164,80,355,107"/>
-<area shape="rect" href="ht__storage_8cpp.html" title="File which allows to easily free and allocate new nodes for list." alt="" coords="379,80,545,107"/>
-</map>
-</div>
-</div>
+
 <p><a href="custom__assert_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:aa2d3c32f7117dd516c1607f8e921dc79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="custom__assert_8h.html#aa2d3c32f7117dd516c1607f8e921dc79">_C_ASSERT</a>(expression,  operand)</td></tr>
-<tr class="separator:aa2d3c32f7117dd516c1607f8e921dc79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad5b3bf2b0746ceec58e1f20a5057cc83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="custom__assert_8h.html#ad5b3bf2b0746ceec58e1f20a5057cc83">print_assert_error</a> (const char *string, int line_number, const char *filename)</td></tr>
 <tr class="separator:ad5b3bf2b0746ceec58e1f20a5057cc83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="aa2d3c32f7117dd516c1607f8e921dc79" name="aa2d3c32f7117dd516c1607f8e921dc79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2d3c32f7117dd516c1607f8e921dc79">&#9670;&nbsp;</a></span>_C_ASSERT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _C_ASSERT</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">expression, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">operand&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    {                    \</div>
-<div class="line">    if(expression) {(void)0;}                               \</div>
-<div class="line">    else {                                                  \</div>
-<div class="line">        print_assert_error(#expression, __LINE__, __FILE__);\</div>
-<div class="line">        operand;                                            \</div>
-<div class="line">        }                                                   \</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ad5b3bf2b0746ceec58e1f20a5057cc83" name="ad5b3bf2b0746ceec58e1f20a5057cc83"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5b3bf2b0746ceec58e1f20a5057cc83">&#9670;&nbsp;</a></span>print_assert_error()</h2>

@@ -68,7 +68,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">linked_list.h File Reference</div></div>
 </div><!--header-->
@@ -76,49 +75,16 @@ $(function() {
 
 <p>Header file with functions to access linked list structure.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="hashtab_8h_source.html">hashtab.h</a>&quot;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for linked_list.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="linked__list_8h__incl.png" border="0" usemap="#ainclude_2linked__list_8h" alt=""/></div>
-<map name="ainclude_2linked__list_8h" id="ainclude_2linked__list_8h">
-<area shape="rect" title="Header file with functions to access linked list structure." alt="" coords="10,5,161,32"/>
-<area shape="rect" href="hashtab_8h.html" title="Header file for hashtab library." alt="" coords="42,80,129,107"/>
-<area shape="rect" title=" " alt="" coords="5,155,72,181"/>
-<area shape="rect" title=" " alt="" coords="97,155,167,181"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="linked__list_8h__dep__incl.png" border="0" usemap="#ainclude_2linked__list_8hdep" alt=""/></div>
-<map name="ainclude_2linked__list_8hdep" id="ainclude_2linked__list_8hdep">
-<area shape="rect" title="Header file with functions to access linked list structure." alt="" coords="93,5,244,32"/>
-<area shape="rect" href="hashtab_8cpp.html" title="File with hashtab access implementation." alt="" coords="5,80,153,107"/>
-<area shape="rect" href="linked__list_8cpp.html" title="File with linked_list access implementation." alt="" coords="178,80,341,107"/>
-</map>
-</div>
-</div>
+
 <p><a href="linked__list_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a499647593e6523d597edd8b96a1a357c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#a499647593e6523d597edd8b96a1a357c">_OPTIMIZE_STRCMP</a></td></tr>
-<tr class="memdesc:a499647593e6523d597edd8b96a1a357c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables optimization of strcmp().  <a href="linked__list_8h.html#a499647593e6523d597edd8b96a1a357c">More...</a><br /></td></tr>
-<tr class="separator:a499647593e6523d597edd8b96a1a357c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ba7a53ca8d675f148722eb9676e25ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#a7ba7a53ca8d675f148722eb9676e25ef">_OPTIMIZE_SEARCH</a></td></tr>
-<tr class="memdesc:a7ba7a53ca8d675f148722eb9676e25ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables optimization of <a class="el" href="linked__list_8h.html#afbc5aebe3a9e6caa78e47c9bb4fff993" title="Unoptimized variant of list_search(). This function is safe.">list_search_default()</a>.  <a href="linked__list_8h.html#a7ba7a53ca8d675f148722eb9676e25ef">More...</a><br /></td></tr>
-<tr class="separator:a7ba7a53ca8d675f148722eb9676e25ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28065895bb67a213d7ea7061dddcec07"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#a28065895bb67a213d7ea7061dddcec07">LIST_SEARCH</a>(_bucket,  _key,  _result)&#160;&#160;&#160;        <a class="el" href="linked__list_8h.html#a097c47bfd351fb31d3386c798d66a83c">list_search_optimized</a>((_bucket), (_key), (_result));</td></tr>
-<tr class="memdesc:a28065895bb67a213d7ea7061dddcec07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to call list search function.  <a href="linked__list_8h.html#a28065895bb67a213d7ea7061dddcec07">More...</a><br /></td></tr>
-<tr class="separator:a28065895bb67a213d7ea7061dddcec07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a606bec1cf2dd0e866f8970434d4830e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#a606bec1cf2dd0e866f8970434d4830e8">list_insert</a> (<a class="el" href="structhashtab__t.html">hashtab_t</a> *ctx, <a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> *data)</td></tr>
 <tr class="memdesc:a606bec1cf2dd0e866f8970434d4830e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserting element in linked list.  <a href="linked__list_8h.html#a606bec1cf2dd0e866f8970434d4830e8">More...</a><br /></td></tr>
 <tr class="separator:a606bec1cf2dd0e866f8970434d4830e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a097c47bfd351fb31d3386c798d66a83c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#a097c47bfd351fb31d3386c798d66a83c">list_search_optimized</a> (<a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> **result)</td></tr>
+<tr class="memdesc:a097c47bfd351fb31d3386c798d66a83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory.  <a href="linked__list_8h.html#a097c47bfd351fb31d3386c798d66a83c">More...</a><br /></td></tr>
 <tr class="separator:a097c47bfd351fb31d3386c798d66a83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbc5aebe3a9e6caa78e47c9bb4fff993"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html#afbc5aebe3a9e6caa78e47c9bb4fff993">list_search_default</a> (<a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> **result)</td></tr>
 <tr class="memdesc:afbc5aebe3a9e6caa78e47c9bb4fff993"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unoptimized variant of list_search(). This function is safe.  <a href="linked__list_8h.html#afbc5aebe3a9e6caa78e47c9bb4fff993">More...</a><br /></td></tr>
@@ -130,88 +96,8 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file with functions to access linked list structure. </p>
 <dl class="section author"><dt>Author</dt><dd>Artem Neskorodov </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2024-04-18 </dd></dl>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a7ba7a53ca8d675f148722eb9676e25ef" name="a7ba7a53ca8d675f148722eb9676e25ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ba7a53ca8d675f148722eb9676e25ef">&#9670;&nbsp;</a></span>_OPTIMIZE_SEARCH</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _OPTIMIZE_SEARCH</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Enables optimization of <a class="el" href="linked__list_8h.html#afbc5aebe3a9e6caa78e47c9bb4fff993" title="Unoptimized variant of list_search(). This function is safe.">list_search_default()</a>. </p>
-<dl class="section note"><dt>Note</dt><dd>Optimization helps to avoid saving YMM register value in memory before calling string comparison function. </dd></dl>
-
-</div>
-</div>
-<a id="a499647593e6523d597edd8b96a1a357c" name="a499647593e6523d597edd8b96a1a357c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a499647593e6523d597edd8b96a1a357c">&#9670;&nbsp;</a></span>_OPTIMIZE_STRCMP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _OPTIMIZE_STRCMP</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Enables optimization of strcmp(). </p>
-<dl class="section note"><dt>Note</dt><dd>Optimization uses comparison of YMM register. It can be used if your processor supports SSE 4.2. See function cmp_key_optimized() for more info. </dd></dl>
-
-</div>
-</div>
-<a id="a28065895bb67a213d7ea7061dddcec07" name="a28065895bb67a213d7ea7061dddcec07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28065895bb67a213d7ea7061dddcec07">&#9670;&nbsp;</a></span>LIST_SEARCH</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LIST_SEARCH</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">_bucket, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">_key, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">_result&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;        <a class="el" href="linked__list_8h.html#a097c47bfd351fb31d3386c798d66a83c">list_search_optimized</a>((_bucket), (_key), (_result));</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Macro to call list search function. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">_bucket</td><td><a class="el" href="structbucket__t.html" title="Hashtable bucket structure.">bucket_t</a> * - Pointer to bucket that stores linked list with value to search.</td></tr>
-    <tr><td class="paramname">_key</td><td>const char * - Pointer to keyword, that must be 32 bytes long. </td></tr>
-    <tr><td class="paramname">_result</td><td><a class="el" href="structdata__t.html" title="Structure of data stored in hashtab.">data_t</a> ** - Result of search is written to this pointer.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>Calls <a class="el" href="linked__list_8h.html#a097c47bfd351fb31d3386c798d66a83c">list_search_optimized()</a> if optimization is enabled and <a class="el" href="linked__list_8h.html#afbc5aebe3a9e6caa78e47c9bb4fff993" title="Unoptimized variant of list_search(). This function is safe.">list_search_default()</a> if not. </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+<dl class="section date"><dt>Date</dt><dd>2024-04-19 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a606bec1cf2dd0e866f8970434d4830e8" name="a606bec1cf2dd0e866f8970434d4830e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a606bec1cf2dd0e866f8970434d4830e8">&#9670;&nbsp;</a></span>list_insert()</h2>
 
@@ -389,6 +275,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>Pointer to hashtab context. </td></tr>
+    <tr><td class="paramname">key</td><td>Pointer to 32 bytes array of chars - key to find. </td></tr>
+    <tr><td class="paramname">result</td><td>Place to write a result of search.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>It is expected to call this function only from hashtab functions. Always check disassembler of this function as it forces value to YMM0 register and we cannot be sure that compiler wouldn't use it. Don't call other functions from here. This code was not expected to be ever changed, so read comments, documentation and readme before changing it very carefully. </dd></dl>
 
 </div>
 </div>

@@ -5,7 +5,7 @@
 /**
 * @file     ht_dump.h
 * @author   Artem Neskorodov
-* @date     2024-04-18
+* @date     2024-04-19
 * @brief    Header file with functions to dump hashtab structure while using.
 * @note     Use macros to access dump functions, as dump may be unhelpful when
             using it with big number of buckets.
@@ -22,12 +22,6 @@
 
 #if defined(_NO_DUMP)
 /*----------------------------------------------------------------------------*/
-    #define _HT_DUMP_CTOR(_ctx, _filename)
-    #define _HT_DUMP(_ctx, _label)
-    #define _HT_DUMP_DTOR(_ctx)
-/*----------------------------------------------------------------------------*/
-#else
-/*----------------------------------------------------------------------------*/
     /**
     * @brief                Calling hashtab_dump_ctor().
 
@@ -36,8 +30,7 @@
 
     * @note                 Expands in nothing if dump is disabled.
     */
-    #define _HT_DUMP_CTOR(_ctx, _filename) hashtab_dump_ctor((_ctx),           \
-                                                             (_filename));
+    #define _HT_DUMP_CTOR(_ctx, _filename)
     /*------------------------------------------------------------------------*/
     /**
     * @brief                Calling hashtab_dump().
@@ -47,11 +40,7 @@
 
     * @note                 Expands in nothing if dump is disabled.
     */
-    #define _HT_DUMP(_ctx, _label)         hashtab_dump     ((_ctx),           \
-                                                             (_label),         \
-                                                             __FILE__,         \
-                                                             __PRETTY_FUNCT__, \
-                                                             __LINE__);
+    #define _HT_DUMP(_ctx, _label)
     /*------------------------------------------------------------------------*/
     /**
     * @brief                Calling hashtab_dump_dtor().
@@ -60,6 +49,19 @@
 
     * @note                 Expands in nothing if dump is disabled.
     */
+    #define _HT_DUMP_DTOR(_ctx)
+/*----------------------------------------------------------------------------*/
+#else
+/*----------------------------------------------------------------------------*/
+    #define _HT_DUMP_CTOR(_ctx, _filename) hashtab_dump_ctor((_ctx),           \
+                                                             (_filename));
+    /*------------------------------------------------------------------------*/
+    #define _HT_DUMP(_ctx, _label)         hashtab_dump     ((_ctx),           \
+                                                             (_label),         \
+                                                             __FILE__,         \
+                                                             __PRETTY_FUNCT__, \
+                                                             __LINE__);
+    /*------------------------------------------------------------------------*/
     #define _HT_DUMP_DTOR(_ctx)            hashtab_dump_dtor(_ctx);
 /*----------------------------------------------------------------------------*/
 #endif

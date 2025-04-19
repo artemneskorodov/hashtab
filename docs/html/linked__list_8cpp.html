@@ -68,7 +68,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">linked_list.cpp File Reference</div></div>
 </div><!--header-->
@@ -76,45 +75,21 @@ $(function() {
 
 <p>File with linked_list access implementation.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;immintrin.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="hashtab_8h_source.html">hashtab.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="linked__list_8h_source.html">linked_list.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ht__storage_8h_source.html">ht_storage.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ht__dump_8h_source.html">ht_dump.h</a>&quot;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for linked_list.cpp:</div>
-<div class="dyncontent">
-<div class="center"><img src="linked__list_8cpp__incl.png" border="0" usemap="#asource_2linked__list_8cpp" alt=""/></div>
-<map name="asource_2linked__list_8cpp" id="asource_2linked__list_8cpp">
-<area shape="rect" title="File with linked_list access implementation." alt="" coords="231,5,393,32"/>
-<area shape="rect" title=" " alt="" coords="139,229,205,256"/>
-<area shape="rect" title=" " alt="" coords="30,80,101,107"/>
-<area shape="rect" title=" " alt="" coords="125,80,195,107"/>
-<area shape="rect" title=" " alt="" coords="220,80,319,107"/>
-<area shape="rect" href="hashtab_8h.html" title="Header file for hashtab library." alt="" coords="401,155,487,181"/>
-<area shape="rect" href="linked__list_8h.html" title="Header file with functions to access linked list structure." alt="" coords="394,80,494,107"/>
-<area shape="rect" href="ht__storage_8h.html" title=" " alt="" coords="518,80,621,107"/>
-<area shape="rect" href="ht__dump_8h.html" title="Header file with functions to dump hashtab structure while using." alt="" coords="645,80,736,107"/>
-<area shape="rect" title=" " alt="" coords="409,229,479,256"/>
-</map>
-</div>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a43fac9629bd06e81143953d53228f643"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8cpp.html#a43fac9629bd06e81143953d53228f643">CMP_KEY</a>(_string_key1,  _ymm_key1,  _string_key2)&#160;&#160;&#160;        <a class="el" href="linked__list_8cpp.html#a4967c60be38b2b41233f2043d220a4d0">cmp_key_default</a>((_string_key1), (_string_key2))</td></tr>
-<tr class="memdesc:a43fac9629bd06e81143953d53228f643"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to call keys comparison if strcmp optimization is disabled.  <a href="linked__list_8cpp.html#a43fac9629bd06e81143953d53228f643">More...</a><br /></td></tr>
-<tr class="separator:a43fac9629bd06e81143953d53228f643"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4967c60be38b2b41233f2043d220a4d0"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8cpp.html#a4967c60be38b2b41233f2043d220a4d0">cmp_key_default</a> (const char *key1, const char *key2)</td></tr>
-<tr class="separator:a4967c60be38b2b41233f2043d220a4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1ae7213bab4090df2eab04de6e9c5e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8cpp.html#ac1ae7213bab4090df2eab04de6e9c5e0">cmp_key_optimized</a> (__m256i key1_ymm, const char *key2)</td></tr>
+<tr class="memdesc:ac1ae7213bab4090df2eab04de6e9c5e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimized function to compare strings.  <a href="linked__list_8cpp.html#ac1ae7213bab4090df2eab04de6e9c5e0">More...</a><br /></td></tr>
+<tr class="separator:ac1ae7213bab4090df2eab04de6e9c5e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e00a851a21abae578ad42b66ce4229b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8cpp.html#a9e00a851a21abae578ad42b66ce4229b">cmp_key_default</a> (const char *key1, const char *key2)</td></tr>
+<tr class="memdesc:a9e00a851a21abae578ad42b66ce4229b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default variant of keys comparison.  <a href="linked__list_8cpp.html#a9e00a851a21abae578ad42b66ce4229b">More...</a><br /></td></tr>
+<tr class="separator:a9e00a851a21abae578ad42b66ce4229b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a606bec1cf2dd0e866f8970434d4830e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8cpp.html#a606bec1cf2dd0e866f8970434d4830e8">list_insert</a> (<a class="el" href="structhashtab__t.html">hashtab_t</a> *ctx, <a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> *data)</td></tr>
 <tr class="memdesc:a606bec1cf2dd0e866f8970434d4830e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserting element in linked list.  <a href="linked__list_8cpp.html#a606bec1cf2dd0e866f8970434d4830e8">More...</a><br /></td></tr>
 <tr class="separator:a606bec1cf2dd0e866f8970434d4830e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a097c47bfd351fb31d3386c798d66a83c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8cpp.html#a097c47bfd351fb31d3386c798d66a83c">list_search_optimized</a> (<a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> **result)</td></tr>
+<tr class="memdesc:a097c47bfd351fb31d3386c798d66a83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory.  <a href="linked__list_8cpp.html#a097c47bfd351fb31d3386c798d66a83c">More...</a><br /></td></tr>
+<tr class="separator:a097c47bfd351fb31d3386c798d66a83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbc5aebe3a9e6caa78e47c9bb4fff993"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8cpp.html#afbc5aebe3a9e6caa78e47c9bb4fff993">list_search_default</a> (<a class="el" href="structbucket__t.html">bucket_t</a> *bucket, const char *key, <a class="el" href="structdata__t.html">data_t</a> **result)</td></tr>
 <tr class="memdesc:afbc5aebe3a9e6caa78e47c9bb4fff993"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unoptimized variant of list_search(). This function is safe.  <a href="linked__list_8cpp.html#afbc5aebe3a9e6caa78e47c9bb4fff993">More...</a><br /></td></tr>
 <tr class="separator:afbc5aebe3a9e6caa78e47c9bb4fff993"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,55 +101,9 @@ Functions</h2></td></tr>
 <div class="textblock"><p >File with linked_list access implementation. </p>
 <dl class="section author"><dt>Author</dt><dd>Artem Neskorodov </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2024-04-18 </dd></dl>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a43fac9629bd06e81143953d53228f643" name="a43fac9629bd06e81143953d53228f643"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43fac9629bd06e81143953d53228f643">&#9670;&nbsp;</a></span>CMP_KEY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CMP_KEY</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">_string_key1, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">_ymm_key1, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">_string_key2&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;        <a class="el" href="linked__list_8cpp.html#a4967c60be38b2b41233f2043d220a4d0">cmp_key_default</a>((_string_key1), (_string_key2))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Macro to call keys comparison if strcmp optimization is disabled. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">_string_key1</td><td>Pointer to first string. It is not used. </td></tr>
-    <tr><td class="paramname">_ymm_key1</td><td>__m256i variable with stored string in it. </td></tr>
-    <tr><td class="paramname">_string_key2</td><td>Pointer to second string.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>It won't use parameter _ymm_key1 </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a4967c60be38b2b41233f2043d220a4d0" name="a4967c60be38b2b41233f2043d220a4d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4967c60be38b2b41233f2043d220a4d0">&#9670;&nbsp;</a></span>cmp_key_default()</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a9e00a851a21abae578ad42b66ce4229b" name="a9e00a851a21abae578ad42b66ce4229b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e00a851a21abae578ad42b66ce4229b">&#9670;&nbsp;</a></span>cmp_key_default()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +112,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool cmp_key_default </td>
+          <td class="memname">bool cmp_key_default </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>key1</em>, </td>
@@ -206,6 +135,58 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default variant of keys comparison. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key1</td><td>Pointer to first key. </td></tr>
+    <tr><td class="paramname">key2</td><td>Pointer to second key.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if strings are equal.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>It will be better to turn on optimization with _OPTIMIZE_STRCMP if your processor supports SSE 4.2 </dd></dl>
+
+</div>
+</div>
+<a id="ac1ae7213bab4090df2eab04de6e9c5e0" name="ac1ae7213bab4090df2eab04de6e9c5e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1ae7213bab4090df2eab04de6e9c5e0">&#9670;&nbsp;</a></span>cmp_key_optimized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cmp_key_optimized </td>
+          <td>(</td>
+          <td class="paramtype">__m256i&#160;</td>
+          <td class="paramname"><em>key1_ymm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Optimized function to compare strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key1_ymm</td><td>First string moved to YMM0 register. </td></tr>
+    <tr><td class="paramname">key2</td><td>Pointer to second string moved to RDI register.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ZF flag is set if strings are equal. </dd>
+<dd>
+AL is set to zeros if strings are equal.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function is implemented in cmp_key.asm. </dd></dl>
 
 </div>
 </div>
@@ -352,6 +333,52 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>It is expected to call this function only from hashtab functions. </dd></dl>
+
+</div>
+</div>
+<a id="a097c47bfd351fb31d3386c798d66a83c" name="a097c47bfd351fb31d3386c798d66a83c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a097c47bfd351fb31d3386c798d66a83c">&#9670;&nbsp;</a></span>list_search_optimized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a> list_search_optimized </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structbucket__t.html">bucket_t</a> *&#160;</td>
+          <td class="paramname"><em>bucket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdata__t.html">data_t</a> **&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Optimized variant of list_search(). It uses asm inlines to avoid saving YMM registers in memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>Pointer to hashtab context. </td></tr>
+    <tr><td class="paramname">key</td><td>Pointer to 32 bytes array of chars - key to find. </td></tr>
+    <tr><td class="paramname">result</td><td>Place to write a result of search.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>It is expected to call this function only from hashtab functions. Always check disassembler of this function as it forces value to YMM0 register and we cannot be sure that compiler wouldn't use it. Don't call other functions from here. This code was not expected to be ever changed, so read comments, documentation and readme before changing it very carefully. </dd></dl>
 
 </div>
 </div>
