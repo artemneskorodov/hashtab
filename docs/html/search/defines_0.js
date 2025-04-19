@@ -8,7 +8,7 @@ var searchData=
   ['_5fht_5fdump_5fdtor_5',['_HT_DUMP_DTOR',['../ht__dump_8h.html#aa6fe6f6b4e81945b35051248ddb008a1',1,'ht_dump.h']]],
   ['_5fno_5fdump_6',['_NO_DUMP',['../ht__dump_8h.html#aa37c1dc9994b716dbdb407b42d1d3613',1,'ht_dump.h']]],
   ['_5foptimize_5fhash_7',['_OPTIMIZE_HASH',['../hashtab_8cpp.html#ab5856dd6dd7bbbc91e6e5ea6436dee95',1,'hashtab.cpp']]],
-  ['_5foptimize_5fsearch_8',['_OPTIMIZE_SEARCH',['../linked__list_8cpp.html#a7ba7a53ca8d675f148722eb9676e25ef',1,'linked_list.cpp']]],
-  ['_5foptimize_5fstrcmp_9',['_OPTIMIZE_STRCMP',['../linked__list_8cpp.html#a499647593e6523d597edd8b96a1a357c',1,'linked_list.cpp']]],
+  ['_5foptimize_5fsearch_8',['_OPTIMIZE_SEARCH',['../linked__list_8h.html#a7ba7a53ca8d675f148722eb9676e25ef',1,'linked_list.h']]],
+  ['_5foptimize_5fstrcmp_9',['_OPTIMIZE_STRCMP',['../linked__list_8h.html#a499647593e6523d597edd8b96a1a357c',1,'linked_list.h']]],
   ['_5freturn_5fif_5ferror_10',['_RETURN_IF_ERROR',['../hashtab_8h.html#abb3aef05fe0524d2e5dbc6a09e4c58f5',1,'hashtab.h']]]
 ];

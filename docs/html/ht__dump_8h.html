@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">ht_dump.h File Reference</div></div>
 </div><!--header-->
@@ -75,9 +76,44 @@ $(function() {
 
 <p>Header file with functions to dump hashtab structure while using.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &quot;<a class="el" href="hashtab_8h_source.html">hashtab.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for ht_dump.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="ht__dump_8h__incl.png" border="0" usemap="#ainclude_2ht__dump_8h" alt=""/></div>
+<map name="ainclude_2ht__dump_8h" id="ainclude_2ht__dump_8h">
+<area shape="rect" title="Header file with functions to dump hashtab structure while using." alt="" coords="14,5,157,32"/>
+<area shape="rect" href="hashtab_8h.html" title="Header file for hashtab library." alt="" coords="42,80,129,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,72,181"/>
+<area shape="rect" title=" " alt="" coords="97,155,167,181"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="ht__dump_8h__dep__incl.png" border="0" usemap="#ainclude_2ht__dump_8hdep" alt=""/></div>
+<map name="ainclude_2ht__dump_8hdep" id="ainclude_2ht__dump_8hdep">
+<area shape="rect" title="Header file with functions to dump hashtab structure while using." alt="" coords="275,5,417,32"/>
+<area shape="rect" href="hashtab_8cpp.html" title="File with hashtab access implementation." alt="" coords="5,80,153,107"/>
+<area shape="rect" href="ht__dump_8cpp.html" title="File with tools to dump hashtab. It is almost always unused." alt="" coords="177,80,331,107"/>
+<area shape="rect" href="ht__storage_8cpp.html" title="File which allows to easily free and allocate new nodes for list." alt="" coords="355,80,521,107"/>
+<area shape="rect" href="linked__list_8cpp.html" title="File with linked_list access implementation." alt="" coords="545,80,707,107"/>
+</map>
+</div>
+</div>
 <p><a href="ht__dump_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aa37c1dc9994b716dbdb407b42d1d3613"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ht__dump_8h.html#aa37c1dc9994b716dbdb407b42d1d3613">_NO_DUMP</a></td></tr>
+<tr class="separator:aa37c1dc9994b716dbdb407b42d1d3613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03230a1e4ac935b7f9f8f86a36817cc3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ht__dump_8h.html#a03230a1e4ac935b7f9f8f86a36817cc3">_HT_DUMP_CTOR</a>(_ctx,  _filename)</td></tr>
+<tr class="separator:a03230a1e4ac935b7f9f8f86a36817cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0132452157ecc86ad44e5e7c0bbf3405"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ht__dump_8h.html#a0132452157ecc86ad44e5e7c0bbf3405">_HT_DUMP</a>(_ctx,  _label)</td></tr>
+<tr class="separator:a0132452157ecc86ad44e5e7c0bbf3405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6fe6f6b4e81945b35051248ddb008a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ht__dump_8h.html#aa6fe6f6b4e81945b35051248ddb008a1">_HT_DUMP_DTOR</a>(_ctx)</td></tr>
+<tr class="separator:aa6fe6f6b4e81945b35051248ddb008a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad3db66b282a1a6fa6b1378f2ef2b0d1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ht__dump_8h.html#ad3db66b282a1a6fa6b1378f2ef2b0d1d">hashtab_dump_ctor</a> (<a class="el" href="structhashtab__t.html">hashtab_t</a> *ctx, const char *filename)</td></tr>
@@ -95,7 +131,96 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Artem Neskorodov </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2024-04-18 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Use macros to access dump functions, as dump may be unhelpful when using it with big number of buckets. </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a0132452157ecc86ad44e5e7c0bbf3405" name="a0132452157ecc86ad44e5e7c0bbf3405"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0132452157ecc86ad44e5e7c0bbf3405">&#9670;&nbsp;</a></span>_HT_DUMP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _HT_DUMP</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_ctx, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_label&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a03230a1e4ac935b7f9f8f86a36817cc3" name="a03230a1e4ac935b7f9f8f86a36817cc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03230a1e4ac935b7f9f8f86a36817cc3">&#9670;&nbsp;</a></span>_HT_DUMP_CTOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _HT_DUMP_CTOR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_ctx, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_filename&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6fe6f6b4e81945b35051248ddb008a1" name="aa6fe6f6b4e81945b35051248ddb008a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6fe6f6b4e81945b35051248ddb008a1">&#9670;&nbsp;</a></span>_HT_DUMP_DTOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _HT_DUMP_DTOR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_ctx</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa37c1dc9994b716dbdb407b42d1d3613" name="aa37c1dc9994b716dbdb407b42d1d3613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa37c1dc9994b716dbdb407b42d1d3613">&#9670;&nbsp;</a></span>_NO_DUMP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _NO_DUMP</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a38c3672ff667001dc7a258e586877e53" name="a38c3672ff667001dc7a258e586877e53"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38c3672ff667001dc7a258e586877e53">&#9670;&nbsp;</a></span>hashtab_dump()</h2>
 
@@ -149,7 +274,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Use macro _HT_DUMP() to pass parameters.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Use macro <a class="el" href="ht__dump_8h.html#a0132452157ecc86ad44e5e7c0bbf3405">_HT_DUMP()</a> to pass parameters.</dd></dl>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>This code cannot be helpful when hashtab size is big. </dd></dl>
 
 </div>
