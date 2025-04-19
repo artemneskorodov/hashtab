@@ -20,17 +20,6 @@
 #include "ht_dump.h"
 
 /*============================================================================*/
-/**
-* @brief                Enables optimization of strcmp().
-
-* @note                 Optimization uses comparison of YMM register. It can be
-                        used if your processor supports SSE 4.2. See function
-                        cmp_key_optimized() for more info.
-*/
-#define _OPTIMIZE_STRCMP
-#define _OPTIMIZE_SEARCH
-
-/*============================================================================*/
 
 #if defined(_OPTIMIZE_STRCMP)
     /*------------------------------------------------------------------------*/

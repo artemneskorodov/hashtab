@@ -8,8 +8,7 @@ var indexSectionsWithContent =
   5: "f",
   6: "bchpr",
   7: "bcdghmnprwy",
-  8: "d",
-  9: "dht"
+  8: "dht"
 };
 
 var indexSectionNames =
@@ -22,8 +21,7 @@ var indexSectionNames =
   5: "typedefs",
   6: "enums",
   7: "enumvalues",
-  8: "groups",
-  9: "pages"
+  8: "pages"
 };
 
 var indexSectionLabels =
@@ -36,7 +34,6 @@ var indexSectionLabels =
   5: "Typedefs",
   6: "Enumerations",
   7: "Enumerator",
-  8: "Modules",
-  9: "Pages"
+  8: "Pages"
 };
 

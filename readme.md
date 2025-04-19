@@ -51,7 +51,7 @@ bin/hashtab --load 'path_to_your_data' 'path_to_output'
 Программа запишет все данные в хэш-таблицу, посчитает средний load factor и дисперсию этой величины. Также для каждого бакета количество элементов в нём будет записано в файл 'path_to_output'.
 
 ### 3.4 Документация
-Документация доступна по [ссылке](https://artemneskorodov.github.io/hashtab/html/index.html)
+Документация доступна по [ссылке](https://artemneskorodov.github.io/hashtab/html/index.html).
 
 ## 4. Метод поиска мест для оптимизации
 

@@ -17,33 +17,48 @@
 
 /*============================================================================*/
 
-#ifdef _NO_DUMP
-    /**
-     * @defgroup            DumpDisabled
-     * @brief               Macros to use dump when it is turned off.
-     * @{
-    */
+#if defined(_NO_DUMP)
+/*----------------------------------------------------------------------------*/
     #define _HT_DUMP_CTOR(_ctx, _filename)
     #define _HT_DUMP(_ctx, _label)
     #define _HT_DUMP_DTOR(_ctx)
-    /** @} */
+/*----------------------------------------------------------------------------*/
 #else
+/*----------------------------------------------------------------------------*/
     /**
-     * @defgroup            DumpEnabled
-     *@brief               Macros to use dump when it is turned on.
-     * @{
+    * @brief                Calling hashtab_dump_ctor().
+
+    * @param _ctx           hashtab_t * - Pointer to hashtab context.
+    * @param _filename      const char * - Name of file to write dump.
+
+    * @note                 Expands in nothing if dump is disabled.
     */
     #define _HT_DUMP_CTOR(_ctx, _filename) hashtab_dump_ctor((_ctx),           \
                                                              (_filename));
+    /*------------------------------------------------------------------------*/
+    /**
+    * @brief                Calling hashtab_dump().
 
+    * @param _ctx           hashtab_t * - Pointer to hashtab context.
+    * @param _label         const char * - Label for dump.
+
+    * @note                 Expands in nothing if dump is disabled.
+    */
     #define _HT_DUMP(_ctx, _label)         hashtab_dump     ((_ctx),           \
                                                              (_label),         \
                                                              __FILE__,         \
                                                              __PRETTY_FUNCT__, \
                                                              __LINE__);
+    /*------------------------------------------------------------------------*/
+    /**
+    * @brief                Calling hashtab_dump_dtor().
 
+    * @param _ctx           hashtab_t * - Pointer to hashtab context.
+
+    * @note                 Expands in nothing if dump is disabled.
+    */
     #define _HT_DUMP_DTOR(_ctx)            hashtab_dump_dtor(_ctx);
-    /** @} */
+/*----------------------------------------------------------------------------*/
 #endif
 
 /*============================================================================*/
