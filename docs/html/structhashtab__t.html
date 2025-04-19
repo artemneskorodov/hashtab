@@ -88,7 +88,7 @@ Collaboration diagram for hashtab_t:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a9c1c581a038a906f5494778c170f4bf1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbucket__t.html">bucket_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#a9c1c581a038a906f5494778c170f4bf1">buckets</a></td></tr>
-<tr class="memdesc:a9c1c581a038a906f5494778c170f4bf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the array of buckets. Allocated by <a class="el" href="ht__storage_8cpp.html#ac0216531060e7566e88adad0cc52fa91" title="Constructor for hashtab storage data.">ht_storage_ctor()</a>.  <a href="structhashtab__t.html#a9c1c581a038a906f5494778c170f4bf1">More...</a><br /></td></tr>
+<tr class="memdesc:a9c1c581a038a906f5494778c170f4bf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the array of buckets. Allocated by <a class="el" href="ht__utils_8cpp.html#ac0216531060e7566e88adad0cc52fa91" title="Constructor for hashtab storage data.">ht_storage_ctor()</a>.  <a href="structhashtab__t.html#a9c1c581a038a906f5494778c170f4bf1">More...</a><br /></td></tr>
 <tr class="separator:a9c1c581a038a906f5494778c170f4bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf13f0fec93336f13ec4bad5e0b43a9b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#aaf13f0fec93336f13ec4bad5e0b43a9b">data_file</a></td></tr>
 <tr class="memdesc:aaf13f0fec93336f13ec4bad5e0b43a9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of database file.  <a href="structhashtab__t.html#aaf13f0fec93336f13ec4bad5e0b43a9b">More...</a><br /></td></tr>
@@ -100,22 +100,22 @@ Data Fields</h2></td></tr>
 <tr class="memdesc:a039e5da1ca6228fc2768a2442d3ff8c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of output file.  <a href="structhashtab__t.html#a039e5da1ca6228fc2768a2442d3ff8c2">More...</a><br /></td></tr>
 <tr class="separator:a039e5da1ca6228fc2768a2442d3ff8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6548120732e39bbc96ab21022bca6037"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#a6548120732e39bbc96ab21022bca6037">free_lists</a></td></tr>
-<tr class="memdesc:a6548120732e39bbc96ab21022bca6037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linked list with free list nodes. Used in <a class="el" href="ht__storage_8h.html">ht_storage.h</a>.  <a href="structhashtab__t.html#a6548120732e39bbc96ab21022bca6037">More...</a><br /></td></tr>
+<tr class="memdesc:a6548120732e39bbc96ab21022bca6037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linked list with free list nodes. Used in ht_storage.h.  <a href="structhashtab__t.html#a6548120732e39bbc96ab21022bca6037">More...</a><br /></td></tr>
 <tr class="separator:a6548120732e39bbc96ab21022bca6037"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabdb50c1efbc3fe3373ccf43c5341bf5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structlist__t.html">list_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#aabdb50c1efbc3fe3373ccf43c5341bf5">containers</a> [<a class="el" href="hashtab_8h.html#ac195bf3e4269f315a26cc82c412ec518">ListContsNum</a>]</td></tr>
 <tr class="memdesc:aabdb50c1efbc3fe3373ccf43c5341bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of pointers to containers with stored or free list nodes.  <a href="structhashtab__t.html#aabdb50c1efbc3fe3373ccf43c5341bf5">More...</a><br /></td></tr>
 <tr class="separator:aabdb50c1efbc3fe3373ccf43c5341bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab159d8135729c7d49c874ee8745a9e19"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#ab159d8135729c7d49c874ee8745a9e19">used_containers</a></td></tr>
-<tr class="memdesc:ab159d8135729c7d49c874ee8745a9e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of used containers in <a class="el" href="ht__storage_8h.html">ht_storage.h</a>.  <a href="structhashtab__t.html#ab159d8135729c7d49c874ee8745a9e19">More...</a><br /></td></tr>
+<tr class="memdesc:ab159d8135729c7d49c874ee8745a9e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of used containers in ht_storage.h.  <a href="structhashtab__t.html#ab159d8135729c7d49c874ee8745a9e19">More...</a><br /></td></tr>
 <tr class="separator:ab159d8135729c7d49c874ee8745a9e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0b9d7ad6efd9c57d5fb9590268e328b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#ae0b9d7ad6efd9c57d5fb9590268e328b">data</a></td></tr>
 <tr class="memdesc:ae0b9d7ad6efd9c57d5fb9590268e328b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer where to store database. Allocated by <a class="el" href="hashtab_8cpp.html#ad96fc9261b12f583a71083df791d3901" title="Reading data from file and inserting it in a hashtab.">hashtab_read_data()</a>.  <a href="structhashtab__t.html#ae0b9d7ad6efd9c57d5fb9590268e328b">More...</a><br /></td></tr>
 <tr class="separator:ae0b9d7ad6efd9c57d5fb9590268e328b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb9d56aea66de5c291245ac5d4130483"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#adb9d56aea66de5c291245ac5d4130483">dump_file</a></td></tr>
-<tr class="memdesc:adb9d56aea66de5c291245ac5d4130483"><td class="mdescLeft">&#160;</td><td class="mdescRight">File to write dump. Used in <a class="el" href="ht__dump_8h.html" title="Header file with functions to dump hashtab structure while using.">ht_dump.h</a>.  <a href="structhashtab__t.html#adb9d56aea66de5c291245ac5d4130483">More...</a><br /></td></tr>
+<tr class="memdesc:adb9d56aea66de5c291245ac5d4130483"><td class="mdescLeft">&#160;</td><td class="mdescRight">File to write dump. Used in ht_dump.h.  <a href="structhashtab__t.html#adb9d56aea66de5c291245ac5d4130483">More...</a><br /></td></tr>
 <tr class="separator:adb9d56aea66de5c291245ac5d4130483"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26a741d2e48f009cfb46a4f47aaadbf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#ab7d9043cd339ce50c3582b04c5fbb4df">run_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#a26a741d2e48f009cfb46a4f47aaadbf7">run_mode</a></td></tr>
-<tr class="memdesc:a26a741d2e48f009cfb46a4f47aaadbf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum with run mode. It is set after <a class="el" href="parse__flags_8cpp.html#a8df245e91258d1d1c97a6545a69670c5" title="Parsing flags from console input.">parse_flags()</a>.  <a href="structhashtab__t.html#a26a741d2e48f009cfb46a4f47aaadbf7">More...</a><br /></td></tr>
+<tr class="memdesc:a26a741d2e48f009cfb46a4f47aaadbf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum with run mode. It is set after <a class="el" href="ht__utils_8cpp.html#a8df245e91258d1d1c97a6545a69670c5" title="Parsing flags from console input.">parse_flags()</a>.  <a href="structhashtab__t.html#a26a741d2e48f009cfb46a4f47aaadbf7">More...</a><br /></td></tr>
 <tr class="separator:a26a741d2e48f009cfb46a4f47aaadbf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb1171e85fabb6b3f5b0886dcdb43a75"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#afb1171e85fabb6b3f5b0886dcdb43a75">crc_table</a> [256]</td></tr>
 <tr class="memdesc:afb1171e85fabb6b3f5b0886dcdb43a75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table for CRC32.  <a href="structhashtab__t.html#afb1171e85fabb6b3f5b0886dcdb43a75">More...</a><br /></td></tr>
@@ -123,6 +123,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a59f509caf4251d43151910a1ce8a75ee"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#a59f509caf4251d43151910a1ce8a75ee">counter</a></td></tr>
 <tr class="memdesc:a59f509caf4251d43151910a1ce8a75ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of elements stored in hashtab.  <a href="structhashtab__t.html#a59f509caf4251d43151910a1ce8a75ee">More...</a><br /></td></tr>
 <tr class="separator:a59f509caf4251d43151910a1ce8a75ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87877f12bedc7f44152ba81dc04ed6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html#ab87877f12bedc7f44152ba81dc04ed6f">constructed</a></td></tr>
+<tr class="memdesc:ab87877f12bedc7f44152ba81dc04ed6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Member is set to true if hashtab context is constructed.  <a href="structhashtab__t.html#ab87877f12bedc7f44152ba81dc04ed6f">More...</a><br /></td></tr>
+<tr class="separator:ab87877f12bedc7f44152ba81dc04ed6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Hashtab context structure. </p>
@@ -139,7 +142,23 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to the array of buckets. Allocated by <a class="el" href="ht__storage_8cpp.html#ac0216531060e7566e88adad0cc52fa91" title="Constructor for hashtab storage data.">ht_storage_ctor()</a>. </p>
+<p>Pointer to the array of buckets. Allocated by <a class="el" href="ht__utils_8cpp.html#ac0216531060e7566e88adad0cc52fa91" title="Constructor for hashtab storage data.">ht_storage_ctor()</a>. </p>
+
+</div>
+</div>
+<a id="ab87877f12bedc7f44152ba81dc04ed6f" name="ab87877f12bedc7f44152ba81dc04ed6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab87877f12bedc7f44152ba81dc04ed6f">&#9670;&nbsp;</a></span>constructed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hashtab_t::constructed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Member is set to true if hashtab context is constructed. </p>
 
 </div>
 </div>
@@ -235,7 +254,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>File to write dump. Used in <a class="el" href="ht__dump_8h.html" title="Header file with functions to dump hashtab structure while using.">ht_dump.h</a>. </p>
+<p>File to write dump. Used in ht_dump.h. </p>
 
 </div>
 </div>
@@ -251,7 +270,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Linked list with free list nodes. Used in <a class="el" href="ht__storage_8h.html">ht_storage.h</a>. </p>
+<p>Linked list with free list nodes. Used in ht_storage.h. </p>
 
 </div>
 </div>
@@ -283,7 +302,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enum with run mode. It is set after <a class="el" href="parse__flags_8cpp.html#a8df245e91258d1d1c97a6545a69670c5" title="Parsing flags from console input.">parse_flags()</a>. </p>
+<p>Enum with run mode. It is set after <a class="el" href="ht__utils_8cpp.html#a8df245e91258d1d1c97a6545a69670c5" title="Parsing flags from console input.">parse_flags()</a>. </p>
 
 </div>
 </div>
@@ -315,7 +334,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of used containers in <a class="el" href="ht__storage_8h.html">ht_storage.h</a>. </p>
+<p>Number of used containers in ht_storage.h. </p>
 
 </div>
 </div>

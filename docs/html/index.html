@@ -66,18 +66,18 @@ $(function() {
   <div class="headertitle"><div class="title">Hashtab </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="Introduction"></a>
+<div class="textblock"><h1><a class="anchor" id="intro"></a>
 Introduction</h1>
 <p >Implementation of hashtab with 4.14 times optimization with assembly inlines, assembly code and intrinsics for x86-64 processors with SSE 4.2.</p>
-<h1><a class="anchor" id="Features"></a>
+<h1><a class="anchor" id="features"></a>
 Features</h1>
 <ul>
 <li>Can be compiled for every processor with optimization turned off.</li>
 <li>Can store custom data, but only one per build. See <a class="el" href="structdata__t.html" title="Structure of data stored in hashtab.">data_t</a>.</li>
 </ul>
-<h1><a class="anchor" id="Usage"></a>
+<h1><a class="anchor" id="example"></a>
 Usage</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;library.h&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="hashtab_8h.html">hashtab.h</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> key1[32] = {};</div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> key2[32] = {};</div>
@@ -108,22 +108,23 @@ Usage</h1>
 <div class="line">    <a class="code hl_function" href="hashtab_8cpp.html#a178ef387751516bd8f2e71749d38d86d">hashtab_dtor</a>(&amp;hashtab);</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="ahashtab_8cpp_html_a178ef387751516bd8f2e71749d38d86d"><div class="ttname"><a href="hashtab_8cpp.html#a178ef387751516bd8f2e71749d38d86d">hashtab_dtor</a></div><div class="ttdeci">ht_error_t hashtab_dtor(hashtab_t *ctx)</div><div class="ttdoc">Destructor of hashtab context.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:323</div></div>
-<div class="ttc" id="ahashtab_8cpp_html_a5e1b180ac31d74f0418a48738c604f5a"><div class="ttname"><a href="hashtab_8cpp.html#a5e1b180ac31d74f0418a48738c604f5a">hashtab_insert</a></div><div class="ttdeci">ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data)</div><div class="ttdoc">Inserting element to hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:220</div></div>
-<div class="ttc" id="ahashtab_8cpp_html_adbb8397bab7ec2cc1b792ad4df23de01"><div class="ttname"><a href="hashtab_8cpp.html#adbb8397bab7ec2cc1b792ad4df23de01">hashtab_search</a></div><div class="ttdeci">ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result)</div><div class="ttdoc">Searching element in hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:240</div></div>
-<div class="ttc" id="ahashtab_8cpp_html_ae681576b4628b4417f2af68bd568d5ad"><div class="ttname"><a href="hashtab_8cpp.html#ae681576b4628b4417f2af68bd568d5ad">hashtab_ctor</a></div><div class="ttdeci">ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[])</div><div class="ttdoc">Constructor of hashtab context.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:77</div></div>
-<div class="ttc" id="ahashtab_8cpp_html_af06ff2aa40a4c9e5f344b7a4352391a2"><div class="ttname"><a href="hashtab_8cpp.html#af06ff2aa40a4c9e5f344b7a4352391a2">hashtab_remove</a></div><div class="ttdeci">ht_error_t hashtab_remove(hashtab_t *ctx, const char *key)</div><div class="ttdoc">Inserting element to hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:261</div></div>
-<div class="ttc" id="astructdata__t_html"><div class="ttname"><a href="structdata__t.html">data_t</a></div><div class="ttdoc">Structure of data stored in hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.h:105</div></div>
-<div class="ttc" id="astructdata__t_html_a179ce2d5047ba2b81e25b9f49ad22a4b"><div class="ttname"><a href="structdata__t.html#a179ce2d5047ba2b81e25b9f49ad22a4b">data_t::value</a></div><div class="ttdeci">int value</div><div class="ttdoc">Some values.</div><div class="ttdef"><b>Definition:</b> hashtab.h:106</div></div>
-<div class="ttc" id="astructhashtab__t_html"><div class="ttname"><a href="structhashtab__t.html">hashtab_t</a></div><div class="ttdoc">Hashtab context structure.</div><div class="ttdef"><b>Definition:</b> hashtab.h:133</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="Database"></a>
-format</h1>
+<div class="ttc" id="ahashtab_8cpp_html_a178ef387751516bd8f2e71749d38d86d"><div class="ttname"><a href="hashtab_8cpp.html#a178ef387751516bd8f2e71749d38d86d">hashtab_dtor</a></div><div class="ttdeci">ht_error_t hashtab_dtor(hashtab_t *ctx)</div><div class="ttdoc">Destructor of hashtab context.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:352</div></div>
+<div class="ttc" id="ahashtab_8cpp_html_a5e1b180ac31d74f0418a48738c604f5a"><div class="ttname"><a href="hashtab_8cpp.html#a5e1b180ac31d74f0418a48738c604f5a">hashtab_insert</a></div><div class="ttdeci">ht_error_t hashtab_insert(hashtab_t *ctx, const char *key, data_t *data)</div><div class="ttdoc">Inserting element to hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:232</div></div>
+<div class="ttc" id="ahashtab_8cpp_html_adbb8397bab7ec2cc1b792ad4df23de01"><div class="ttname"><a href="hashtab_8cpp.html#adbb8397bab7ec2cc1b792ad4df23de01">hashtab_search</a></div><div class="ttdeci">ht_error_t hashtab_search(hashtab_t *ctx, const char *key, data_t **result)</div><div class="ttdoc">Searching element in hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:255</div></div>
+<div class="ttc" id="ahashtab_8cpp_html_ae681576b4628b4417f2af68bd568d5ad"><div class="ttname"><a href="hashtab_8cpp.html#ae681576b4628b4417f2af68bd568d5ad">hashtab_ctor</a></div><div class="ttdeci">ht_error_t hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[])</div><div class="ttdoc">Constructor of hashtab context.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:75</div></div>
+<div class="ttc" id="ahashtab_8cpp_html_af06ff2aa40a4c9e5f344b7a4352391a2"><div class="ttname"><a href="hashtab_8cpp.html#af06ff2aa40a4c9e5f344b7a4352391a2">hashtab_remove</a></div><div class="ttdeci">ht_error_t hashtab_remove(hashtab_t *ctx, const char *key)</div><div class="ttdoc">Inserting element to hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.cpp:280</div></div>
+<div class="ttc" id="ahashtab_8h_html"><div class="ttname"><a href="hashtab_8h.html">hashtab.h</a></div><div class="ttdoc">Header file for hashtab library.</div></div>
+<div class="ttc" id="astructdata__t_html"><div class="ttname"><a href="structdata__t.html">data_t</a></div><div class="ttdoc">Structure of data stored in hashtab.</div><div class="ttdef"><b>Definition:</b> hashtab.h:117</div></div>
+<div class="ttc" id="astructdata__t_html_a179ce2d5047ba2b81e25b9f49ad22a4b"><div class="ttname"><a href="structdata__t.html#a179ce2d5047ba2b81e25b9f49ad22a4b">data_t::value</a></div><div class="ttdeci">int value</div><div class="ttdoc">Some values.</div><div class="ttdef"><b>Definition:</b> hashtab.h:118</div></div>
+<div class="ttc" id="astructhashtab__t_html"><div class="ttname"><a href="structhashtab__t.html">hashtab_t</a></div><div class="ttdoc">Hashtab context structure.</div><div class="ttdef"><b>Definition:</b> hashtab.h:145</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="format"></a>
+Database Format</h1>
 <ul>
 <li>Every keyword in database file has to be stored in blocks of 32 bytes.</li>
 <li>Every symbol of 32 bytes is treated as a part of keyword.</li>
 <li>It is expected that database size is divisible by 32.</li>
 </ul>
-<h1><a class="anchor" id="Links"></a>
+<h1><a class="anchor" id="links"></a>
 Links</h1>
 <ul>
 <li><a href="https://github.com/artemneskorodov/hashtab">Репозиторий GitHub</a> </li>
