@@ -1,11 +1,14 @@
+/*============================================================================*/
 #ifndef HT_DUMP_H
 #define HT_DUMP_H
 /*============================================================================*/
 /**
-* @file     linked_list.cpp
+* @file     ht_dump.h
 * @author   Artem Neskorodov
 * @date     2024-04-18
-* @brief    File with linked_list access implementation.
+* @brief    Header file with functions to dump hashtab structure while using.
+* @note     Use macros to access dump functions, as dump may be unhelpful when
+            using it with big number of buckets.
 */
 /*============================================================================*/
 

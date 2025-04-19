@@ -2,6 +2,13 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 /*============================================================================*/
+/**
+* @file     linked_list.h
+* @author   Artem Neskorodov
+* @date     2024-04-18
+* @brief    Header file with functions to access linked list structure.
+*/
+/*============================================================================*/
 
 #include "hashtab.h"
 
