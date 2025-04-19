@@ -26,7 +26,7 @@ typedef ht_error_t (*flag_handler_t)(hashtab_t *, int *, int, const char *[]);
 */
 struct flag_t {
     const char         *long_name;                  ///< Name of flag.
-    flag_handler_t      handler                     ///< Function to handle.
+    flag_handler_t      handler;                    ///< Function to handle.
 };
 
 

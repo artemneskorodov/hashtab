@@ -169,9 +169,9 @@ ht_error_t list_insert(hashtab_t  *ctx,
             /* memory as we know that YMM0 is not changed by this functions.  */
             /* Last function instruction sets ZF flag to 1 if strings are     */
             /* equal, so we use JNZ instruction to skip writing the result.   */
-            asm goto ("mov  %[key], %%rdi   \n"
-                      "call cmp_key         \n"
-                      "jnz %l[skip_cmp_true]\n"
+            asm goto ("mov  %[key], %%rdi     \n"
+                      "call cmp_key_optimized \n"
+                      "jnz %l[skip_cmp_true]  \n"
                       :
                       : [key] "r"  (head->data.key)
                       : "%rdi", "%ymm1", "%rax", "cc"
