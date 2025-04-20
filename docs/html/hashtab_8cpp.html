@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">hashtab.cpp File Reference</div></div>
@@ -76,18 +77,55 @@ $(function() {
 
 <p>File with hashtab access implementation.  
 <a href="#details">More...</a></p>
-<table class="memberdecls">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;nmmintrin.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="hashtab_8h_source.html">hashtab.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ht__utils_8h_source.html">ht_utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="linked__list_8h_source.html">linked_list.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="colors_8h_source.html">colors.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="custom__assert_8h_source.html">custom_assert.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for hashtab.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="hashtab_8cpp__incl.png" border="0" usemap="#asource_2hashtab_8cpp" alt=""/></div>
+<map name="asource_2hashtab_8cpp" id="asource_2hashtab_8cpp">
+<area shape="rect" title="File with hashtab access implementation." alt="" coords="344,5,492,32"/>
+<area shape="rect" title=" " alt="" coords="183,229,250,256"/>
+<area shape="rect" title=" " alt="" coords="32,80,102,107"/>
+<area shape="rect" title=" " alt="" coords="126,80,197,107"/>
+<area shape="rect" title=" " alt="" coords="221,80,324,107"/>
+<area shape="rect" title=" " alt="" coords="348,80,416,107"/>
+<area shape="rect" href="hashtab_8h.html" title="Header file for hashtab library." alt="" coords="449,155,536,181"/>
+<area shape="rect" href="ht__utils_8h.html" title="Functions to dump hashtab, allocate nodes and other utils, which are used in hashtab." alt="" coords="491,80,574,107"/>
+<area shape="rect" href="linked__list_8h.html" title="Header file with functions to access linked list structure." alt="" coords="598,80,698,107"/>
+<area shape="rect" href="colors_8h.html" title=" " alt="" coords="722,80,796,107"/>
+<area shape="rect" href="custom__assert_8h.html" title=" " alt="" coords="820,80,949,107"/>
+<area shape="rect" title=" " alt="" coords="457,229,528,256"/>
+<area shape="rect" title=" " alt="" coords="722,155,796,181"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ab5856dd6dd7bbbc91e6e5ea6436dee95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8cpp.html#ab5856dd6dd7bbbc91e6e5ea6436dee95">_OPTIMIZE_HASH</a></td></tr>
+<tr class="memdesc:ab5856dd6dd7bbbc91e6e5ea6436dee95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables optimization of hash function with x86 intrinsic. It is fully safe to use this optimization if your processor supports SSE 4.2.  <a href="hashtab_8cpp.html#ab5856dd6dd7bbbc91e6e5ea6436dee95">More...</a><br /></td></tr>
+<tr class="separator:ab5856dd6dd7bbbc91e6e5ea6436dee95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa06875e8b42431f3061613a42144f6f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8cpp.html#aa06875e8b42431f3061613a42144f6f4">_CHECK_RESULT</a></td></tr>
+<tr class="memdesc:aa06875e8b42431f3061613a42144f6f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables checking the result of <a class="el" href="hashtab_8cpp.html#adbb8397bab7ec2cc1b792ad4df23de01" title="Searching element in hashtab.">hashtab_search()</a> while testing with <a class="el" href="hashtab_8cpp.html#a46feebc040a448af66b751f11d66062c" title="Reading data from test file and running tests.">hashtab_run_tests()</a>. Function calls default libc's strcmp() after every search.  <a href="hashtab_8cpp.html#aa06875e8b42431f3061613a42144f6f4">More...</a><br /></td></tr>
+<tr class="separator:aa06875e8b42431f3061613a42144f6f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34144f08a5b1884b89d1f8a08dfd1d19"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8cpp.html#a34144f08a5b1884b89d1f8a08dfd1d19">CALL_HASH_FUNC</a>(_ctx,  _key)&#160;&#160;&#160;<a class="el" href="hashtab_8cpp.html#a600c29f545cef39e8026253eb9ab45d7">hash_func_optimized</a>(_key)</td></tr>
+<tr class="separator:a34144f08a5b1884b89d1f8a08dfd1d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a444dfb6ca2068c7666f55a2d22dc3b06"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8cpp.html#a444dfb6ca2068c7666f55a2d22dc3b06">CALL_CREATE_CRC_TABLE</a>(_ctx)</td></tr>
+<tr class="separator:a444dfb6ca2068c7666f55a2d22dc3b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a600c29f545cef39e8026253eb9ab45d7"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8cpp.html#a600c29f545cef39e8026253eb9ab45d7">hash_func_optimized</a> (const char *key)</td></tr>
 <tr class="memdesc:a600c29f545cef39e8026253eb9ab45d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC32 function with x86 intrinsics optimization.  <a href="hashtab_8cpp.html#a600c29f545cef39e8026253eb9ab45d7">More...</a><br /></td></tr>
 <tr class="separator:a600c29f545cef39e8026253eb9ab45d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a849e47c79393d8d801e73bea1d3284b6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8cpp.html#a849e47c79393d8d801e73bea1d3284b6">create_crc_table</a> (<a class="el" href="structhashtab__t.html">hashtab_t</a> *ctx)</td></tr>
-<tr class="memdesc:a849e47c79393d8d801e73bea1d3284b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creating table for CRC32 hash.  <a href="hashtab_8cpp.html#a849e47c79393d8d801e73bea1d3284b6">More...</a><br /></td></tr>
-<tr class="separator:a849e47c79393d8d801e73bea1d3284b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3bbbcf78e8715765291af574ba94372"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8cpp.html#ae3bbbcf78e8715765291af574ba94372">hash_func_default</a> (<a class="el" href="structhashtab__t.html">hashtab_t</a> *ctx, const char *key)</td></tr>
-<tr class="memdesc:ae3bbbcf78e8715765291af574ba94372"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC32 hash function.  <a href="hashtab_8cpp.html#ae3bbbcf78e8715765291af574ba94372">More...</a><br /></td></tr>
-<tr class="separator:ae3bbbcf78e8715765291af574ba94372"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae681576b4628b4417f2af68bd568d5ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acae">ht_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8cpp.html#ae681576b4628b4417f2af68bd568d5ad">hashtab_ctor</a> (<a class="el" href="structhashtab__t.html">hashtab_t</a> *ctx, int argc, const char *argv[])</td></tr>
 <tr class="memdesc:ae681576b4628b4417f2af68bd568d5ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of hashtab context.  <a href="hashtab_8cpp.html#ae681576b4628b4417f2af68bd568d5ad">More...</a><br /></td></tr>
 <tr class="separator:ae681576b4628b4417f2af68bd568d5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,88 +161,86 @@ Variables</h2></td></tr>
 <div class="textblock"><p >File with hashtab access implementation. </p>
 <dl class="section author"><dt>Author</dt><dd>Artem Neskorodov </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2024-04-18 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a849e47c79393d8d801e73bea1d3284b6" name="a849e47c79393d8d801e73bea1d3284b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a849e47c79393d8d801e73bea1d3284b6">&#9670;&nbsp;</a></span>create_crc_table()</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aa06875e8b42431f3061613a42144f6f4" name="aa06875e8b42431f3061613a42144f6f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa06875e8b42431f3061613a42144f6f4">&#9670;&nbsp;</a></span>_CHECK_RESULT</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void create_crc_table </td>
+          <td class="memname">#define _CHECK_RESULT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables checking the result of <a class="el" href="hashtab_8cpp.html#adbb8397bab7ec2cc1b792ad4df23de01" title="Searching element in hashtab.">hashtab_search()</a> while testing with <a class="el" href="hashtab_8cpp.html#a46feebc040a448af66b751f11d66062c" title="Reading data from test file and running tests.">hashtab_run_tests()</a>. Function calls default libc's strcmp() after every search. </p>
+
+</div>
+</div>
+<a id="ab5856dd6dd7bbbc91e6e5ea6436dee95" name="ab5856dd6dd7bbbc91e6e5ea6436dee95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5856dd6dd7bbbc91e6e5ea6436dee95">&#9670;&nbsp;</a></span>_OPTIMIZE_HASH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _OPTIMIZE_HASH</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables optimization of hash function with x86 intrinsic. It is fully safe to use this optimization if your processor supports SSE 4.2. </p>
+
+</div>
+</div>
+<a id="a444dfb6ca2068c7666f55a2d22dc3b06" name="a444dfb6ca2068c7666f55a2d22dc3b06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a444dfb6ca2068c7666f55a2d22dc3b06">&#9670;&nbsp;</a></span>CALL_CREATE_CRC_TABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CALL_CREATE_CRC_TABLE</td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structhashtab__t.html">hashtab_t</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_ctx</td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Creating table for CRC32 hash. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ctx</td><td>Pointer to hashtab context. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
-<a id="ae3bbbcf78e8715765291af574ba94372" name="ae3bbbcf78e8715765291af574ba94372"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3bbbcf78e8715765291af574ba94372">&#9670;&nbsp;</a></span>hash_func_default()</h2>
+<a id="a34144f08a5b1884b89d1f8a08dfd1d19" name="a34144f08a5b1884b89d1f8a08dfd1d19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34144f08a5b1884b89d1f8a08dfd1d19">&#9670;&nbsp;</a></span>CALL_HASH_FUNC</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t hash_func_default </td>
+          <td class="memname">#define CALL_HASH_FUNC</td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structhashtab__t.html">hashtab_t</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em>, </td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_ctx, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>key</em>&#160;</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_key&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="hashtab_8cpp.html#a600c29f545cef39e8026253eb9ab45d7">hash_func_optimized</a>(_key)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>CRC32 hash function. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ctx</td><td>Pointer to hashtab context. </td></tr>
-    <tr><td class="paramname">key</td><td>Pointer to 32 bytes array of chars.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Index in buckets array.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>It is expected to call this function only <a class="el" href="hashtab_8cpp.html#ae681576b4628b4417f2af68bd568d5ad" title="Constructor of hashtab context.">hashtab_ctor()</a>. Don't call it if ctx-&gt;run_mode != HASHTAB_MODE_TEST_LOAD. </dd></dl>
-
 </div>
 </div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a600c29f545cef39e8026253eb9ab45d7" name="a600c29f545cef39e8026253eb9ab45d7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a600c29f545cef39e8026253eb9ab45d7">&#9670;&nbsp;</a></span>hash_func_optimized()</h2>
 

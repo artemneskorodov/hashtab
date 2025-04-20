@@ -79,7 +79,33 @@ $(function() {
 
 <p>Implementation of functions which are helpful for hashtab.  
 <a href="#details">More...</a></p>
-<table class="memberdecls">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;ctype.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="hashtab_8h_source.html">hashtab.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ht__utils_8h_source.html">ht_utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="colors_8h_source.html">colors.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="custom__assert_8h_source.html">custom_assert.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for ht_utils.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="ht__utils_8cpp__incl.png" border="0" usemap="#asource_2ht__utils_8cpp" alt=""/></div>
+<map name="asource_2ht__utils_8cpp" id="asource_2ht__utils_8cpp">
+<area shape="rect" title="Implementation of functions which are helpful for hashtab." alt="" coords="218,5,362,32"/>
+<area shape="rect" title=" " alt="" coords="80,229,146,256"/>
+<area shape="rect" title=" " alt="" coords="30,80,100,107"/>
+<area shape="rect" title=" " alt="" coords="124,80,195,107"/>
+<area shape="rect" title=" " alt="" coords="219,80,290,107"/>
+<area shape="rect" href="hashtab_8h.html" title="Header file for hashtab library." alt="" coords="284,155,371,181"/>
+<area shape="rect" href="ht__utils_8h.html" title="Functions to dump hashtab, allocate nodes and other utils, which are used in hashtab." alt="" coords="365,80,448,107"/>
+<area shape="rect" href="colors_8h.html" title=" " alt="" coords="472,80,546,107"/>
+<area shape="rect" href="custom__assert_8h.html" title=" " alt="" coords="570,80,699,107"/>
+<area shape="rect" title=" " alt="" coords="292,229,363,256"/>
+<area shape="rect" title=" " alt="" coords="472,155,546,181"/>
+</map>
+</div>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structflag__t.html">flag_t</a></td></tr>
@@ -445,8 +471,8 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Use macro _HT_DUMP() to pass parameters.</dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>This code cannot be helpful when hashtab size is big. Use macro _HT_DUMP(_ctx, _label) to call this function. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Use macro <a class="el" href="ht__utils_8h.html#a0132452157ecc86ad44e5e7c0bbf3405">_HT_DUMP()</a> to pass parameters.</dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>This code cannot be helpful when hashtab size is big. Use macro <a class="el" href="ht__utils_8h.html#a0132452157ecc86ad44e5e7c0bbf3405">_HT_DUMP(_ctx, _label)</a> to call this function. </dd></dl>
 
 </div>
 </div>
@@ -485,7 +511,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>This code cannot be helpful when hashtab size is big. Use macro _HT_DUMP_CTOR(_ctx, _filename) to call this function. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>This code cannot be helpful when hashtab size is big. Use macro <a class="el" href="ht__utils_8h.html#a03230a1e4ac935b7f9f8f86a36817cc3">_HT_DUMP_CTOR(_ctx, _filename)</a> to call this function. </dd></dl>
 
 </div>
 </div>
@@ -513,7 +539,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ht_error_t - overall error code enum.</dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>This code cannot be helpful when hashtab size is big. Use macro _HT_DUMP_DTOR(_ctx) to call this function. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>This code cannot be helpful when hashtab size is big. Use macro <a class="el" href="ht__utils_8h.html#aa6fe6f6b4e81945b35051248ddb008a1">_HT_DUMP_DTOR(_ctx)</a> to call this function. </dd></dl>
 
 </div>
 </div>

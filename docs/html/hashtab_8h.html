@@ -69,6 +69,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -78,7 +79,33 @@ $(function() {
 
 <p>Header file for hashtab library.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for hashtab.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="hashtab_8h__incl.png" border="0" usemap="#ainclude_2hashtab_8h" alt=""/></div>
+<map name="ainclude_2hashtab_8h" id="ainclude_2hashtab_8h">
+<area shape="rect" title="Header file for hashtab library." alt="" coords="17,5,154,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,72,107"/>
+<area shape="rect" title=" " alt="" coords="97,80,167,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="hashtab_8h__dep__incl.png" border="0" usemap="#ainclude_2hashtab_8hdep" alt=""/></div>
+<map name="ainclude_2hashtab_8hdep" id="ainclude_2hashtab_8hdep">
+<area shape="rect" title="Header file for hashtab library." alt="" coords="267,5,404,32"/>
+<area shape="rect" href="ht__utils_8h.html" title="Functions to dump hashtab, allocate nodes and other utils, which are used in hashtab." alt="" coords="321,80,454,107"/>
+<area shape="rect" href="hashtab_8cpp.html" title="File with hashtab access implementation." alt="" coords="5,155,153,181"/>
+<area shape="rect" href="ht__utils_8cpp.html" title="Implementation of functions which are helpful for hashtab." alt="" coords="365,155,509,181"/>
+<area shape="rect" href="linked__list_8cpp.html" title="File with linked_list access implementation." alt="" coords="178,155,341,181"/>
+<area shape="rect" href="main_8cpp.html" title="File with main function." alt="" coords="533,155,663,181"/>
+<area shape="rect" href="linked__list_8h.html" title="Header file with functions to access linked list structure." alt="" coords="95,80,245,107"/>
+</map>
+</div>
+</div>
 <p><a href="hashtab_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -95,6 +122,11 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtab__t.html">hashtab_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hashtab context structure.  <a href="structhashtab__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:abb3aef05fe0524d2e5dbc6a09e4c58f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8h.html#abb3aef05fe0524d2e5dbc6a09e4c58f5">_RETURN_IF_ERROR</a>(...)</td></tr>
+<tr class="separator:abb3aef05fe0524d2e5dbc6a09e4c58f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -173,7 +205,33 @@ Variables</h2></td></tr>
 <div class="textblock"><p >Header file for hashtab library. </p>
 <dl class="section author"><dt>Author</dt><dd>Artem Neskorodov </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2024-04-18 </dd></dl>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="abb3aef05fe0524d2e5dbc6a09e4c58f5" name="abb3aef05fe0524d2e5dbc6a09e4c58f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb3aef05fe0524d2e5dbc6a09e4c58f5">&#9670;&nbsp;</a></span>_RETURN_IF_ERROR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _RETURN_IF_ERROR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    {                                                \</div>
+<div class="line">    ht_error_t _error_code = (__VA_ARGS__);                                    \</div>
+<div class="line">    if(_error_code != <a class="code hl_enumvalue" href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acaea7294f60d6081a8937241397cf1d8eaf1">HASHTAB_SUCCESS</a>) {                                       \</div>
+<div class="line">        return _error_code;                                                    \</div>
+<div class="line">    }                                                                          \</div>
+<div class="line">}</div>
+<div class="ttc" id="ahashtab_8h_html_a45ecdf663904d5f5fb117bc1e0d8acaea7294f60d6081a8937241397cf1d8eaf1"><div class="ttname"><a href="hashtab_8h.html#a45ecdf663904d5f5fb117bc1e0d8acaea7294f60d6081a8937241397cf1d8eaf1">HASHTAB_SUCCESS</a></div><div class="ttdeci">@ HASHTAB_SUCCESS</div><div class="ttdef"><b>Definition:</b> hashtab.h:74</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a45ecdf663904d5f5fb117bc1e0d8acae" name="a45ecdf663904d5f5fb117bc1e0d8acae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45ecdf663904d5f5fb117bc1e0d8acae">&#9670;&nbsp;</a></span>ht_error_t</h2>
 

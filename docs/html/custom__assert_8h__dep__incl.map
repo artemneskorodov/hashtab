@@ -1,6 +1,8 @@
 <map id="include/custom_assert.h" name="include/custom_assert.h">
-<area shape="rect" id="node1" title=" " alt="" coords="169,5,349,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="363,5,543,32"/>
 <area shape="rect" id="node2" href="$colors_8cpp.html" title=" " alt="" coords="5,80,140,107"/>
 <area shape="rect" id="node3" href="$custom__assert_8cpp.html" title=" " alt="" coords="164,80,355,107"/>
-<area shape="rect" id="node4" href="$ht__storage_8cpp.html" title="File which allows to easily free and allocate new nodes for list." alt="" coords="379,80,545,107"/>
+<area shape="rect" id="node4" href="$hashtab_8cpp.html" title="File with hashtab access implementation." alt="" coords="379,80,527,107"/>
+<area shape="rect" id="node5" href="$ht__utils_8cpp.html" title="Implementation of functions which are helpful for hashtab." alt="" coords="551,80,695,107"/>
+<area shape="rect" id="node6" href="$linked__list_8cpp.html" title="File with linked_list access implementation." alt="" coords="719,80,882,107"/>
 </map>

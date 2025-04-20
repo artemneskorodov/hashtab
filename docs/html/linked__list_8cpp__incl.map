@@ -4,9 +4,9 @@
 <area shape="rect" id="node3" title=" " alt="" coords="30,80,101,107"/>
 <area shape="rect" id="node4" title=" " alt="" coords="125,80,195,107"/>
 <area shape="rect" id="node5" title=" " alt="" coords="220,80,319,107"/>
-<area shape="rect" id="node6" href="$hashtab_8h.html" title="Header file for hashtab library." alt="" coords="401,155,487,181"/>
+<area shape="rect" id="node6" href="$hashtab_8h.html" title="Header file for hashtab library." alt="" coords="357,155,443,181"/>
 <area shape="rect" id="node8" href="$linked__list_8h.html" title="Header file with functions to access linked list structure." alt="" coords="394,80,494,107"/>
-<area shape="rect" id="node9" href="$ht__storage_8h.html" title=" " alt="" coords="518,80,621,107"/>
-<area shape="rect" id="node10" href="$ht__dump_8h.html" title="Header file with functions to dump hashtab structure while using." alt="" coords="645,80,736,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="409,229,479,256"/>
+<area shape="rect" id="node9" href="$ht__utils_8h.html" title="Functions to dump hashtab, allocate nodes and other utils, which are used in hashtab." alt="" coords="517,80,600,107"/>
+<area shape="rect" id="node10" href="$custom__assert_8h.html" title=" " alt="" coords="625,80,754,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="365,229,435,256"/>
 </map>
