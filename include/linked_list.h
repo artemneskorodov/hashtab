@@ -11,23 +11,7 @@
 /*============================================================================*/
 
 #include "hashtab.h"
-
-/*============================================================================*/
-/**
-* @brief                Enables optimization of strcmp().
-
-* @note                 Optimization uses comparison of YMM register. It can be
-                        used if your processor supports SSE 4.2. See function
-                        cmp_key_optimized() for more info.
-*/
-#define _OPTIMIZE_STRCMP
-/**
-* @brief                Enables optimization of list_search_default().
-
-* @note                 Optimization helps to avoid saving YMM register value
-                        in memory before calling string comparison function.
-*/
-#define _OPTIMIZE_SEARCH
+#include "config.h"
 
 /*============================================================================*/
 

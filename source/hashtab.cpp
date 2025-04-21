@@ -20,16 +20,9 @@
 #include "linked_list.h"
 #include "colors.h"
 #include "custom_assert.h"
+#include "config.h"
 
 /*============================================================================*/
-/**
-* @brief                Enables optimization of hash function with x86
-                        intrinsic. It is fully safe to use this optimization if
-                        your processor supports SSE 4.2
-*/
-#define _OPTIMIZE_HASH
-
-/*----------------------------------------------------------------------------*/
 /**
 * @brief                Enables checking the result of hashtab_search() while
                         testing with hashtab_run_tests(). Function calls default
