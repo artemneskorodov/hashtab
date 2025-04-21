@@ -9,9 +9,7 @@ HTML_EXTRA_STYLESHEET  = /root/dev/doxygen-awesome-css/doxygen-awesome.css
 EXTRACT_STATIC         = YES
 EXTRACT_ALL            = YES
 ENABLE_PREPROCESSING   = YES
-MACRO_EXPANSION        = YES
 EXPAND_ONLY_PREDEF     = NO
-PREDEFINED             = _OPTIMIZE_HASH=1 _OPTIMIZE_HASH=0
-ENABLED_SECTIONS       =
 FILE_PATTERNS          = *.cpp *.h
 OPTIMIZE_OUTPUT_FOR_C  = YES
+DISABLE_IF             = YES

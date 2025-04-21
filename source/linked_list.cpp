@@ -127,7 +127,7 @@ ht_error_t list_insert(hashtab_t  *ctx,
     * @brief                Optimized variant of list_search(). It uses asm
                             inlines to avoid saving YMM registers in memory.
 
-    * @param ctx            Pointer to hashtab context.
+    * @param bucket         Pointer to bucket, which has particular linked list.
     * @param key            Pointer to 32 bytes array of chars - key to find.
     * @param result         Place to write a result of search.
 
@@ -200,7 +200,7 @@ ht_error_t list_insert(hashtab_t  *ctx,
     * @brief                Unoptimized variant of list_search(). This function
                             is safe.
 
-    * @param ctx            Pointer to hashtab context.
+    * @param bucket         Pointer to bucket, which has particular linked list.
     * @param key            Pointer to 32 bytes array of chars - key to find.
     * @param result         Place to write a result of search.
 
