@@ -92,28 +92,24 @@ ht_error_t list_insert(hashtab_t  *ctx,
         }
         current = current->next;
     }
-
+    /*------------------------------------------------------------------------*/
     bucket->elements++;
-
     list_t *new_element = NULL;
     _RETURN_IF_ERROR(ht_storage_get_list(ctx, &new_element));
-
     new_element->data.key   = key;
     new_element->data.value = 1;
-
     if(data != NULL) {
         new_element->data.value = data->value;
     }
-
+    /*------------------------------------------------------------------------*/
     new_element->next = bucket->head->next;
     new_element->prev = bucket->head;
-
+    /*------------------------------------------------------------------------*/
     bucket->head->next->prev = new_element;
     bucket->head->next       = new_element;
-
-    _HT_DUMP(ctx, "Dump after list allocation");
-
+    /*------------------------------------------------------------------------*/
     ctx->counter++;
+    _HT_DUMP(ctx, "Dump after list allocation");
     return HASHTAB_SUCCESS;
     /*------------------------------------------------------------------------*/
 }
@@ -229,16 +225,12 @@ ht_error_t list_insert(hashtab_t  *ctx,
         /* Running through list elements.                                     */
         while(head != bucket->head) {
             /*----------------------------------------------------------------*/
-            /* Result of keys comparison.                                     */
             bool cmp_result = CMP_KEY(key, search_key, head->data.key);
-            /*----------------------------------------------------------------*/
-            /* Checking if list element with key word was found.              */
             if(cmp_result) {
                 *result = &head->data;
                 break;
             }
             /*----------------------------------------------------------------*/
-            /* Moving current list head to next element.                      */
             head = head->next;
         }
         /*--------------------------------------------------------------------*/
