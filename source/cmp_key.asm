@@ -23,7 +23,7 @@ section .text
 cmp_key_optimized:
     ;---------------------------------------------------------------------------
     ; Loading second key to YMM1.
-    vmovdqu ymm1, [rdi]
+    vmovdqa ymm1, [rdi]
     ;---------------------------------------------------------------------------
     ; Comparing, setting to 1s bytes which are equal. Mask is written to YMM2,
     ; so bytes which are set to 1s in YMM2 are equal.

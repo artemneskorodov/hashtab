@@ -4,7 +4,7 @@ var searchData=
   ['handler_5fload_1',['handler_load',['../ht__utils_8cpp.html#acadf34cbdb54473c7fe665101643005a',1,'ht_utils.cpp']]],
   ['handler_5fparse_2',['handler_parse',['../ht__utils_8cpp.html#a0c374b714b8d2b3f0be8c76d77e85ebc',1,'ht_utils.cpp']]],
   ['handler_5ftest_3',['handler_test',['../ht__utils_8cpp.html#a59e3a0961b572acae136b0c40ef12f01',1,'ht_utils.cpp']]],
-  ['hash_5ffunc_5foptimized_4',['hash_func_optimized',['../hashtab_8cpp.html#a600c29f545cef39e8026253eb9ab45d7',1,'hashtab.cpp']]],
+  ['hash_5ffunc_4',['hash_func',['../hashtab_8cpp.html#a795393c9d2b193619a21405ccc3dfe3d',1,'hashtab.cpp']]],
   ['hashtab_5',['Hashtab',['../index.html',1,'']]],
   ['hashtab_2ecpp_6',['hashtab.cpp',['../hashtab_8cpp.html',1,'']]],
   ['hashtab_2eh_7',['hashtab.h',['../hashtab_8h.html',1,'']]],

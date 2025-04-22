@@ -2,8 +2,8 @@ var searchData=
 [
   ['background_5fcode_0',['background_code',['../colors_8cpp.html#a9a394c56fc0dbb0084e133edac695ce2',1,'colors.cpp']]],
   ['background_5ft_1',['background_t',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228',1,'colors.h']]],
-  ['black_5fbackground_2',['black_background',['../colors_8cpp.html#a1b1687a0a12c2233f42a4b05c04015cc',1,'colors.cpp']]],
-  ['black_5fbackground_3',['BLACK_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228a60bc8f8e0465f7083ef660e815df1d84',1,'colors.h']]],
+  ['black_5fbackground_2',['BLACK_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228a60bc8f8e0465f7083ef660e815df1d84',1,'colors.h']]],
+  ['black_5fbackground_3',['black_background',['../colors_8cpp.html#a1b1687a0a12c2233f42a4b05c04015cc',1,'colors.cpp']]],
   ['blue_5fbackground_4',['BLUE_BACKGROUND',['../colors_8h.html#a6356354e1f872b1d09ec3db8cac65228a01a70b810fd43b4062430a8828d104fe',1,'colors.h']]],
   ['blue_5fbackground_5',['blue_background',['../colors_8cpp.html#ad4efa493e7c63f34edbf352783e9daf0',1,'colors.cpp']]],
   ['blue_5ftext_6',['BLUE_TEXT',['../colors_8h.html#a0a8ef1b5e1941b7257e545cc33405ff1a95222761861aa7bc24cad4993a174fb2',1,'colors.h']]],

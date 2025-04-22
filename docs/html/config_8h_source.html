@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Hashtab: include Directory Reference</title>
+<title>Hashtab: include/config.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,29 +67,25 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">include Directory Reference</div></div>
+  <div class="headertitle"><div class="title">config.h</div></div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="colors_8h.html">colors.h</a> <a href="colors_8h_source.html">[code]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html">config.h</a> <a href="config_8h_source.html">[code]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="custom__assert_8h.html">custom_assert.h</a> <a href="custom__assert_8h_source.html">[code]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtab_8h.html">hashtab.h</a> <a href="hashtab_8h_source.html">[code]</a></td></tr>
-<tr class="memdesc:hashtab_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header file for hashtab library. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ht__utils_8h.html">ht_utils.h</a> <a href="ht__utils_8h_source.html">[code]</a></td></tr>
-<tr class="memdesc:ht__utils_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functions to dump hashtab, allocate nodes and other utils, which are used in hashtab. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linked__list_8h.html">linked_list.h</a> <a href="linked__list_8h_source.html">[code]</a></td></tr>
-<tr class="memdesc:linked__list_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header file with functions to access linked list structure. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<a href="config_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*============================================================================*/</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef CONFIG_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define CONFIG_H</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">/*============================================================================*/</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="config_8h.html#ab5856dd6dd7bbbc91e6e5ea6436dee95">   10</a></span><span class="preprocessor">#define _OPTIMIZE_HASH</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">/*----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="config_8h.html#a499647593e6523d597edd8b96a1a357c">   20</a></span><span class="preprocessor">#define _OPTIMIZE_STRCMP</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">/*----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="config_8h.html#a7ba7a53ca8d675f148722eb9676e25ef">   29</a></span><span class="preprocessor">#define _OPTIMIZE_SEARCH</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/*============================================================================*/</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/*============================================================================*/</span></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4

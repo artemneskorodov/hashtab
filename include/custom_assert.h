@@ -1,6 +1,8 @@
 #ifndef CUSTOM_ASSERT_H
 #define CUSTOM_ASSERT_H
 
+#define NDEBUG
+
 #ifndef NDEBUG
 #define _C_ASSERT(expression, operand) {                    \
     if(expression) {(void)0;}                               \

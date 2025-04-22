@@ -1,6 +1,7 @@
 <map id="include/linked_list.h" name="include/linked_list.h">
-<area shape="rect" id="node1" title="Header file with functions to access linked list structure." alt="" coords="10,5,161,32"/>
+<area shape="rect" id="node1" title="Header file with functions to access linked list structure." alt="" coords="62,5,213,32"/>
 <area shape="rect" id="node2" href="$hashtab_8h.html" title="Header file for hashtab library." alt="" coords="42,80,129,107"/>
+<area shape="rect" id="node5" href="$config_8h.html" title=" " alt="" coords="153,80,226,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,72,181"/>
 <area shape="rect" id="node4" title=" " alt="" coords="97,155,167,181"/>
 </map>

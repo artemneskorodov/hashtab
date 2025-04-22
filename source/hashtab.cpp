@@ -48,9 +48,9 @@ static const size_t TestsNumber = 100;
 #else
     /*------------------------------------------------------------------------*/
     static void create_crc_table(hashtab_t *ctx);
-    static size_t hash_func_default(hashtab_t *ctx, const char *key);
+    static size_t hash_func(hashtab_t *ctx, const char *key);
     /*------------------------------------------------------------------------*/
-    #define CALL_HASH_FUNC(_ctx, _key)  hash_func_default((_ctx), (_key))
+    #define CALL_HASH_FUNC(_ctx, _key)  hash_func((_ctx), (_key))
     #define CALL_CREATE_CRC_TABLE(_ctx) create_crc_table(_ctx)
     /*------------------------------------------------------------------------*/
 #endif
@@ -112,7 +112,7 @@ ht_error_t hashtab_read_data(hashtab_t *ctx) {
     size_t data_size = file_size(data);
     size_t words_num = data_size / KeyWordSize;
     /*------------------------------------------------------------------------*/
-    ctx->data = (char *)calloc(data_size, sizeof(char));
+    ctx->data = (char *)aligned_alloc(32, words_num * KeyWordSize * sizeof(char));
     if(ctx->data == NULL) {
         fclose(data);
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
@@ -120,7 +120,10 @@ ht_error_t hashtab_read_data(hashtab_t *ctx) {
         return HASHTAB_MEMORY_ERROR;
     }
     /*------------------------------------------------------------------------*/
-    if(fread(ctx->data, sizeof(char), data_size, data) != data_size) {
+    if(fread(ctx->data,
+             KeyWordSize * sizeof(char),
+             words_num,
+             data) != words_num) {
         fclose(data);
         free(ctx->data);
         ctx->data = NULL;
@@ -176,7 +179,18 @@ ht_error_t hashtab_run_tests(hashtab_t *ctx) {
     size_t test_size = file_size(test);
     size_t words_num = test_size / KeyWordSize;
     /*------------------------------------------------------------------------*/
-    if(fread(ctx->data, sizeof(char), test_size, test) != test_size) {
+    char *buffer = (char *)aligned_alloc(32, words_num * KeyWordSize * sizeof(char));
+    if(buffer == NULL) {
+        fclose(test);
+        color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
+                     "Error while allocating memory for test buffer\n");
+        return HASHTAB_MEMORY_ERROR;
+    }
+    /*------------------------------------------------------------------------*/
+    if(fread(buffer,
+             KeyWordSize * sizeof(char),
+             words_num,
+             test) != words_num) {
         fclose(test);
         color_printf(RED_TEXT, BOLD_TEXT, DEFAULT_BACKGROUND,
                      "Error while reading file '%s'\n",
@@ -187,7 +201,7 @@ ht_error_t hashtab_run_tests(hashtab_t *ctx) {
     /*------------------------------------------------------------------------*/
     for(size_t test_num = 0; test_num < TestsNumber; test_num++) {
         /*--------------------------------------------------------------------*/
-        char *position = ctx->data;
+        char *position = buffer;
         for(size_t i = 0; i < words_num; i++, position += KeyWordSize) {
             data_t *result = NULL;
             _RETURN_IF_ERROR(hashtab_search(ctx, position, &result));
@@ -396,7 +410,7 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
                             hashtab_ctor(). Don't call it if
                             ctx->run_mode != HASHTAB_MODE_TEST_LOAD.
     */
-    size_t hash_func_default(hashtab_t *ctx, const char *key) {
+    size_t hash_func(hashtab_t *ctx, const char *key) {
         _C_ASSERT(ctx != NULL, return HASHTAB_CTX_NULL_PTR);
         _C_ASSERT(key != NULL, return HASHTAB_KEY_NULL_PTR);
         /*--------------------------------------------------------------------*/
@@ -417,7 +431,6 @@ ht_error_t hashtab_dtor(hashtab_t *ctx) {
     * @param ctx            Pointer to hashtab context.
     */
     void create_crc_table(hashtab_t *ctx) {
-        _C_ASSERT(ctx != NULL, return HASHTAB_CTX_NULL_PTR);
         /*--------------------------------------------------------------------*/
         for(uint32_t i = 0; i < 256; i++) {
             uint32_t crc = i;

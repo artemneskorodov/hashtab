@@ -73,23 +73,25 @@ $(function() {
 <a href="custom__assert_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CUSTOM_ASSERT_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CUSTOM_ASSERT_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#ifndef NDEBUG</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="custom__assert_8h.html#aa2d3c32f7117dd516c1607f8e921dc79">    5</a></span><span class="preprocessor">#define _C_ASSERT(expression, operand) {                    \</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">    if(expression) {(void)0;}                               \</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">    else {                                                  \</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">        print_assert_error(#expression, __LINE__, __FILE__);\</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">        operand;                                            \</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">        }                                                   \</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">    }</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define _C_ASSERT(expression, return_value) ((void)0);</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keywordtype">void</span> <a class="code hl_function" href="custom__assert_8h.html#ad5b3bf2b0746ceec58e1f20a5057cc83">print_assert_error</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>                        <span class="keywordtype">int</span>         line_number,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>                        <span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="custom__assert_8h.html#a8de3ed741dadc9c979a4ff17c0a9116e">    4</a></span><span class="preprocessor">#define NDEBUG</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef NDEBUG</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define _C_ASSERT(expression, operand) {                    \</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">    if(expression) {(void)0;}                               \</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">    else {                                                  \</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">        print_assert_error(#expression, __LINE__, __FILE__);\</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">        operand;                                            \</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">        }                                                   \</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    }</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="custom__assert_8h.html#a543fa228d97ee6d2fc7860bb44bd1988">   15</a></span><span class="preprocessor">#define _C_ASSERT(expression, return_value) ((void)0);</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">void</span> <a class="code hl_function" href="custom__assert_8h.html#ad5b3bf2b0746ceec58e1f20a5057cc83">print_assert_error</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                        <span class="keywordtype">int</span>         line_number,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                        <span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="acustom__assert_8h_html_ad5b3bf2b0746ceec58e1f20a5057cc83"><div class="ttname"><a href="custom__assert_8h.html#ad5b3bf2b0746ceec58e1f20a5057cc83">print_assert_error</a></div><div class="ttdeci">void print_assert_error(const char *string, int line_number, const char *filename)</div><div class="ttdef"><b>Definition:</b> custom_assert.cpp:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -3,7 +3,7 @@ var searchData=
   ['handler_5fload_0',['handler_load',['../ht__utils_8cpp.html#acadf34cbdb54473c7fe665101643005a',1,'ht_utils.cpp']]],
   ['handler_5fparse_1',['handler_parse',['../ht__utils_8cpp.html#a0c374b714b8d2b3f0be8c76d77e85ebc',1,'ht_utils.cpp']]],
   ['handler_5ftest_2',['handler_test',['../ht__utils_8cpp.html#a59e3a0961b572acae136b0c40ef12f01',1,'ht_utils.cpp']]],
-  ['hash_5ffunc_5foptimized_3',['hash_func_optimized',['../hashtab_8cpp.html#a600c29f545cef39e8026253eb9ab45d7',1,'hashtab.cpp']]],
+  ['hash_5ffunc_3',['hash_func',['../hashtab_8cpp.html#a795393c9d2b193619a21405ccc3dfe3d',1,'hashtab.cpp']]],
   ['hashtab_5fctor_4',['hashtab_ctor',['../hashtab_8cpp.html#ae681576b4628b4417f2af68bd568d5ad',1,'hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]):&#160;hashtab.cpp'],['../hashtab_8h.html#ae681576b4628b4417f2af68bd568d5ad',1,'hashtab_ctor(hashtab_t *ctx, int argc, const char *argv[]):&#160;hashtab.cpp']]],
   ['hashtab_5fdtor_5',['hashtab_dtor',['../hashtab_8cpp.html#a178ef387751516bd8f2e71749d38d86d',1,'hashtab_dtor(hashtab_t *ctx):&#160;hashtab.cpp'],['../hashtab_8h.html#a178ef387751516bd8f2e71749d38d86d',1,'hashtab_dtor(hashtab_t *ctx):&#160;hashtab.cpp']]],
   ['hashtab_5fdump_6',['hashtab_dump',['../ht__utils_8cpp.html#a38c3672ff667001dc7a258e586877e53',1,'hashtab_dump(hashtab_t *ctx, const char *label, const char *file, const char *func, int line):&#160;ht_utils.cpp'],['../ht__utils_8h.html#a38c3672ff667001dc7a258e586877e53',1,'hashtab_dump(hashtab_t *ctx, const char *label, const char *file, const char *func, int line):&#160;ht_utils.cpp']]],

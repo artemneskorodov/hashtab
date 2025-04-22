@@ -53,10 +53,10 @@
     /*------------------------------------------------------------------------*/
 #else
     /*------------------------------------------------------------------------*/
-    static bool cmp_key_default(const char *key1, const char *key2);
+    static bool cmp_key(const char *key1, const char *key2);
     /*------------------------------------------------------------------------*/
     #define CMP_KEY(_string_key1, _ymm_key1, _string_key2)                     \
-        cmp_key_default((_string_key1), (_string_key2))
+        cmp_key((_string_key1), (_string_key2))
     /*------------------------------------------------------------------------*/
 #endif
 
@@ -153,7 +153,7 @@ ht_error_t list_insert(hashtab_t  *ctx,
         /* YMM1 and RAX in cmp_key, so we can avoid saving value of YMM0,     */
         /* which has written key in it to memory. This asm inline forces      */
         /* saving key string in YMM0 register.                                */
-        asm("vmovdqu %[key], %%ymm0\n"
+        asm("vmovdqa %[key], %%ymm0\n"
             :
             : [key] "m" (*key)
             : "%ymm0");
@@ -209,7 +209,7 @@ ht_error_t list_insert(hashtab_t  *ctx,
     * @warning              It is expected to call this function only from
                             hashtab functions.
     */
-    ht_error_t list_search_default(bucket_t     *bucket,
+    ht_error_t list_search(bucket_t     *bucket,
                                    const char   *key,
                                    data_t      **result) {
         /*--------------------------------------------------------------------*/
